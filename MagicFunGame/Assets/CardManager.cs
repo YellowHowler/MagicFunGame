@@ -16,7 +16,7 @@ public class CardManager : MonoBehaviour
     private Rigidbody rb;
 
     private bool isUsed = false;
-    private bool isSelected = false;
+    public bool isSelected = false;
 
     private float holdFrontTime = 0;
 
@@ -29,7 +29,7 @@ public class CardManager : MonoBehaviour
     void Update()
     {
         //throw
-        if(!isUsed && rb.velocity.magnitude > 0.5f && !isSelected)
+        if(!isUsed && rb.velocity.magnitude > 0.01f && !isSelected)
         {
             if(type == Element.fire)
             {
@@ -38,7 +38,7 @@ public class CardManager : MonoBehaviour
         }
 
         //hold towards front
-        if(isSelected && Vector3.Distance(transform.position, new Vector3(player.position.x, transform.position.y, player.position.z)) > 1.5f)
+        if(isSelected && Vector3.Distance(transform.position, new Vector3(player.position.x, transform.position.y, player.position.z)) > 0.4f)
         {
             holdFrontTime += Time.deltaTime;
         }
@@ -60,6 +60,7 @@ public class CardManager : MonoBehaviour
     {
         isUsed = true;
         gameObject.GetComponent<Renderer>().material.color = new Color(1, 0, 0, 1);
+        rb.useGravity = true;
     }
 
     private void ShootWater()
