@@ -5,20 +5,24 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Card
   - Check
   - RoomLight
   - SpellWeaver
   - Deck
   - Card
+  - Wind
+  - StormCloud
+  - StormFog
+  - Check2
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
+  - Card
   - 
   - 
   - 
