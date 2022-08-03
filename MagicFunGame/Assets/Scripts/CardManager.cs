@@ -11,49 +11,20 @@ public class CardManager : MonoBehaviour
 
     [SerializeField] public Element type;
 
-    private Transform player;
-
     private Rigidbody rb;
 
     private bool isUsed = false;
-    public bool isSelected = false;
+    [HideInInspector] public bool isSelected = false;
 
     private float holdFrontTime = 0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     void Update()
-    {
-        //throw
-        if(!isUsed && rb.velocity.magnitude > 0.01f && !isSelected)
-        {
-            if(type == Element.fire)
-            {
-                ThrowFire();
-            }
-        }
-
-        //hold towards front
-        if(isSelected && Vector3.Distance(transform.position, new Vector3(player.position.x, transform.position.y, player.position.z)) > 0.4f)
-        {
-            holdFrontTime += Time.deltaTime;
-        }
-        else
-        {
-            holdFrontTime = 0;
-        }
-
-        if(holdFrontTime > 0.7f)
-        {
-            if(type == Element.water)
-            {
-                ShootWater();
-            }
-        }
+    {   
     }
 
     private void ThrowFire()
@@ -79,6 +50,35 @@ public class CardManager : MonoBehaviour
         else if (col.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        if(!isUsed && col.gameObject.CompareTag("Check"))
+        {
+            holdFrontTime += Time.deltaTime;
+
+            if(type == Element.fire && rb.velocity.magnitude > 0.05f)
+            {
+                ThrowFire();
+            }
+
+            if(holdFrontTime > 0.7f)
+            {
+                if(type == Element.water)
+                {
+                    ShootWater();
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if(col.gameObject.CompareTag("Check"))
+        {
+            holdFrontTime = 0;
         }
     }
 }
