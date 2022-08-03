@@ -8,7 +8,7 @@ public class CardRotation : MonoBehaviour
     [SerializeField] int cardNum;
     [SerializeField] public List<GameObject> cards;
     [SerializeField] float distBetweenCards;
-    [SerializeField] Transform midPoint;
+    [SerializeField] Transform midPoint;    
     void Start()
     {
 
@@ -62,7 +62,8 @@ public class CardRotation : MonoBehaviour
     }
     void Update()
     {
+
         //AdjustCards();
-      
+
     }
 }
