@@ -52,10 +52,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Distortion: 0.1
+    - _Distortion: 0.05
     - _NormalTiling: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VertexDisplacement: 0.02
+    - _VertexDisplacement: 0.005
     m_Colors: []
   m_BuildTextureStacks: []
