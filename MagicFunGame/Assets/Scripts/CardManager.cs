@@ -16,6 +16,7 @@ public class CardManager : MonoBehaviour
     private ParticleSystem waterP;
     private ParticleSystem windP;
     private ParticleSystem stormCloudP;
+    private ParticleSystem stormFogP;
     private Transform player;
 
     private bool isUsed = false;
@@ -30,6 +31,9 @@ public class CardManager : MonoBehaviour
         waterP = transform.GetChild(0).GetComponent<ParticleSystem>();
         windP = GameObject.FindGameObjectWithTag("Wind").GetComponent<ParticleSystem>();
         stormCloudP = GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>();
+        stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
+
+        RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
     }
 
     void Update()
@@ -118,14 +122,14 @@ public class CardManager : MonoBehaviour
         gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 1, 1);
 
         waterP.Play();
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(4);
         waterP.Stop();
     }
 
     private IEnumerator ShootWood()
     {
         isUsed = true;
-        
+
         Transform newWood = Instantiate(woodObj, transform.position, Quaternion.Euler(0, transform.rotation.y, 0)).transform;
         
         WaitForSeconds sec1 = new WaitForSeconds(0.15f);
