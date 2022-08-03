@@ -307,7 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 113847990}
   - component: {fileID: 113847991}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Check (3)
   m_TagString: Check2
   m_Icon: {fileID: 0}
@@ -5164,7 +5164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 222795544}
   - component: {fileID: 222795545}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Check (1)
   m_TagString: Check
   m_Icon: {fileID: 0}
@@ -5209,7 +5209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 251060835}
   - component: {fileID: 251060836}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Check (2)
   m_TagString: Check2
   m_Icon: {fileID: 0}
@@ -5254,7 +5254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 299761417}
   - component: {fileID: 299761418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Check
   m_TagString: Check2
   m_Icon: {fileID: 0}
@@ -10160,7 +10160,7 @@ PrefabInstance:
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.402
+      value: 0.287
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
@@ -10219,7 +10219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 818571361}
   - component: {fileID: 818571362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Check (2)
   m_TagString: Check
   m_Icon: {fileID: 0}
@@ -10606,7 +10606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1258057679}
   - component: {fileID: 1258057680}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Check
   m_TagString: Check
   m_Icon: {fileID: 0}
@@ -16505,7 +16505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1588512513}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Check2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16556,7 +16556,7 @@ PrefabInstance:
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.402
+      value: 0.287
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
@@ -16615,7 +16615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1649296406}
   - component: {fileID: 1649296407}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Check (1)
   m_TagString: Check2
   m_Icon: {fileID: 0}
@@ -16659,7 +16659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1743964998}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Check1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16695,7 +16695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1939270192}
   - component: {fileID: 1939270193}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Check (3)
   m_TagString: Check
   m_Icon: {fileID: 0}
@@ -16755,7 +16755,7 @@ PrefabInstance:
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.402
+      value: 0.287
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
@@ -16863,7 +16863,7 @@ PrefabInstance:
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.402
+      value: 0.287
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
