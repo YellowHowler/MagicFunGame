@@ -71,10 +71,8 @@ public class CardState : MonoBehaviour
                 }
                 if(numMatching==2)
                 {
-                    Destroy(this.gameObject);
                     other.GetComponent<CardManager>().type = elements.Value;
-
-
+                    Destroy(this.gameObject);
                 }
 
 
