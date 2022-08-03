@@ -18,7 +18,7 @@ public class PlayerState : MonoBehaviour
     {
         if (regening)
         {
-            manaRegen();
+            StartCoroutine(manaRegen());
         }
     }
     IEnumerator manaRegen()

@@ -6,13 +6,19 @@ public class CardRotation : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] int cardNum;
-    [SerializeField] public static List<GameObject> cards;
+    [SerializeField] public List<GameObject> cards;
     [SerializeField] float distBetweenCards;
     [SerializeField] Transform midPoint;
     void Start()
     {
 
-
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("Card");
+        foreach (GameObject i in temp)
+        {
+            cards.Add(i);
+            
+        
+        }
     }
 
     // Update is called once per frame
@@ -56,7 +62,7 @@ public class CardRotation : MonoBehaviour
     }
     void Update()
     {
-        AdjustCards();
+        //AdjustCards();
       
     }
 }

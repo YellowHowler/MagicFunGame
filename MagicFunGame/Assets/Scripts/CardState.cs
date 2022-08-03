@@ -7,22 +7,17 @@ public class CardState : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Transform deckCoords;
     [SerializeField] Transform SpellWeaverCoords;
-    void Start()
+    CardRotation deck;
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<CardRotation>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Deck")
         {
             
-            CardRotation.cards.Add(this.gameObject);
+           deck.cards.Add(this.gameObject);
         }
         else if (other.tag == "SpellWeaver")
         {
@@ -35,7 +30,7 @@ public class CardState : MonoBehaviour
     {
         if (other.tag == "Deck")
         {
-            CardRotation.cards.Remove(this.gameObject);
+            deck.cards.Remove(this.gameObject);
         }
     }
 }

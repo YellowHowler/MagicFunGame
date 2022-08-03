@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] SorcererType wizard;
     bool CD;
     Rigidbody rb;
+    bool move;
     enum SorcererType
     { 
         fire,
@@ -16,7 +17,9 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         CD = true;
+        move = true;
         rb = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -25,27 +28,30 @@ public class EnemyAI : MonoBehaviour
         if (CD)
         {
 
-            AttackCD();
+           StartCoroutine (AttackCD());
+        }
+        if (move)
+        {
+            
+           StartCoroutine( Movement());
+        
+        
         }
     }
     void AIAttack()
     {
         if (wizard == SorcererType.fire)
         {
-            if (Random.Range(1, 12) == 6)
-            {
-                //call fireball
 
-            }
+            print("call fireball");
+
+            
 
         }
         else if (wizard == SorcererType.water)
         {
-            if (Random.Range(1, 12) == 6)
-            {
-                //call water
 
-            }
+            print("call water");
 
 
         }
@@ -53,13 +59,17 @@ public class EnemyAI : MonoBehaviour
     }
     IEnumerator AttackCD()
     {
+        CD = false;
         yield return new WaitForSeconds(10);
         AIAttack();
+        CD = true;
     }
     IEnumerator Movement()
     {
-        yield return new WaitForSeconds(4);
-
+        move = false;
+        yield return new WaitForSeconds(2);
+        rb.velocity = new Vector3(Random.Range(-5, 5), 0, 0);
+        move = true;
     }
 
 }
