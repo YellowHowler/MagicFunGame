@@ -5,7 +5,6 @@ using UnityEngine;
 public class CardState : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Transform deckCoords;
     [SerializeField] Transform SpellWeaverCoords;
     CardRotation deck;
     CardManager.Element currentCard;
