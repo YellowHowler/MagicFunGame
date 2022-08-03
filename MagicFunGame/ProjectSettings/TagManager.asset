@@ -7,6 +7,10 @@ TagManager:
   - Enemy
   - Card
   - Check
+  - RoomLight
+  - SpellWeaver
+  - Deck
+  - Card
   layers:
   - Default
   - TransparentFX
