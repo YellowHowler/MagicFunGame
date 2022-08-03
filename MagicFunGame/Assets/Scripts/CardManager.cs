@@ -6,7 +6,7 @@ public class CardManager : MonoBehaviour
 {
     public enum Element
     {
-        none, fire, water, earth, wind, storm, steam, wood, lava
+        none, fire, water, earth, wind, storm, steam, wood, lava, sand
     }
 
     [SerializeField] public Element type;
@@ -56,7 +56,7 @@ public class CardManager : MonoBehaviour
 
         else if (col.gameObject.CompareTag("Ground"))
         {
-            if(!isUsed && type == Element.wood && rb.velocity.magnitude > 0.01f)
+            if(!isUsed && type == Element.wood && rb.velocity.magnitude > 0)
             {
                 StartCoroutine(ShootWood());
             }
@@ -98,11 +98,11 @@ public class CardManager : MonoBehaviour
     {
         if(!isUsed && col.gameObject.CompareTag("Check2"))
         {
-            if(type == Element.fire && rb.velocity.magnitude > 0.01f)
+            if(type == Element.fire && rb.velocity.magnitude > 0)
             {
                 ThrowFire();
             }
-            else if(type == Element.lava && rb.velocity.magnitude > 0.01f)
+            else if(type == Element.lava && rb.velocity.magnitude > 0)
             {
                 ThrowFire();
             }

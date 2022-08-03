@@ -54,7 +54,7 @@ public class CardState : MonoBehaviour
         {
             foreach (KeyValuePair< CardManager.Element[], CardManager.Element> elements in dict)
             { 
-                if()
+                //if()
             
             
             
