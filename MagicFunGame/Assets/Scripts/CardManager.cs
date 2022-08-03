@@ -84,7 +84,7 @@ public class CardManager : MonoBehaviour
                 }
                 else if(type == Element.steam)
                 {
-                    stormFogP.Play();
+                   // stormFogP.Play();
                 }
             }
         }

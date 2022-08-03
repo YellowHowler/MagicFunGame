@@ -18,7 +18,7 @@ public class CardState : MonoBehaviour
         dict.Add(new CardManager.Element[] {CardManager.Element.fire, CardManager.Element.earth}, CardManager.Element.lava );//lava
         dict.Add(new CardManager.Element[] { CardManager.Element.fire, CardManager.Element.water }, CardManager.Element.steam);//steam
         dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.wind}, CardManager.Element.storm);//storm
-        dict.Add(new CardManager.Element[] { CardManager.Element.wind, CardManager.Element.earth }, CardManager.Element.sand);//sand
+        dict.Add(new CardManager.Element[] { CardManager.Element.wind, CardManager.Element.earth }, CardManager.Element.none);//sand
         dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.earth }, CardManager.Element.wood); //wood
 
     }
@@ -50,14 +50,35 @@ public class CardState : MonoBehaviour
         //dictionary 
         //keys of arrays of spells
         //def of enum type 
-        else if (other.tag == "Card" && !gripping)
+        else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type)
         {
             foreach (KeyValuePair< CardManager.Element[], CardManager.Element> elements in dict)
-            { 
-                if()
-            
-            
-            
+            {
+                CardManager.Element[] temp = elements.Key;
+                int numMatching = 0;
+                for (int i = 0; i < temp.Length; i++)
+                {
+                    if (temp[i] == other.GetComponent<CardManager>().type)
+                    {
+                        numMatching++;
+
+                    }
+                    if (temp[i] == GetComponent<CardManager>().type)
+                    {
+                        numMatching++;
+                    }
+
+                }
+                if(numMatching==2)
+                {
+                    Destroy(this.gameObject);
+                    other.GetComponent<CardManager>().type = elements.Value;
+
+
+                }
+
+
+
             }
 
 
