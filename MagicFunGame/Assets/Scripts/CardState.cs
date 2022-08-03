@@ -53,7 +53,6 @@ public class CardState : MonoBehaviour
         else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type)
         {
             foreach (KeyValuePair< CardManager.Element[], CardManager.Element> elements in dict)
-<<<<<<< HEAD
             {
                 CardManager.Element[] temp = elements.Key;
                 int numMatching = 0;
@@ -78,13 +77,6 @@ public class CardState : MonoBehaviour
 
 
 
-=======
-            { 
-                //if()
-            
-            
-            
->>>>>>> 45c92684ac4d1794e7e7ea2fea83ea94cc1beac0
             }
 
 
