@@ -6,7 +6,7 @@ public class CardManager : MonoBehaviour
 {
     public enum Element
     {
-        none, fire, water, earth, wind, storm, steam, wood
+        none, fire, water, earth, wind, storm, steam, wood, lava
     }
 
     [SerializeField] public Element type;
@@ -16,7 +16,6 @@ public class CardManager : MonoBehaviour
     private ParticleSystem waterP;
     private ParticleSystem windP;
     private ParticleSystem stormCloudP;
-    private ParticleSystem stormFogP;
     private Transform player;
 
     private bool isUsed = false;
@@ -31,7 +30,6 @@ public class CardManager : MonoBehaviour
         waterP = transform.GetChild(0).GetComponent<ParticleSystem>();
         windP = GameObject.FindGameObjectWithTag("Wind").GetComponent<ParticleSystem>();
         stormCloudP = GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>();
-        stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -54,7 +52,7 @@ public class CardManager : MonoBehaviour
 
         else if (col.gameObject.CompareTag("Ground"))
         {
-            if(type == Element.wood && rb.velocity.magnitude > 0.01f)
+            if(!isUsed && type == Element.wood && rb.velocity.magnitude > 0.01f)
             {
                 StartCoroutine(ShootWood());
             }
@@ -83,7 +81,6 @@ public class CardManager : MonoBehaviour
                 else if(type == Element.storm)
                 {
                     stormCloudP.Play();
-                    stormFogP.Play();
                 }
                 else if(type == Element.steam)
                 {
@@ -97,7 +94,11 @@ public class CardManager : MonoBehaviour
     {
         if(!isUsed && col.gameObject.CompareTag("Check2"))
         {
-            if(type == Element.fire && rb.velocity.magnitude > 0.05f)
+            if(type == Element.fire && rb.velocity.magnitude > 0.01f)
+            {
+                ThrowFire();
+            }
+            else if(type == Element.lava && rb.velocity.magnitude > 0.01f)
             {
                 ThrowFire();
             }
@@ -123,6 +124,8 @@ public class CardManager : MonoBehaviour
 
     private IEnumerator ShootWood()
     {
+        isUsed = true;
+        
         Transform newWood = Instantiate(woodObj, transform.position, Quaternion.Euler(0, transform.rotation.y, 0)).transform;
         
         WaitForSeconds sec1 = new WaitForSeconds(0.15f);
