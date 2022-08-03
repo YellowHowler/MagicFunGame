@@ -5,7 +5,6 @@ using UnityEngine;
 public class CardState : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Transform deckCoords;
     [SerializeField] Transform SpellWeaverCoords;
     CardRotation deck;
     CardManager.Element currentCard;
@@ -13,8 +12,9 @@ public class CardState : MonoBehaviour
     bool gripping;
     private void Start()
     {
-        deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<CardRotation>();
-        currentCard = this.GetComponent<CardManager>().type;
+        deck = transform.parent.gameObject.GetComponent<CardRotation>();
+        currentCard = GetComponent<CardManager>().type;
+        
         dict.Add(new CardManager.Element[] {CardManager.Element.fire, CardManager.Element.earth}, CardManager.Element.lava );//lava
         dict.Add(new CardManager.Element[] { CardManager.Element.fire, CardManager.Element.water }, CardManager.Element.steam);//steam
         dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.wind}, CardManager.Element.storm);//storm

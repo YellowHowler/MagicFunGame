@@ -5,25 +5,33 @@ using UnityEngine;
 public class CardRotation : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] int cardNum;
-    [SerializeField] public List<GameObject> cards;
-    [SerializeField] float distBetweenCards;
+    
+    [SerializeField] private float distBetweenCards;
     [SerializeField] Transform midPoint;    
+
+    private int cardNum;
+    [HideInInspector] public List<GameObject> cards;
+
     void Start()
     {
-
-        GameObject[] temp = GameObject.FindGameObjectsWithTag("Card");
-        foreach (GameObject i in temp)
-        {
-            cards.Add(i);
-            
-        
-        }
+        AdjustCards();
     }
+
 
     // Update is called once per frame
     public void AdjustCards()
     {
+        cardNum = transform.childCount;
+        GameObject[] temp = new GameObject[cardNum];
+
+        Debug.Log(cardNum);
+
+        for(int i = 0; i < cardNum; i++)
+        {
+            temp[i] = transform.GetChild(i).gameObject;
+            cards.Add(temp[i]);
+        }
+
         if (cardNum % 2 == 0)
         {
             cards[0].transform.localPosition = new Vector3(midPoint.position.x + distBetweenCards / 2, midPoint.position.y, midPoint.position.z);
