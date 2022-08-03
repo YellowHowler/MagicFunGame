@@ -15,11 +15,16 @@ public class CardState : MonoBehaviour
     {
         deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<CardRotation>();
         currentCard = this.GetComponent<CardManager>().type;
-        dict.Add(new CardManager.Element[] {CardManager.Element.fire, CardManager.Element.earth}, CardManager.Element.none);
+        dict.Add(new CardManager.Element[] {CardManager.Element.fire, CardManager.Element.earth}, CardManager.Element.lava );//lava
+        dict.Add(new CardManager.Element[] { CardManager.Element.fire, CardManager.Element.water }, CardManager.Element.steam);//steam
+        dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.wind}, CardManager.Element.storm);//storm
+        dict.Add(new CardManager.Element[] { CardManager.Element.wind, CardManager.Element.earth }, CardManager.Element.sand);//sand
+        dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.earth }, CardManager.Element.wood); //wood
+
     }
     private void Update()
     {
-        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) == 0)
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) == 0)
         {
             gripping = false;
         }
@@ -47,58 +52,12 @@ public class CardState : MonoBehaviour
         //def of enum type 
         else if (other.tag == "Card" && !gripping)
         {
-            switch (other.GetComponent<CardManager>().type)
-            {
-                case CardManager.Element.earth:
-                    switch (currentCard)
-                    {
-                        case CardManager.Element.fire:
-                            break;
-                        case CardManager.Element.water:
-                            break;
-                        case CardManager.Element.wind:
-                            break;
-                    }
-                    break;
-                case CardManager.Element.fire:
-                    switch (currentCard)
-                    {
-                        case CardManager.Element.earth:
-                            break;
-                        case CardManager.Element.fire:
-                            break;
-                        case CardManager.Element.water:
-                            break;
-                        case CardManager.Element.wind:
-                            break;
-                    }
-                    break;
-                case CardManager.Element.water:
-                    switch (currentCard)
-                    {
-                        case CardManager.Element.earth:
-                            break;
-                        case CardManager.Element.fire:
-                            break;
-                        case CardManager.Element.water:
-                            break;
-                        case CardManager.Element.wind:
-                            break;
-                    }
-                    break;
-                case CardManager.Element.wind:
-                    switch (currentCard)
-                    {
-                        case CardManager.Element.earth:
-                            break;
-                        case CardManager.Element.fire:
-                            break;
-                        case CardManager.Element.water:
-                            break;
-                        case CardManager.Element.wind:
-                            break;
-                    }
-                    break;
+            foreach (KeyValuePair< CardManager.Element[], CardManager.Element> elements in dict)
+            { 
+                if()
+            
+            
+            
             }
 
 
