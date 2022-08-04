@@ -157,4 +157,9 @@ public class CardManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         waterP.Stop();
     }
+
+    private void OnParticleTrigger()
+    {
+        
+    }
 }

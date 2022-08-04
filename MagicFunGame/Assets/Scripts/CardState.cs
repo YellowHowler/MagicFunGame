@@ -9,7 +9,10 @@ public class CardState : MonoBehaviour
     CardRotation deck;
     CardManager.Element currentCard;
     Dictionary<CardManager.Element[], CardManager.Element> dict = new Dictionary<CardManager.Element[], CardManager.Element>();
+    
+    int grabHand = 0;
     bool gripping;
+
     private void Start()
     {
         deck = transform.parent.gameObject.GetComponent<CardRotation>();
@@ -34,6 +37,19 @@ public class CardState : MonoBehaviour
             gripping = true;
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        else if(other.tag == "RightHand")
+        {
+            grabHand = 1;
+        }
+        else if(other.tag == "LeftHand")
+        {
+            grabHand = 2;
+        }
+    }
+
     //add when player lets go of card
     private void OnTriggerEnter(Collider other)
     {
@@ -100,6 +116,14 @@ public class CardState : MonoBehaviour
         if (other.tag == "Deck" )
         {
             deck.cards.Remove(this.gameObject);
+        }
+        else if(other.tag == "RightHand")
+        {
+            grabHand = 0;
+        }
+        else if(other.tag == "LeftHand")
+        {
+            grabHand = 0;
         }
     }
 }

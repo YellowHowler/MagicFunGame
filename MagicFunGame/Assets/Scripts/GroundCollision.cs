@@ -16,7 +16,7 @@ public class GroundCollision : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collidor col)
+    private void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.CompareTag("Card"))
         {
