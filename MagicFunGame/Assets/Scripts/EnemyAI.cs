@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     bool move;
     GameObject player;
     public static int speed;
+    [SerializeField] private Material stormSky;
 
     enum SorcererType
     { 
@@ -77,7 +78,8 @@ public class EnemyAI : MonoBehaviour
                     //CardManager.getShootWater();
                     break;
                 case 1:
-                    print("steam");
+                    RenderSettings.skybox = stormSky;
+
                     break;
                 case 2:
                     print("storm");
