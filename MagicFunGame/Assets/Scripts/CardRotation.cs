@@ -82,6 +82,5 @@ public class CardRotation : MonoBehaviour
     }
     void Update()
     {
-        AdjustCards();
     }
 }
