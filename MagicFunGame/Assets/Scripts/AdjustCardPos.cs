@@ -14,7 +14,7 @@ public class AdjustCardPos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.position.x, 1.2f, player.position.z);
+        transform.position = new Vector3(player.position.x, 2.5f, player.position.z);
         transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
     }
 }
