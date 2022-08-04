@@ -20,6 +20,7 @@ public class CardManager : MonoBehaviour
     }
 
     [SerializeField] public Element type;
+    [SerializeField] private Material stormSky;
     [SerializeField] private GameObject woodObj;
 
     [SerializeField] private Texture[] glyphs;
@@ -118,6 +119,7 @@ public class CardManager : MonoBehaviour
                 }
                 else if(type == Element.storm)
                 {
+                    RenderSettings.skybox = stormSky;
                     stormCloudP.Play();
                 }
                 else if(type == Element.steam)

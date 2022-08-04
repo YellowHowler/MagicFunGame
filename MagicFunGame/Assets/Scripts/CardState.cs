@@ -40,7 +40,7 @@ public class CardState : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        else if(other.tag == "RightHand")
+        if(other.tag == "RightHand")
         {
             grabHand = 1;
         }
