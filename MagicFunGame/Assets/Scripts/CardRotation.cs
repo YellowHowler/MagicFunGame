@@ -73,9 +73,7 @@ public class CardRotation : MonoBehaviour
     }
     void Update()
     {
-
-        //AdjustCards();
-
+        AdjustCards();
     }
 
     //wait until player stands than adjust cards
@@ -89,7 +87,6 @@ public class CardRotation : MonoBehaviour
             Debug.Log("hello");
         }
 
-        AdjustCards();
 
         for(int i = 0; i < transform.childCount - 1; i++)
         {
