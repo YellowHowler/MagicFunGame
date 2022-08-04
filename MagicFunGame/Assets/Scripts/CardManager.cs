@@ -183,9 +183,4 @@ public class CardManager : MonoBehaviour
     {
         
     }
-
-    private void OnActivated()
-    {
-        childRend.material.color = new Color(0, 1, 0, 1);
-    }
 }
