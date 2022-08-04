@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.Serialization;
 
 public class CardManager : MonoBehaviour
 {
@@ -26,7 +28,10 @@ public class CardManager : MonoBehaviour
     [SerializeField] private Texture[] glyphs;
     [SerializeField] private Color[] glyphColors;
 
+    [SerializeField] private AudioClip[] elementSounds; 
+
     private Rigidbody rb;
+    private AudioSource au;
     private ParticleSystem waterP;
     private ParticleSystem windP;
     private ParticleSystem stormCloudP;
@@ -35,13 +40,17 @@ public class CardManager : MonoBehaviour
     private Renderer childRend;
 
     private bool isUsed = false;
-    [HideInInspector] public bool isSelected = false;
+    private bool isSelected = false;
 
     private float holdFrontTime = 0;
+
+    public bool gameStarted {get;set;}
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        au = GetComponent<AudioSource>();
+
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         waterP = transform.GetChild(0).GetComponent<ParticleSystem>();
         windP = GameObject.FindGameObjectWithTag("Wind").GetComponent<ParticleSystem>();
@@ -52,11 +61,13 @@ public class CardManager : MonoBehaviour
 
         RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
 
+        gameStarted = false;
+        
         UpdateGlyph();
     }
 
     void Update()
-    {   
+    {
     }
 
     public void UpdateGlyph()
@@ -75,6 +86,7 @@ public class CardManager : MonoBehaviour
 
     private void ThrowFire()
     {
+        au.PlayOneShot(elementSounds[0], 1);
         isUsed = true;
         rb.useGravity = true;
     }
@@ -89,10 +101,11 @@ public class CardManager : MonoBehaviour
 
     public void TouchGround()
     {
-        if(!isUsed && type == Element.wood && rb.velocity.magnitude > 0)
+        if(gameStarted && !isUsed && type == Element.wood && rb.velocity.magnitude > 0)
         {
             isUsed = true;
 
+            au.PlayOneShot(elementSounds[8], 1);
             Instantiate(woodObj, transform.position, Quaternion.Euler(0, transform.rotation.y, 0));
             Destroy(gameObject);
         }
@@ -100,7 +113,7 @@ public class CardManager : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if(!isUsed && col.gameObject.CompareTag("Check"))
+        if(gameStarted && !isUsed && col.gameObject.CompareTag("Check"))
         {
             holdFrontTime += Time.deltaTime;
 
@@ -114,6 +127,7 @@ public class CardManager : MonoBehaviour
                 }
                 else if(type == Element.wind)
                 {
+                    player.gameObject.GetComponent<AudioSource>().PlayOneShot(elementSounds[3], 1);
                     windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
                     windP.Play();
                 }
@@ -132,7 +146,7 @@ public class CardManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if(!isUsed && col.gameObject.CompareTag("Check2"))
+        if(gameStarted && !isUsed && col.gameObject.CompareTag("Check2"))
         {
             if(type == Element.fire && rb.velocity.magnitude > 0)
             {
@@ -155,6 +169,7 @@ public class CardManager : MonoBehaviour
 
     private IEnumerator ShootWater()
     {
+        au.PlayOneShot(elementSounds[1], 1);
         waterP.Play();
         yield return new WaitForSeconds(4);
         waterP.Stop();
@@ -163,5 +178,10 @@ public class CardManager : MonoBehaviour
     private void OnParticleTrigger()
     {
         
+    }
+
+    private void OnActivated()
+    {
+        childRend.material.color = new Color(0, 1, 0, 1);
     }
 }
