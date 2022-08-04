@@ -135,6 +135,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 268515264}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &41009950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 41009951}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &41009951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41009950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.45728076, y: 81.85212, z: -47.604397}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &75310278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,6 +243,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3721837335412220543, guid: 97476322afd68412a9cabfd52281df77,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 555786216}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97476322afd68412a9cabfd52281df77, type: 3}
 --- !u!1 &180416383
@@ -431,6 +467,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3721837335412220543, guid: 97476322afd68412a9cabfd52281df77,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 555786216}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97476322afd68412a9cabfd52281df77, type: 3}
 --- !u!1001 &268515264
@@ -510,6 +551,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3721837335412220543, guid: 97476322afd68412a9cabfd52281df77,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 555786216}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97476322afd68412a9cabfd52281df77, type: 3}
 --- !u!1 &300759942
@@ -5551,6 +5597,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3721837335412220543, guid: 97476322afd68412a9cabfd52281df77,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 555786216}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97476322afd68412a9cabfd52281df77, type: 3}
 --- !u!1 &555786215
@@ -6872,7 +6923,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419021188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.32}
+  m_LocalPosition: {x: 0, y: 0, z: 0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12264,7 +12315,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 100
+  far clip plane: 250
   field of view: 60
   orthographic: 0
   orthographic size: 5
