@@ -31,7 +31,7 @@ public class CardRotation : MonoBehaviour
             cards.Add(temp[i]);
         }
 
-        StartCoroutine(WaitStand());
+        AdjustCards();
     }
 
 
@@ -82,24 +82,5 @@ public class CardRotation : MonoBehaviour
     }
     void Update()
     {
-        AdjustCards();
-    }
-
-    //wait until player stands than adjust cards
-    private IEnumerator WaitStand()
-    {
-        WaitForSeconds sec = new WaitForSeconds(0.5f);
-
-        while(player.position.y < 0.35f)
-        {
-            yield return sec;
-            Debug.Log("hello");
-        }
-
-
-        for(int i = 0; i < transform.childCount - 1; i++)
-        {
-            transform.GetChild(i+1).gameObject.GetComponent<CardManager>().gameStarted = true;
-        }
     }
 }
