@@ -83,7 +83,7 @@ public class CardRotation : MonoBehaviour
     {
         WaitForSeconds sec = new WaitForSeconds(0.5f);
 
-        while(player.position.y < 0.5f)
+        while(player.position.y < 0.1f)
         {
             yield return sec;
             Debug.Log("hello");
