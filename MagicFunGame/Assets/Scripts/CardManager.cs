@@ -40,7 +40,8 @@ public class CardManager : MonoBehaviour
     private Renderer childRend;
 
     private bool isUsed = false;
-    private bool isSelected = false;
+    private bool inDeck = false;
+    public bool isSelected {get;set;}
 
     private float holdFrontTime = 0;
 
@@ -62,12 +63,28 @@ public class CardManager : MonoBehaviour
         RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
 
         gameStarted = false;
+        isSelected = false;
         
         UpdateGlyph();
     }
 
     void Update()
     {
+        if(gameStarted && !isSelected && !isUsed)
+        {
+            if(type == Element.fire && rb.velocity.magnitude > 0)
+            {
+                ThrowFire();
+            }
+            else if(type == Element.lava && rb.velocity.magnitude > 0)
+            {
+                ThrowFire();
+            }
+        }
+        else
+        {
+            holdFrontTime = 0;
+        }
     }
 
     public void UpdateGlyph()
@@ -113,7 +130,7 @@ public class CardManager : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if(gameStarted && !isUsed && col.gameObject.CompareTag("Check"))
+        if(gameStarted && isSelected && !isUsed && col.gameObject.CompareTag("Check"))
         {
             holdFrontTime += Time.deltaTime;
 
@@ -146,25 +163,12 @@ public class CardManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if(gameStarted && !isUsed && col.gameObject.CompareTag("Check2"))
-        {
-            if(type == Element.fire && rb.velocity.magnitude > 0)
-            {
-                ThrowFire();
-            }
-            else if(type == Element.lava && rb.velocity.magnitude > 0)
-            {
-                ThrowFire();
-            }
-        }
+        
     }
 
     private void OnTriggerExit(Collider col)
     {
-        if(col.gameObject.CompareTag("Check"))
-        {
-            holdFrontTime = 0;
-        }
+        
     }
 
     private IEnumerator ShootWater()

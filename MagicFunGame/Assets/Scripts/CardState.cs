@@ -9,6 +9,8 @@ public class CardState : MonoBehaviour
     [SerializeField] private AudioClip[] cardSounds; // select, throw, combine
 
     CardRotation deck;
+    CardManager cm;
+    Rigidbody rb;
     CardManager.Element currentCard;
 
     private AudioSource au;
@@ -20,6 +22,8 @@ public class CardState : MonoBehaviour
     private void Start()
     {
         au = GetComponent<AudioSource>();
+        cm = GetComponent<CardManager>();
+        rb = GetComponent<Rigidbody>();
 
         deck = transform.parent.gameObject.GetComponent<CardRotation>();
         currentCard = this.GetComponent<CardManager>().type;
@@ -34,21 +38,16 @@ public class CardState : MonoBehaviour
     }
     private void Update()
     {
-        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) == 0)
-        {
-            gripping = false;
-        }
-        else
-        {
-            gripping = true;
-        }
+        
     }
     //add when player lets go of card
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Deck" && !gripping)
         {
-            deck.cards.Add(this.gameObject);
+            rb.useGravity = false;
+            deck.cards.Add(gameObject);
+            deck.AdjustCards();
         }
         else if (other.tag == "SpellWeaver" && !gripping)
         {
@@ -105,5 +104,19 @@ public class CardState : MonoBehaviour
         {
             deck.cards.Remove(this.gameObject);
         }
+    }
+
+    public void Act()
+    {
+        gripping = true;
+        rb.useGravity = false;
+
+        deck.cards.Remove(gameObject);
+    }
+
+    public void DeAct()
+    {
+        gripping = false;
+        rb.useGravity = true;
     }
 }

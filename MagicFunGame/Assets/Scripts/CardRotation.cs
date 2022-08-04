@@ -12,11 +12,24 @@ public class CardRotation : MonoBehaviour
     private Transform player;
 
     private int cardNum;
+
+    GameObject[] temp;
+
     [HideInInspector] public List<GameObject> cards;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        cardNum = transform.childCount-1;
+        cards = new List<GameObject>();
+        temp = new GameObject[cardNum];
+
+        for(int i = 0; i < cardNum; i++)
+        {
+            temp[i] = transform.GetChild(i+1).gameObject;
+            cards.Add(temp[i]);
+        }
 
         StartCoroutine(WaitStand());
     }
@@ -25,16 +38,12 @@ public class CardRotation : MonoBehaviour
     // Update is called once per frame
     public void AdjustCards()
     {
-        cardNum = transform.childCount-1;
-        cards = new List<GameObject>();
-        GameObject[] temp = new GameObject[cardNum];
-
-        Debug.Log(cardNum);
+        cardNum = cards.Count;
+        temp = new GameObject[cardNum];
 
         for(int i = 0; i < cardNum; i++)
         {
-            temp[i] = transform.GetChild(i+1).gameObject;
-            cards.Add(temp[i]);
+            temp[i] = cards[i];
         }
 
         float midY = midPoint.localPosition.y;
@@ -81,7 +90,7 @@ public class CardRotation : MonoBehaviour
     {
         WaitForSeconds sec = new WaitForSeconds(0.5f);
 
-        while(player.position.y < 0.1f)
+        while(player.position.y < 0.35f)
         {
             yield return sec;
             Debug.Log("hello");
