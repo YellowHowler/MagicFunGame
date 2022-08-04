@@ -52,7 +52,7 @@ public class CardManager : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         au = GetComponent<AudioSource>();
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = Camera.main.gameObject.GetComponent<Transform>();
         waterP = transform.GetChild(0).GetComponent<ParticleSystem>();
         windP = GameObject.FindGameObjectWithTag("Wind").GetComponent<ParticleSystem>();
         stormCloudP = GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>();

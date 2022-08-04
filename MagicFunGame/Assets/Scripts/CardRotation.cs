@@ -19,7 +19,7 @@ public class CardRotation : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = Camera.main.gameObject.GetComponent<Transform>();;
 
         cardNum = transform.childCount-1;
         cards = new List<GameObject>();

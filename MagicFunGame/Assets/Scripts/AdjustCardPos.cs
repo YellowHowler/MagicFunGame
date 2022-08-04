@@ -8,13 +8,13 @@ public class AdjustCardPos : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = Camera.main.gameObject.GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.position.x, 0.5f, player.position.z);
+        transform.position = new Vector3(player.position.x, 1.2f, player.position.z);
         transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
     }
 }
