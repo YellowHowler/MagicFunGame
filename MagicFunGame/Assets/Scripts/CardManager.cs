@@ -6,11 +6,24 @@ public class CardManager : MonoBehaviour
 {
     public enum Element
     {
-        none, fire, water, earth, wind, storm, steam, wood, lava, sand
+        none = -1, 
+        fire = 0, 
+        water = 1, 
+        earth = 2, 
+        wind = 3, 
+        lava = 4, 
+        storm = 5, 
+        steam = 6, 
+        sand = 7, 
+        wood = 8, 
+        ice = 9,
     }
 
     [SerializeField] public Element type;
     [SerializeField] private GameObject woodObj;
+
+    [SerializeField] private Texture[] glyphs;
+    [SerializeField] private Color[] glyphColors;
 
     private Rigidbody rb;
     private ParticleSystem waterP;
@@ -18,6 +31,7 @@ public class CardManager : MonoBehaviour
     private ParticleSystem stormCloudP;
     private ParticleSystem stormFogP;
     private Transform player;
+    private Renderer childRend;
 
     private bool isUsed = false;
     [HideInInspector] public bool isSelected = false;
@@ -33,17 +47,34 @@ public class CardManager : MonoBehaviour
         stormCloudP = GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>();
         stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
 
+        childRend = transform.GetChild(1).gameObject.GetComponent<Renderer>();
+
         RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
+
+        UpdateGlyph();
     }
 
     void Update()
     {   
     }
 
+    public void UpdateGlyph()
+    {
+        if(type == Element.none)
+        {
+            childRend.material.DisableKeyword("_EMISSION");
+        }
+        else
+        {
+            childRend.material.EnableKeyword("_EMISSION");
+            childRend.material.SetTexture ("_EmissionMap", glyphs[(int)type]);
+            childRend.material.SetColor("_EmissionColor", glyphColors[(int)type]);
+        }
+    }
+
     private void ThrowFire()
     {
         isUsed = true;
-        gameObject.GetComponent<Renderer>().material.color = new Color(1, 0, 0, 1);
         rb.useGravity = true;
     }
 
@@ -53,13 +84,16 @@ public class CardManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-        else if (col.gameObject.CompareTag("Ground"))
+    public void TouchGround()
+    {
+        if(!isUsed && type == Element.wood && rb.velocity.magnitude > 0)
         {
-            if(!isUsed && type == Element.wood && rb.velocity.magnitude > 0)
-            {
-                StartCoroutine(ShootWood());
-            }
+            isUsed = true;
+
+            Instantiate(woodObj, transform.position, Quaternion.Euler(0, transform.rotation.y, 0));
+            Destroy(gameObject);
         }
     }
 
@@ -119,34 +153,8 @@ public class CardManager : MonoBehaviour
 
     private IEnumerator ShootWater()
     {
-        gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 1, 1);
-
         waterP.Play();
         yield return new WaitForSeconds(4);
         waterP.Stop();
-    }
-
-    private IEnumerator ShootWood()
-    {
-        isUsed = true;
-
-        Transform newWood = Instantiate(woodObj, transform.position, Quaternion.Euler(0, transform.rotation.y, 0)).transform;
-        
-        WaitForSeconds sec1 = new WaitForSeconds(0.15f);
-        WaitForSeconds sec2 = new WaitForSeconds(0.02f);
-
-        for(int i = 0; i < 4; i++)
-        {
-            for(int j = 0; j < 3; j++)
-            {
-                newWood.transform.localScale = new Vector3(newWood.localScale.x, newWood.localScale.y + 0.1f, newWood.localScale.z);
-                yield return sec2;
-            }
-
-            yield return sec1;
-        }
-
-        Destroy(newWood.gameObject, 4);
-        Destroy(gameObject);
     }
 }
