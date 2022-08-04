@@ -74,7 +74,7 @@ public class EnemyAI : MonoBehaviour
             switch (spell)
             {
                 case 0:
-                    print("water");
+                    //CardManager.getShootWater();
                     break;
                 case 1:
                     print("steam");
