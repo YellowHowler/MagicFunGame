@@ -18,8 +18,9 @@ public class CardState : MonoBehaviour
         dict.Add(new CardManager.Element[] {CardManager.Element.fire, CardManager.Element.earth}, CardManager.Element.lava );//lava
         dict.Add(new CardManager.Element[] { CardManager.Element.fire, CardManager.Element.water }, CardManager.Element.steam);//steam
         dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.wind}, CardManager.Element.storm);//storm
-        dict.Add(new CardManager.Element[] { CardManager.Element.wind, CardManager.Element.earth }, CardManager.Element.none);//sand
+        dict.Add(new CardManager.Element[] { CardManager.Element.wind, CardManager.Element.earth }, CardManager.Element.sand);//sand
         dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.earth }, CardManager.Element.wood); //wood
+        dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.wind }, CardManager.Element.none);//ice
 
     }
     private void Update()
@@ -71,8 +72,19 @@ public class CardState : MonoBehaviour
                 }
                 if(numMatching==2)
                 {
-                    other.GetComponent<CardManager>().type = elements.Value;
-                    Destroy(this.gameObject);
+                    if (other.transform.position.y > transform.position.y)
+                    {
+                        GetComponent<CardManager>().type = elements.Value;
+                        print(GetComponent<CardManager>().type);
+                        Destroy(other.gameObject);
+                    }
+                    else 
+                    {
+                        other.GetComponent<CardManager>().type = elements.Value;
+                        print(other.GetComponent<CardManager>().type);
+                        Destroy(this.gameObject);
+                    }
+                   
                 }
 
 
