@@ -6,12 +6,21 @@ public class CardState : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Transform SpellWeaverCoords;
+    [SerializeField] private AudioClip[] cardSounds; // select, throw, combine
+
     CardRotation deck;
     CardManager.Element currentCard;
+
+    private AudioSource au;
+
     public static Dictionary<CardManager.Element[], CardManager.Element> dict = new Dictionary<CardManager.Element[], CardManager.Element>();
+
     bool gripping;
+
     private void Start()
     {
+        au = GetComponent<AudioSource>();
+
         deck = transform.parent.gameObject.GetComponent<CardRotation>();
         currentCard = this.GetComponent<CardManager>().type;
         
@@ -39,14 +48,11 @@ public class CardState : MonoBehaviour
     {
         if (other.tag == "Deck" && !gripping)
         {
-
             deck.cards.Add(this.gameObject);
         }
         else if (other.tag == "SpellWeaver" && !gripping)
         {
             transform.position = SpellWeaverCoords.position;
-
-
         }
         //dictionary 
         //keys of arrays of spells
@@ -74,6 +80,7 @@ public class CardState : MonoBehaviour
                 {
                     if (other.transform.position.y > transform.position.y)
                     {
+                        au.PlayOneShot(cardSounds[2], 1);
                         GetComponent<CardManager>().type = elements.Value;
                         print(GetComponent<CardManager>().type);
                         Destroy(other.gameObject);
@@ -86,8 +93,6 @@ public class CardState : MonoBehaviour
                     }
                    
                 }
-
-
 
             }
 
