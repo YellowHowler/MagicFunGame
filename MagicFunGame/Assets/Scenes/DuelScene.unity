@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.14431292, g: 0.16487937, b: 0.21698111, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 85f32a04f332d498aa553e14b5cf77bc, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -7405,7 +7405,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.29009438, g: 0.33003455, b: 0.38679248, a: 1}
+      maxColor: {r: 0.06906373, g: 0.1018156, b: 0.1509434, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
