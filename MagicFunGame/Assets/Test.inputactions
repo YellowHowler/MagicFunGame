@@ -1,1 +1,54 @@
-{}
+{
+    "name": "Test",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "dc68f337-42ea-49e3-af98-a0b56a289ce3",
+            "actions": [
+                {
+                    "name": "LeftTrigger",
+                    "type": "Button",
+                    "id": "f0c74ec4-4d8c-4907-9b6a-2bce106f8e65",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightTrigger",
+                    "type": "Button",
+                    "id": "f04249bb-3b45-4531-9672-4760d9487302",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f4c36edb-30a9-4a58-8033-ceb725a15ef1",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c8d3c5bf-f9e2-4e13-bfd1-cfa58867fdb2",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

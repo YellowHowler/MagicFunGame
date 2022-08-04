@@ -82,15 +82,10 @@ public class CardState : MonoBehaviour
                         au.PlayOneShot(cardSounds[2], 1);
                         GetComponent<CardManager>().type = elements.Value;
                         print(GetComponent<CardManager>().type);
+                        if(deck.cards.Contains(other.gameObject)) deck.cards.Remove(other.gameObject);
+                        deck.AdjustCards();
                         Destroy(other.gameObject);
                     }
-                    else 
-                    {
-                        other.GetComponent<CardManager>().type = elements.Value;
-                        print(other.GetComponent<CardManager>().type);
-                        Destroy(this.gameObject);
-                    }
-                   
                 }
 
             }
@@ -112,6 +107,7 @@ public class CardState : MonoBehaviour
         rb.useGravity = false;
 
         deck.cards.Remove(gameObject);
+        deck.AdjustCards();
     }
 
     public void DeAct()
