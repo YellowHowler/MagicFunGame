@@ -13,7 +13,7 @@ public class CardState : MonoBehaviour
     private void Start()
     {
         deck = transform.parent.gameObject.GetComponent<CardRotation>();
-        currentCard = GetComponent<CardManager>().type;
+        currentCard = this.GetComponent<CardManager>().type;
         
         dict.Add(new CardManager.Element[] {CardManager.Element.fire, CardManager.Element.earth}, CardManager.Element.lava );//lava
         dict.Add(new CardManager.Element[] { CardManager.Element.fire, CardManager.Element.water }, CardManager.Element.steam);//steam
@@ -51,8 +51,9 @@ public class CardState : MonoBehaviour
         //dictionary 
         //keys of arrays of spells
         //def of enum type 
-        else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type)
+        else if (other.tag == "Card" )//&& !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type)
         {
+            print("sss");
             foreach (KeyValuePair< CardManager.Element[], CardManager.Element> elements in dict)
             {
                 CardManager.Element[] temp = elements.Key;
