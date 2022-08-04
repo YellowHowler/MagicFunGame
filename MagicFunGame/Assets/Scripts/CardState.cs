@@ -51,9 +51,8 @@ public class CardState : MonoBehaviour
         //dictionary 
         //keys of arrays of spells
         //def of enum type 
-        else if (other.tag == "Card" )//&& !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type)
+        else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type)
         {
-            print("sss");
             foreach (KeyValuePair< CardManager.Element[], CardManager.Element> elements in dict)
             {
                 CardManager.Element[] temp = elements.Key;

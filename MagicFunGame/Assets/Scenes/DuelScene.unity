@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.87399536, g: 0.8965488, b: 0.78425467, a: 1}
+  m_IndirectSpecularColor: {r: 0.8745338, g: 0.89723253, b: 0.7845555, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -179,12 +179,12 @@ PrefabInstance:
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.412
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
@@ -253,12 +253,12 @@ PrefabInstance:
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.703
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
@@ -322,12 +322,12 @@ PrefabInstance:
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.72
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
@@ -396,7 +396,7 @@ PrefabInstance:
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
@@ -5953,12 +5953,12 @@ PrefabInstance:
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.78
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220536, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
@@ -6925,13 +6925,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419021188}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3, z: 0.3}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.93, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1698312819}
-  m_RootOrder: 4
+  m_Father: {fileID: 1460167052}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1460167051
 GameObject:
@@ -6959,17 +6959,18 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460167051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1419021189}
   - {fileID: 1805417103}
   - {fileID: 1720057098}
   - {fileID: 1756438178}
   - {fileID: 797990087}
   - {fileID: 37786849}
   m_Father: {fileID: 1698312819}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1460167053
 Rigidbody:
@@ -6999,7 +7000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da78571b4732fc42acd22a62ee872ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distBetweenCards: 0.3
+  distBetweenCards: 2
   midPoint: {fileID: 1419021189}
   cards:
   - {fileID: 1672828466}
@@ -12024,7 +12025,6 @@ Transform:
   - {fileID: 433414662}
   - {fileID: 66120664}
   - {fileID: 506246103}
-  - {fileID: 1419021189}
   - {fileID: 1460167052}
   m_Father: {fileID: 0}
   m_RootOrder: 4

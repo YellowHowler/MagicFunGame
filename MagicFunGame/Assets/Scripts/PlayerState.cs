@@ -7,10 +7,13 @@ public class PlayerState : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] public static int health;
     [SerializeField] public static int mana;
-    bool regening; 
+    public static int tickDmg;
+    bool regening;
+    bool ticking;
     void Start()
     {
         regening = true;
+        ticking = true;
     }
 
     // Update is called once per frame
@@ -20,6 +23,13 @@ public class PlayerState : MonoBehaviour
         {
             StartCoroutine(manaRegen());
         }
+        if (ticking)
+        {
+            
+            StartCoroutine(tickDamage());
+           
+        }
+    
     }
     IEnumerator manaRegen()
     {
@@ -27,5 +37,13 @@ public class PlayerState : MonoBehaviour
         yield return new WaitForSeconds(5);
         mana += 10;
         regening = true;
+    }
+    IEnumerator tickDamage()
+    {
+        ticking = false;
+        health -= tickDmg/10;
+        yield return new WaitForSeconds(1);
+        ticking = true;
+
     }
 }
