@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     Rigidbody rb;
     bool move;
     GameObject player;
-    
+    public static int speed;
 
     enum SorcererType
     { 
@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour
         move = true;
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
+        speed = 5;
     }
 
     // Update is called once per frame
@@ -88,11 +89,6 @@ public class EnemyAI : MonoBehaviour
         }
 
     }
-    void Attacked()
-    { 
-        
-    
-    }
     IEnumerator AttackCD()
     {
         CD = false;
@@ -111,7 +107,7 @@ public class EnemyAI : MonoBehaviour
     {
         move = false;
         yield return new WaitForSeconds(2);
-        rb.velocity = new Vector3(Random.Range(-1, 2) * 5, 0, 0);
+        rb.velocity = new Vector3(Random.Range(-1, 2) * speed, 0, 0);
         move = true;
     }
 

@@ -10,7 +10,7 @@ public class PlayerState : MonoBehaviour
     public static int tickDmg;
     bool regening;
     bool ticking;
-    public static Dictionary<CardManager.Element,int> damage = new Dictionary<CardManager.Element,int>();
+    public static Dictionary<CardManager.Element, int> damage = new Dictionary<CardManager.Element, int>();
     void Start()
     {
         regening = true;
@@ -30,13 +30,13 @@ public class PlayerState : MonoBehaviour
         }
         if (ticking)
         {
-            
+
             StartCoroutine(tickDamage());
-           
+
         }
-    
+
     }
-    
+
     IEnumerator manaRegen()
     {
         regening = false;
@@ -47,7 +47,7 @@ public class PlayerState : MonoBehaviour
     IEnumerator tickDamage()
     {
         ticking = false;
-        health -= tickDmg/10;
+        health -= tickDmg / 10;
         yield return new WaitForSeconds(1);
         ticking = true;
 
@@ -61,16 +61,54 @@ public class PlayerState : MonoBehaviour
 
         }
     }
-    void takeDmg (CardManager.Element spell)
+    void takeDmg(CardManager.Element spell)
     {
+        foreach (KeyValuePair<CardManager.Element, int> i in damage)
+        {
+            if (spell == i.Key)
+            {
+                health -= i.Value;
 
-        if (spell==CardManager.Element.fire || spell == CardManager.Element.lava)
+            }
+
+
+        }
+        if (spell == CardManager.Element.fire || spell == CardManager.Element.lava)
         {
             tickDmg = 10;
-        
+
         }
-        
+        if (spell == CardManager.Element.steam)
+        {
+            //coroutine time
+            StartCoroutine(waterLength(10));
+        }
+        if (spell == CardManager.Element.storm)
+        {
+            StartCoroutine(waterLength(5));
+
+        }
+        if (spell == CardManager.Element.ice)
+        {
+            //slowdown enemie
+            StartCoroutine(speedChange());
+        }
 
 
+
+
+    }
+    IEnumerator speedChange()
+    {
+        EnemyAI.speed += 5;
+        yield return new WaitForSeconds(2);
+        EnemyAI.speed -= 5;
+
+    }
+    IEnumerator waterLength(int amp)
+    {
+        damage[CardManager.Element.water] += amp;
+        yield return new WaitForSeconds(amp);
+        damage[CardManager.Element.water] -= amp;
     }
 }

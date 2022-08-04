@@ -5,9 +5,9 @@ using UnityEngine;
 public class Environment : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool wind;
-    public bool storm;
-    public bool steam;
+    public int playerProjSpeed;
+    public int enemyProjSpeed;
+    public int enemySpeed;
     void Start()
     {
         
