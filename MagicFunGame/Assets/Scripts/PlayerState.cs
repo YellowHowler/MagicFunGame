@@ -10,10 +10,15 @@ public class PlayerState : MonoBehaviour
     public static int tickDmg;
     bool regening;
     bool ticking;
+    public static Dictionary<CardManager.Element,int> damage = new Dictionary<CardManager.Element,int>();
     void Start()
     {
         regening = true;
         ticking = true;
+        damage.Add(CardManager.Element.fire, 10);
+        damage.Add(CardManager.Element.water, 30);
+        damage.Add(CardManager.Element.lava, 30);
+        damage.Add(CardManager.Element.ice, 20);
     }
 
     // Update is called once per frame
@@ -64,6 +69,7 @@ public class PlayerState : MonoBehaviour
             tickDmg = 10;
         
         }
+        
 
 
     }
