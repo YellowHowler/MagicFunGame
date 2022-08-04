@@ -31,6 +31,7 @@ public class PlayerState : MonoBehaviour
         }
     
     }
+    
     IEnumerator manaRegen()
     {
         regening = false;
@@ -44,6 +45,26 @@ public class PlayerState : MonoBehaviour
         health -= tickDmg/10;
         yield return new WaitForSeconds(1);
         ticking = true;
+
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Card")
+        {
+            CardManager.Element hitSpell = collision.gameObject.GetComponent<CardManager>().type;
+            takeDmg(hitSpell);
+
+        }
+    }
+    void takeDmg (CardManager.Element spell)
+    {
+
+        if (spell==CardManager.Element.fire || spell == CardManager.Element.lava)
+        {
+            tickDmg = 10;
+        
+        }
+
 
     }
 }

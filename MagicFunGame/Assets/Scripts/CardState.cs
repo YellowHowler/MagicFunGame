@@ -8,7 +8,7 @@ public class CardState : MonoBehaviour
     [SerializeField] Transform SpellWeaverCoords;
     CardRotation deck;
     CardManager.Element currentCard;
-    Dictionary<CardManager.Element[], CardManager.Element> dict = new Dictionary<CardManager.Element[], CardManager.Element>();
+    public static Dictionary<CardManager.Element[], CardManager.Element> dict = new Dictionary<CardManager.Element[], CardManager.Element>();
     bool gripping;
     private void Start()
     {
