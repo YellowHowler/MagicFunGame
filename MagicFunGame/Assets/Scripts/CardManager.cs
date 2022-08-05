@@ -62,15 +62,14 @@ public class CardManager : MonoBehaviour
 
         RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
 
-        gameStarted = false;
-        isSelected = false;
+        isSelected = true;
         
         UpdateGlyph();
     }
 
     void Update()
     {
-        if(gameStarted && !isSelected && !isUsed)
+        if(!isUsed)
         {
             if(type == Element.fire && rb.velocity.magnitude > 0)
             {
@@ -106,6 +105,9 @@ public class CardManager : MonoBehaviour
         au.PlayOneShot(elementSounds[0], 1);
         isUsed = true;
         rb.useGravity = true;
+
+        type = Element.none;
+        UpdateGlyph();
     }
 
     private void OnCollisionEnter(Collision col)
@@ -118,9 +120,12 @@ public class CardManager : MonoBehaviour
 
     public void TouchGround()
     {
-        if(gameStarted && !isUsed && type == Element.wood && rb.velocity.magnitude > 0)
+        if(!isUsed && type == Element.wood && rb.velocity.magnitude > 0)
         {
             isUsed = true;
+
+            type = Element.none;
+            UpdateGlyph();
 
             au.PlayOneShot(elementSounds[8], 1);
             Instantiate(woodObj, transform.position, Quaternion.Euler(0, transform.rotation.y, 0));
@@ -130,26 +135,38 @@ public class CardManager : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if(gameStarted && isSelected && !isUsed && col.gameObject.CompareTag("Check"))
+        if(!isUsed && col.gameObject.CompareTag("Check"))
         {
             holdFrontTime += Time.deltaTime;
 
-            if(holdFrontTime > 0.7f)
+            if(holdFrontTime > 1.2f)
             {
-                isUsed = true;
-
                 if(type == Element.water)
                 {
+                    isUsed = true;
+
+                    type = Element.none;
+                    UpdateGlyph();
                     StartCoroutine(ShootWater());
                 }
                 else if(type == Element.wind)
                 {
-                    player.gameObject.GetComponent<AudioSource>().PlayOneShot(elementSounds[3], 1);
+                    isUsed = true;
+
+                    type = Element.none;
+                    UpdateGlyph();
+
+                    au.PlayOneShot(elementSounds[3], 1);
                     windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
                     windP.Play();
                 }
                 else if(type == Element.storm)
                 {
+                    isUsed = true;
+
+                    type = Element.none;
+                    UpdateGlyph();
+                    
                     RenderSettings.skybox = stormSky;
                     stormCloudP.Play();
                 }
@@ -168,7 +185,10 @@ public class CardManager : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        
+        if(col.gameObject.CompareTag("Check")) 
+        {
+            holdFrontTime = 0;
+        }
     }
 
     private IEnumerator ShootWater()

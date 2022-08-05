@@ -81,6 +81,7 @@ public class CardState : MonoBehaviour
                     {
                         au.PlayOneShot(cardSounds[2], 1);
                         GetComponent<CardManager>().type = elements.Value;
+                        GetComponent<CardManager>().UpdateGlyph();
                         print(GetComponent<CardManager>().type);
                         if(deck.cards.Contains(other.gameObject)) deck.cards.Remove(other.gameObject);
                         deck.AdjustCards();
