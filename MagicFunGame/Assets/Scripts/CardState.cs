@@ -27,10 +27,10 @@ public class CardState : MonoBehaviour
 
         deck = transform.parent.gameObject.GetComponent<CardRotation>();
         currentCard = this.GetComponent<CardManager>().type;
-        
-        dict.Add(new CardManager.Element[] {CardManager.Element.fire, CardManager.Element.earth}, CardManager.Element.lava );//lava
+
+        dict.Add(new CardManager.Element[] { CardManager.Element.fire, CardManager.Element.earth }, CardManager.Element.lava);//lava
         dict.Add(new CardManager.Element[] { CardManager.Element.fire, CardManager.Element.water }, CardManager.Element.steam);//steam
-        dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.wind}, CardManager.Element.storm);//storm
+        dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.wind }, CardManager.Element.storm);//storm
         dict.Add(new CardManager.Element[] { CardManager.Element.wind, CardManager.Element.earth }, CardManager.Element.sand);//sand
         dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.earth }, CardManager.Element.wood); //wood
         dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.wind }, CardManager.Element.none);//ice
@@ -38,7 +38,7 @@ public class CardState : MonoBehaviour
     }
     private void Update()
     {
-        
+
     }
     //add when player lets go of card
     private void OnTriggerEnter(Collider other)
@@ -58,7 +58,7 @@ public class CardState : MonoBehaviour
         //def of enum type 
         else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type)
         {
-            foreach (KeyValuePair< CardManager.Element[], CardManager.Element> elements in dict)
+            foreach (KeyValuePair<CardManager.Element[], CardManager.Element> elements in dict)
             {
                 CardManager.Element[] temp = elements.Key;
                 int numMatching = 0;
@@ -75,7 +75,7 @@ public class CardState : MonoBehaviour
                     }
 
                 }
-                if(numMatching==2)
+                if (numMatching == 2)
                 {
                     if (other.transform.position.y > transform.position.y)
                     {
@@ -83,7 +83,7 @@ public class CardState : MonoBehaviour
                         GetComponent<CardManager>().type = elements.Value;
                         GetComponent<CardManager>().UpdateGlyph();
                         print(GetComponent<CardManager>().type);
-                        if(deck.cards.Contains(other.gameObject)) deck.cards.Remove(other.gameObject);
+                        if (deck.cards.Contains(other.gameObject)) deck.cards.Remove(other.gameObject);
                         deck.AdjustCards();
                         Destroy(other.gameObject);
                     }
@@ -96,7 +96,7 @@ public class CardState : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Deck" )
+        if (other.tag == "Deck")
         {
             deck.cards.Remove(this.gameObject);
         }

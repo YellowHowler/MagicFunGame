@@ -8,16 +8,16 @@ public class CardManager : MonoBehaviour
 {
     public enum Element
     {
-        none = -1, 
-        fire = 0, 
-        water = 1, 
-        earth = 2, 
-        wind = 3, 
-        lava = 4, 
-        storm = 5, 
-        steam = 6, 
-        sand = 7, 
-        wood = 8, 
+        none = -1,
+        fire = 0,
+        water = 1,
+        earth = 2,
+        wind = 3,
+        lava = 4,
+        storm = 5,
+        steam = 6,
+        sand = 7,
+        wood = 8,
         ice = 9,
     }
 
@@ -28,7 +28,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] private Texture[] glyphs;
     [SerializeField] private Color[] glyphColors;
 
-    [SerializeField] private AudioClip[] elementSounds; 
+    [SerializeField] private AudioClip[] elementSounds;
 
     private Rigidbody rb;
     private AudioSource au;
@@ -41,11 +41,11 @@ public class CardManager : MonoBehaviour
 
     private bool isUsed = false;
     private bool inDeck = false;
-    public bool isSelected {get;set;}
+    public bool isSelected { get; set; }
 
     private float holdFrontTime = 0;
 
-    public bool gameStarted {get;set;}
+    public bool gameStarted { get; set; }
 
     void Start()
     {
@@ -63,19 +63,19 @@ public class CardManager : MonoBehaviour
         RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
 
         isSelected = true;
-        
+
         UpdateGlyph();
     }
 
     void Update()
     {
-        if(!isUsed)
+        if (!isUsed)
         {
-            if(type == Element.fire && rb.velocity.magnitude > 0)
+            if (type == Element.fire && rb.velocity.magnitude > 0)
             {
                 ThrowFire();
             }
-            else if(type == Element.lava && rb.velocity.magnitude > 0)
+            else if (type == Element.lava && rb.velocity.magnitude > 0)
             {
                 ThrowFire();
             }
@@ -88,14 +88,14 @@ public class CardManager : MonoBehaviour
 
     public void UpdateGlyph()
     {
-        if(type == Element.none)
+        if (type == Element.none)
         {
             childRend.material.DisableKeyword("_EMISSION");
         }
         else
         {
             childRend.material.EnableKeyword("_EMISSION");
-            childRend.material.SetTexture ("_EmissionMap", glyphs[(int)type]);
+            childRend.material.SetTexture("_EmissionMap", glyphs[(int)type]);
             childRend.material.SetColor("_EmissionColor", glyphColors[(int)type]);
         }
     }
@@ -112,15 +112,26 @@ public class CardManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
+            if (type == Element.fire)
+            {
+                col.gameObject.GetComponent<PlayerState>().health -= 10;
+                col.gameObject.GetComponent<PlayerState>().tickDmg = 10;
+            }
+            else if (type == Element.lava)
+            {
+                col.gameObject.GetComponent<PlayerState>().health -= 30;
+                col.gameObject.GetComponent<PlayerState>().tickDmg = 10;
+
+            }
         }
     }
 
     public void TouchGround()
     {
-        if(!isUsed && type == Element.wood && rb.velocity.magnitude > 0)
+        if (!isUsed && type == Element.wood && rb.velocity.magnitude > 0)
         {
             isUsed = true;
 
@@ -135,13 +146,13 @@ public class CardManager : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if(!isUsed && col.gameObject.CompareTag("Check"))
+        if (!isUsed && col.gameObject.CompareTag("Check"))
         {
             holdFrontTime += Time.deltaTime;
 
-            if(holdFrontTime > 1.2f)
+            if (holdFrontTime > 1.2f)
             {
-                if(type == Element.water)
+                if (type == Element.water)
                 {
                     isUsed = true;
 
@@ -149,7 +160,7 @@ public class CardManager : MonoBehaviour
                     UpdateGlyph();
                     StartCoroutine(ShootWater());
                 }
-                else if(type == Element.wind)
+                else if (type == Element.wind)
                 {
                     isUsed = true;
 
@@ -160,19 +171,19 @@ public class CardManager : MonoBehaviour
                     windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
                     windP.Play();
                 }
-                else if(type == Element.storm)
+                else if (type == Element.storm)
                 {
                     isUsed = true;
 
                     type = Element.none;
                     UpdateGlyph();
-                    
+
                     RenderSettings.skybox = stormSky;
                     stormCloudP.Play();
                 }
-                else if(type == Element.steam)
+                else if (type == Element.steam)
                 {
-                   // stormFogP.Play();
+                    // stormFogP.Play();
                 }
             }
         }
@@ -180,12 +191,12 @@ public class CardManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        
+
     }
 
     private void OnTriggerExit(Collider col)
     {
-        if(col.gameObject.CompareTag("Check")) 
+        if (col.gameObject.CompareTag("Check"))
         {
             holdFrontTime = 0;
         }
@@ -201,7 +212,7 @@ public class CardManager : MonoBehaviour
 
     private void OnParticleTrigger()
     {
-        
+
     }
 
     private void OnActivated()

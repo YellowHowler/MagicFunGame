@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] public static int health;
-    [SerializeField] public static int mana;
-    public static int tickDmg;
+    [SerializeField] public int health;
+    [SerializeField] public int mana;
+    public int tickDmg;
     bool regening;
     bool ticking;
     public static Dictionary<CardManager.Element, int> damage = new Dictionary<CardManager.Element, int>();
