@@ -39,6 +39,8 @@ public class CardManager : MonoBehaviour
     private Transform player;
     private Renderer childRend;
 
+    private float fastSpell;
+
     private bool isUsed = false;
     private bool inDeck = false;
     public bool isSelected { get; set; }
@@ -69,15 +71,17 @@ public class CardManager : MonoBehaviour
 
     void Update()
     {
-        if (!isUsed)
+        if (!isUsed && player.gameObject.GetComponent<PlayerState>().mana > 0)
         {
             if (type == Element.fire && rb.velocity.magnitude > 0)
             {
                 ThrowFire();
+                player.gameObject.GetComponent<PlayerState>().mana -= 20;
             }
             else if (type == Element.lava && rb.velocity.magnitude > 0)
             {
                 ThrowFire();
+                player.gameObject.GetComponent<PlayerState>().mana -= 40;
             }
         }
         else
@@ -102,6 +106,11 @@ public class CardManager : MonoBehaviour
 
     private void ThrowFire()
     {
+
+            rb.mass = fastSpell;
+            //mabye flies faster??
+        
+        
         au.PlayOneShot(elementSounds[0], 1);
         isUsed = true;
         rb.useGravity = true;
@@ -112,17 +121,17 @@ public class CardManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.tag=="Enemy"||col.gameObject.tag=="Player" && player.gameObject.GetComponent<PlayerState>().mana > 0)
         {
             Destroy(gameObject);
             if (type == Element.fire)
             {
-                col.gameObject.GetComponent<PlayerState>().health -= 10;
+                col.gameObject.GetComponent<PlayerState>().health -= PlayerState.damage[CardManager.Element.fire];
                 col.gameObject.GetComponent<PlayerState>().tickDmg = 10;
             }
             else if (type == Element.lava)
             {
-                col.gameObject.GetComponent<PlayerState>().health -= 30;
+                col.gameObject.GetComponent<PlayerState>().health -= PlayerState.damage[CardManager.Element.lava];
                 col.gameObject.GetComponent<PlayerState>().tickDmg = 10;
 
             }
@@ -131,13 +140,13 @@ public class CardManager : MonoBehaviour
 
     public void TouchGround()
     {
-        if (!isUsed && type == Element.wood && rb.velocity.magnitude > 0)
+        if (!isUsed && type == Element.wood && rb.velocity.magnitude > 0 && player.gameObject.GetComponent<PlayerState>().mana > 0)
         {
             isUsed = true;
 
             type = Element.none;
             UpdateGlyph();
-
+            player.gameObject.GetComponent<PlayerState>().mana -= 30;
             au.PlayOneShot(elementSounds[8], 1);
             Instantiate(woodObj, transform.position, Quaternion.Euler(0, transform.rotation.y, 0));
             Destroy(gameObject);
@@ -152,38 +161,47 @@ public class CardManager : MonoBehaviour
 
             if (holdFrontTime > 1.2f)
             {
-                if (type == Element.water)
+                if (player.gameObject.GetComponent<PlayerState>().mana > 0)
                 {
-                    isUsed = true;
+                    if (type == Element.water)
+                    {
+                        isUsed = true;
+                        player.gameObject.GetComponent<PlayerState>().mana -= 20;
+                        //implement damage and "fast spell"
+                        type = Element.none;
+                        UpdateGlyph();
+                        StartCoroutine(ShootWater());
+                    }
+                    else if (type == Element.wind)
+                    {
+                        isUsed = true;
+                        fastSpell = 0.5f;
+                        player.gameObject.GetComponent<PlayerState>().mana -= 10;
+                        //inplement the timer to make the thing normal speed again
+                        type = Element.none;
+                        UpdateGlyph();
 
-                    type = Element.none;
-                    UpdateGlyph();
-                    StartCoroutine(ShootWater());
-                }
-                else if (type == Element.wind)
-                {
-                    isUsed = true;
-
-                    type = Element.none;
-                    UpdateGlyph();
-
-                    au.PlayOneShot(elementSounds[3], 1);
-                    windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
-                    windP.Play();
-                }
-                else if (type == Element.storm)
-                {
-                    isUsed = true;
-
-                    type = Element.none;
-                    UpdateGlyph();
-
-                    RenderSettings.skybox = stormSky;
-                    stormCloudP.Play();
-                }
-                else if (type == Element.steam)
-                {
-                    // stormFogP.Play();
+                        au.PlayOneShot(elementSounds[3], 1);
+                        windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
+                        windP.Play();
+                    }
+                    else if (type == Element.storm)
+                    {
+                        isUsed = true;
+                        player.gameObject.GetComponent<PlayerState>().mana -= 20;
+                        type = Element.none;
+                        UpdateGlyph();
+                        PlayerState.damage[CardManager.Element.water] += 5;
+                        fastSpell = 0.75f;
+                        RenderSettings.skybox = stormSky;
+                        stormCloudP.Play();
+                    }
+                    else if (type == Element.steam)
+                    {
+                        //col.gameObject.GetComponent<PlayerState>().tickDmg = 5;
+                        //player.gameObject.GetComponent<PlayerState>().mana -= 20;
+                        // stormFogP.Play();
+                    }
                 }
             }
         }
