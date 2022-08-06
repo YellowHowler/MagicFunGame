@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     GameObject player;
     public static int speed;
     [SerializeField] private Material stormSky;
+    [SerializeField] private GameObject woodObj;
 
     enum SorcererType
     { 
@@ -57,7 +58,9 @@ public class EnemyAI : MonoBehaviour
                     print("fire");
                     break;
                 case 1:
-                    print("wood");
+                    Vector3 woodPos = transform.position;
+                    woodPos.x += 10;
+                    Instantiate(woodObj, woodPos, Quaternion.Euler(0, transform.rotation.y, 0));
                     break;
                 case 2:
                     print("steam");
@@ -78,11 +81,12 @@ public class EnemyAI : MonoBehaviour
                     //CardManager.getShootWater();
                     break;
                 case 1:
-                    RenderSettings.skybox = stormSky;
-
+                    //steam
                     break;
                 case 2:
-                    print("storm");
+                    RenderSettings.skybox = stormSky;
+                    GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>().Play();
+                    //storm
                     break;
 
             }

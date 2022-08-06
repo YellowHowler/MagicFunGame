@@ -6711,6 +6711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpellWeaverCoords: {fileID: 681440728}
+  cardSounds: []
 --- !u!54 &1197764743
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6753,8 +6754,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  stormSky: {fileID: 0}
   woodObj: {fileID: 0}
-  isSelected: 0
+  glyphs: []
+  glyphColors: []
+  elementSounds: []
 --- !u!1 &1206301267
 GameObject:
   m_ObjectHideFlags: 0
@@ -6868,6 +6872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpellWeaverCoords: {fileID: 0}
+  cardSounds: []
 --- !u!65 &1206301273
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6894,8 +6899,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+  stormSky: {fileID: 0}
   woodObj: {fileID: 0}
-  isSelected: 0
+  glyphs: []
+  glyphColors: []
+  elementSounds: []
 --- !u!1 &1229844662
 GameObject:
   m_ObjectHideFlags: 0
@@ -6964,6 +6972,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wizard: 1
+  stormSky: {fileID: 2100000, guid: 5ceec30e099544ed589af6c68217336b, type: 2}
+  woodObj: {fileID: 0}
 --- !u!65 &1394309314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11983,6 +11993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpellWeaverCoords: {fileID: 0}
+  cardSounds: []
 --- !u!65 &1469773174
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12009,8 +12020,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
+  stormSky: {fileID: 0}
   woodObj: {fileID: 0}
-  isSelected: 0
+  glyphs: []
+  glyphColors: []
+  elementSounds: []
 --- !u!1 &1620947572
 GameObject:
   m_ObjectHideFlags: 0
@@ -12124,6 +12138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpellWeaverCoords: {fileID: 0}
+  cardSounds: []
 --- !u!65 &1620947578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12150,8 +12165,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  stormSky: {fileID: 0}
   woodObj: {fileID: 0}
-  isSelected: 0
+  glyphs: []
+  glyphColors: []
+  elementSounds: []
 --- !u!1 &1621652085
 GameObject:
   m_ObjectHideFlags: 0
