@@ -39,6 +39,8 @@ public class CardManager : MonoBehaviour
     private Transform player;
     private Renderer childRend;
 
+    private PlayerState ps;
+
     private float fastSpell;
 
     private bool isUsed = false;
@@ -62,6 +64,8 @@ public class CardManager : MonoBehaviour
 
         childRend = transform.GetChild(1).gameObject.GetComponent<Renderer>();
 
+        ps = player.gameObject.GetComponent<PlayerState>();
+
         RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
 
         isSelected = true;
@@ -71,17 +75,17 @@ public class CardManager : MonoBehaviour
 
     void Update()
     {
-        if (!isUsed && player.gameObject.GetComponent<PlayerState>().mana > 0)
+        if (!isSelected && !isUsed)
         {
             if (type == Element.fire && rb.velocity.magnitude > 0)
             {
-                ThrowFire();
-                player.gameObject.GetComponent<PlayerState>().mana -= 20;
+                UseSpell(-20);
+                if(isUsed) ThrowFire();
             }
             else if (type == Element.lava && rb.velocity.magnitude > 0)
             {
-                ThrowFire();
-                player.gameObject.GetComponent<PlayerState>().mana -= 40;
+                UseSpell(-20);
+                if(isUsed) ThrowFire();
             }
         }
         else
@@ -107,34 +111,13 @@ public class CardManager : MonoBehaviour
     private void ThrowFire()
     {
 
-            rb.mass = fastSpell;
-            //mabye flies faster??
-        
-        
-        au.PlayOneShot(elementSounds[0], 1);
-        isUsed = true;
-        rb.useGravity = true;
-
-        type = Element.none;
-        UpdateGlyph();
     }
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag=="Enemy"||col.gameObject.tag=="Player" && player.gameObject.GetComponent<PlayerState>().mana > 0)
+        if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            if (type == Element.fire)
-            {
-                col.gameObject.GetComponent<PlayerState>().health -= PlayerState.damage[CardManager.Element.fire];
-                col.gameObject.GetComponent<PlayerState>().tickDmg = 10;
-            }
-            else if (type == Element.lava)
-            {
-                col.gameObject.GetComponent<PlayerState>().health -= PlayerState.damage[CardManager.Element.lava];
-                col.gameObject.GetComponent<PlayerState>().tickDmg = 10;
-
-            }
         }
     }
 
@@ -142,68 +125,60 @@ public class CardManager : MonoBehaviour
     {
         if (!isUsed && type == Element.wood && rb.velocity.magnitude > 0 && player.gameObject.GetComponent<PlayerState>().mana > 0)
         {
-            isUsed = true;
+            UseSpell(-30);
 
-            type = Element.none;
-            UpdateGlyph();
-            player.gameObject.GetComponent<PlayerState>().mana -= 30;
-            au.PlayOneShot(elementSounds[8], 1);
-            Instantiate(woodObj, transform.position, Quaternion.Euler(0, transform.rotation.y, 0));
-            Destroy(gameObject);
+            if(isUsed) 
+            {
+                Instantiate(woodObj, transform.position, Quaternion.Euler(0, transform.rotation.y, 0));
+                Destroy(gameObject);
+            }
         }
     }
 
     private void OnTriggerStay(Collider col)
     {
-        if (!isUsed && col.gameObject.CompareTag("Check"))
+        if (isSelected && !isUsed && col.gameObject.CompareTag("Check"))
         {
             holdFrontTime += Time.deltaTime;
 
             if (holdFrontTime > 1.2f)
             {
-                if (player.gameObject.GetComponent<PlayerState>().mana > 0)
+                if (type == Element.water)
                 {
-                    if (type == Element.water)
+                    UseSpell(-20);
+                    if(isUsed) StartCoroutine(ShootWater());
+                }
+                else if (type == Element.wind)
+                {
+                    UseSpell(-10);
+                    if(isUsed) 
                     {
-                        isUsed = true;
-                        player.gameObject.GetComponent<PlayerState>().mana -= 20;
-                        //implement damage and "fast spell"
-                        type = Element.none;
-                        UpdateGlyph();
-                        StartCoroutine(ShootWater());
-                    }
-                    else if (type == Element.wind)
-                    {
-                        isUsed = true;
-                        fastSpell = 0.5f;
-                        player.gameObject.GetComponent<PlayerState>().mana -= 10;
-                        //inplement the timer to make the thing normal speed again
-                        type = Element.none;
-                        UpdateGlyph();
-
-                        au.PlayOneShot(elementSounds[3], 1);
                         windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
                         windP.Play();
                     }
-                    else if (type == Element.storm)
+                }
+                else if (type == Element.storm)
+                {
+                    UseSpell(-20);
+
+                    if(isUsed) 
                     {
-                        isUsed = true;
-                        player.gameObject.GetComponent<PlayerState>().mana -= 20;
-                        type = Element.none;
-                        UpdateGlyph();
-                        PlayerState.damage[CardManager.Element.water] += 5;
-                        fastSpell = 0.75f;
+                        //PlayerState.damage[CardManager.Element.water] += 5;
                         RenderSettings.skybox = stormSky;
                         stormCloudP.Play();
                     }
-                    else if (type == Element.steam)
-                    {
-                        //col.gameObject.GetComponent<PlayerState>().tickDmg = 5;
-                        //player.gameObject.GetComponent<PlayerState>().mana -= 20;
-                        // stormFogP.Play();
-                    }
+                }
+                else if (type == Element.steam)
+                {
+                    //col.gameObject.GetComponent<PlayerState>().tickDmg = 5;
+                    //player.gameObject.GetComponent<PlayerState>().mana -= 20;
+                    // stormFogP.Play();
                 }
             }
+        }
+        if(!isSelected)
+        {
+            holdFrontTime = 0;
         }
     }
 
@@ -236,5 +211,17 @@ public class CardManager : MonoBehaviour
     private void OnActivated()
     {
         childRend.material.color = new Color(0, 1, 0, 1);
+    }
+
+    private void UseSpell(int manaCost)
+    {
+        if(ps.mana > manaCost)
+        {
+            isUsed = true;
+            au.PlayOneShot(elementSounds[(int)type], 1);
+            ps.ChangeMana(-1 * manaCost);
+            type = Element.none;
+            UpdateGlyph();
+        }
     }
 }
