@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NewCard : MonoBehaviour
 {
+    //make sure the card locks position when you drag it in as a prefab
     [SerializeField] GameObject fireCard;
     [SerializeField] GameObject waterCard;
     [SerializeField] GameObject earthCard;
@@ -30,18 +31,22 @@ public class NewCard : MonoBehaviour
         {
             if (thisCard == cardType.fire)
             {
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 Instantiate(fireCard);
             }
             else if (thisCard == cardType.earth)
             {
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 Instantiate(earthCard);
             }
             else if (thisCard == cardType.water)
             {
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 Instantiate(waterCard);
             }
             else if (thisCard == cardType.wind)
             {
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 Instantiate(windCard);
             }
 
