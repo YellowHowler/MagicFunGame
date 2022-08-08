@@ -162,6 +162,7 @@ public class CardManager : MonoBehaviour
         if (isSelected && !isUsed && col.gameObject.CompareTag("Check"))
         {
             childRend.material.color = new Color(0, 0, 0, 1);
+
             holdFrontTime += Time.deltaTime;
 
             if (holdFrontTime > 1.2f)
@@ -244,5 +245,10 @@ public class CardManager : MonoBehaviour
             type = Element.none;
             UpdateGlyph();
         }
+    }
+
+    public void Test()
+    {
+        childRend.material.color = Color.red;
     }
 }

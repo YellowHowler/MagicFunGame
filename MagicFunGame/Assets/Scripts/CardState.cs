@@ -77,7 +77,7 @@ public class CardState : MonoBehaviour
                 }
                 if (numMatching == 2)
                 {
-                    if (other.transform.position.y > transform.position.y)
+                    if (other.transform.position.y < transform.position.y)
                     {
                         au.PlayOneShot(cardSounds[2], 1);
                         GetComponent<CardManager>().type = elements.Value;
@@ -112,7 +112,7 @@ public class CardState : MonoBehaviour
         gripping = true;
         GetComponent<CardManager>().isSelected = true;
 
-        if (inDeck) deck.cards.Remove(gameObject);
+        deck.cards.Remove(gameObject);
         deck.AdjustCards();
     }
 
@@ -120,6 +120,7 @@ public class CardState : MonoBehaviour
     {
         gripping = false;
         GetComponent<CardManager>().isSelected = false;
+        GetComponent<CardManager>().Test();
 
         int index = 0;
 
