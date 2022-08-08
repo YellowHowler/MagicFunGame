@@ -15,8 +15,6 @@ public class CardRotation : MonoBehaviour
     private int cardNum;
     private float pi;
 
-    GameObject[] temp;
-
     [HideInInspector] public List<GameObject> cards;
 
     void Start()
@@ -27,12 +25,10 @@ public class CardRotation : MonoBehaviour
 
         cardNum = transform.childCount-1;
         cards = new List<GameObject>();
-        temp = new GameObject[cardNum];
 
         for(int i = 0; i < cardNum; i++)
         {
-            temp[i] = transform.GetChild(i+1).gameObject;
-            cards.Add(temp[i]);
+            cards.Add(transform.GetChild(i+1).gameObject);
         }
 
         AdjustCards();
@@ -43,12 +39,6 @@ public class CardRotation : MonoBehaviour
     public void AdjustCards()
     {
         cardNum = cards.Count;
-        temp = new GameObject[cardNum];
-
-        for(int i = 0; i < cardNum; i++)
-        {
-            temp[i] = cards[i];
-        }
 
         float midY = midPoint.localPosition.y;
         float midZ = midPoint.localPosition.z;
@@ -59,31 +49,6 @@ public class CardRotation : MonoBehaviour
             cards[i].transform.localPosition = new Vector3(Mathf.Cos(angle) * radius, midY, Mathf.Sin(angle) * radius);
             cards[i].transform.localRotation = Quaternion.Euler(40, -1 * Mathf.Rad2Deg * (angle - pi/2), 0);
         }
-
-        // if (cardNum % 2 == 0)
-        // {
-        //     cards[cardNum/2-1].transform.localPosition = new Vector3(midPoint.localPosition.x + distBetweenCards / 2, midY, midZ);
-        //     cards[cardNum/2].transform.localPosition = new Vector3(midPoint.localPosition.x - distBetweenCards / 2, midY, midZ);
-
-        //     for (int i = 2; i < cardNum; i++)
-        //     {
-        //         cards[i].transform.localPosition = new Vector3(cards[i - 2].transform.localPosition.x + distBetweenCards, midY, midZ);
-        //         cards[i].transform.localPosition = new Vector3(cards[i - 2].transform.localPosition.x - distBetweenCards, midY, midZ);
-        //     }
-
-            
-        // }
-        // else
-        // {
-        //     cards[0].transform.localPosition = new Vector3(midPoint.localPosition.x, midY, midZ);
-
-        //     for(int i = 0; i < (cardNum - 1)/2; i++)
-        //     {
-        //         cards[i*2 + 1].transform.localPosition = new Vector3(midPoint.localPosition.x + (i+1)*distBetweenCards, midY, midZ);
-        //         cards[i*2 + 2].transform.localPosition = new Vector3(midPoint.localPosition.x - (i+1)*distBetweenCards, midY, midZ);
-        //     }
-        // }
-
     }
     void Update()
     {

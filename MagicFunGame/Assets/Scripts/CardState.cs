@@ -49,6 +49,7 @@ public class CardState : MonoBehaviour
         {
             inDeck = true;
         }
+
         else if (other.tag == "SpellWeaver" && !gripping)
         {
             transform.position = SpellWeaverCoords.position;
@@ -83,9 +84,9 @@ public class CardState : MonoBehaviour
                         GetComponent<CardManager>().type = elements.Value;
                         GetComponent<CardManager>().UpdateGlyph();
                         print(GetComponent<CardManager>().type);
-                        if (deck.cards.Contains(other.gameObject)) deck.cards.Remove(other.gameObject);
-                        deck.AdjustCards();
+                        deck.cards.Remove(other.gameObject);
                         Destroy(other.gameObject);
+                        deck.AdjustCards();
                     }
                 }
 
@@ -107,7 +108,7 @@ public class CardState : MonoBehaviour
         gripping = true;
         rb.useGravity = false;
 
-        if (deck.cards.Contains(gameObject)) deck.cards.Remove(gameObject);
+        if (inDeck) deck.cards.Remove(gameObject);
         deck.AdjustCards();
     }
 
@@ -127,7 +128,7 @@ public class CardState : MonoBehaviour
                 if(transform.localPosition.x > deck.cards[i].transform.localPosition.x) index = i + 1;
             }
 
-            deck.cards.Insert(index, this.gameObject);
+            deck.cards.Insert(index, gameObject);
             deck.AdjustCards();
         }
     }
