@@ -101,11 +101,7 @@ public class PlayerState : MonoBehaviour
             StartCoroutine(waterLength(5));
 
         }
-        if (spell == CardManager.Element.ice)
-        {
-            //slowdown enemie
-            StartCoroutine(speedChange());
-        }
+
     }
     IEnumerator speedChange()
     {
