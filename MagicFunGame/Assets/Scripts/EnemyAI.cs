@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     bool move;
     GameObject player;
     public static int speed;
+    public int enemyHealth;
     [SerializeField] private Material stormSky;
     [SerializeField] private GameObject woodObj;
     [SerializeField] private GameObject fireCard;
@@ -47,6 +48,10 @@ public class EnemyAI : MonoBehaviour
         {
             
            StartCoroutine(Movement());
+        }
+        if (GetComponent<PlayerState>().health == 0)
+        {
+            Destroy(this.gameObject);
         }
     }
     void AIAttack()

@@ -36,6 +36,7 @@ public class CardManager : MonoBehaviour
     private ParticleSystem windP;
     private ParticleSystem stormCloudP;
     private ParticleSystem stormFogP;
+    private ParticleSystem fireP;
     private Transform player;
     private Renderer childRend;
 
@@ -61,6 +62,7 @@ public class CardManager : MonoBehaviour
         windP = GameObject.FindGameObjectWithTag("Wind").GetComponent<ParticleSystem>();
         stormCloudP = GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>();
         stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
+        fireP = transform.GetChild(0).GetComponent<ParticleSystem>();
 
         childRend = transform.GetChild(1).gameObject.GetComponent<Renderer>();
 
@@ -110,7 +112,7 @@ public class CardManager : MonoBehaviour
 
     private void ThrowFire()
     {
-
+        fireP.Play();
     }
 
     private void OnCollisionEnter(Collision col)
