@@ -19,6 +19,11 @@ public class CardManager : MonoBehaviour
         sand = 7,
         wood = 8,
         ice = 9,
+        light = 10,
+        glass = 11,
+        smoke = 12,
+        rock = 13,
+        life = 14
     }
 
     [SerializeField] public Element type;
@@ -37,6 +42,11 @@ public class CardManager : MonoBehaviour
     private ParticleSystem stormCloudP;
     private ParticleSystem stormFogP;
     private ParticleSystem fireP;
+    private ParticleSystem lightningP;
+    private ParticleSystem magicGlassP;
+    private ParticleSystem smokeP;
+    private ParticleSystem rockP;
+    private ParticleSystem lifeP;
     private Transform player;
     private Renderer childRend;
 
@@ -63,6 +73,8 @@ public class CardManager : MonoBehaviour
         stormCloudP = GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>();
         stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
         fireP = transform.GetChild(1).GetComponent<ParticleSystem>();
+        //lightningP = transform.GetChild(2).GetComponent<ParticleSystem>();
+
 
         childRend = transform.GetChild(1).gameObject.GetComponent<Renderer>();
 
@@ -82,12 +94,21 @@ public class CardManager : MonoBehaviour
             if (type == Element.fire && rb.velocity.magnitude > 0)
             {
                 UseSpell(-20);
-                if(isUsed) ThrowFire();
+                if (isUsed)
+                {
+                    ThrowFire();
+
+                }
             }
             else if (type == Element.lava && rb.velocity.magnitude > 0)
             {
                 UseSpell(-20);
-                if(isUsed) ThrowFire();
+               
+                if (isUsed) 
+                {
+                    ThrowFire();
+                }
+
             }
         }
         else
@@ -148,12 +169,24 @@ public class CardManager : MonoBehaviour
                 if (type == Element.water)
                 {
                     UseSpell(-20);
-                    if(isUsed) StartCoroutine(ShootWater());
+                    if (isUsed)
+                    {
+                        StartCoroutine(ShootWater());
+
+                    }
+                }
+                else if (type == Element.light)
+                {
+                    UseSpell(-40);
+                    if (isUsed)
+                    {
+                        StartCoroutine(ShootWater());
+                    }
                 }
                 else if (type == Element.wind)
                 {
                     UseSpell(-10);
-                    if(isUsed) 
+                    if (isUsed)
                     {
                         windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
                         windP.Play();
@@ -163,7 +196,7 @@ public class CardManager : MonoBehaviour
                 {
                     UseSpell(-20);
 
-                    if(isUsed) 
+                    if (isUsed)
                     {
                         //PlayerState.damage[CardManager.Element.water] += 5;
                         RenderSettings.skybox = stormSky;

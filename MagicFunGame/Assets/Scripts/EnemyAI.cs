@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     {
         CD = true;
         move = true;
+        enemyHealth = 100;
         rb = GetComponent<Rigidbody>();
         player = Camera.main.gameObject;
         speed = 5;
@@ -49,10 +50,10 @@ public class EnemyAI : MonoBehaviour
             
            StartCoroutine(Movement());
         }
-        //if (GetComponent<PlayerState>().health == 0)
-        //{
-          //  Destroy(this.gameObject);
-        //}
+        if (enemyHealth == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
     void AIAttack()
     {

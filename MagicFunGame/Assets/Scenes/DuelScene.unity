@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.9532309, g: 0.9650106, b: 0.9064314, a: 1}
+  m_IndirectSpecularColor: {r: 0.95322675, g: 0.9650093, b: 0.9064288, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6563,6 +6563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wizard: 0
+  enemyHealth: 0
   stormSky: {fileID: 2100000, guid: 5ceec30e099544ed589af6c68217336b, type: 2}
   woodObj: {fileID: 7975779382020231221, guid: 24e71bfee2b4148f0a4fe244a59e9ba3, type: 3}
   fireCard: {fileID: 5799747265179014885, guid: e7bde90925adb4908b675ba644c20c99,
@@ -6729,7 +6730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326563060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -25}
+  m_LocalPosition: {x: 0, y: 1.27, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
