@@ -133,7 +133,7 @@ public class CardState : MonoBehaviour
             }
 
             if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
-            else deck.cards.add(gameObject);
+            else deck.cards.Add(gameObject);
             deck.AdjustCards();
         }
     }
