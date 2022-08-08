@@ -7035,7 +7035,7 @@ GameObject:
   - component: {fileID: 1460167054}
   - component: {fileID: 1460167053}
   - component: {fileID: 1460167055}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: cards
   m_TagString: Deck
   m_Icon: {fileID: 0}
