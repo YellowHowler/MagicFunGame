@@ -89,9 +89,9 @@ public class CardManager : MonoBehaviour
 
     void Update()
     {
-        if (!isSelected && !isUsed)
+        if (!isSelected && !isUsed && !GetComponent<CardState>().inDeck)
         {
-            if (type == Element.fire && rb.velocity.magnitude > 0)
+            if (type == Element.fire && rb.velocity.magnitude > 0.05f)
             {
                 UseSpell(-20);
                 if (isUsed)
@@ -100,7 +100,7 @@ public class CardManager : MonoBehaviour
 
                 }
             }
-            else if (type == Element.lava && rb.velocity.magnitude > 0)
+            else if (type == Element.lava && rb.velocity.magnitude > 0.05f)
             {
                 UseSpell(-20);
                

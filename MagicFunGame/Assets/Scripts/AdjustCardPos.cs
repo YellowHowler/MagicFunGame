@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AdjustCardPos : MonoBehaviour
 {
+    [SerializeField] private float yPos = 1.5f;
     private Transform player;
 
     void Start()
@@ -14,7 +15,7 @@ public class AdjustCardPos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.position.x, 1.5f, player.position.z);
+        transform.position = new Vector3(player.position.x, yPos, player.position.z);
         transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
     }
 }

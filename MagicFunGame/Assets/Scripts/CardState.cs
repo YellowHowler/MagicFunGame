@@ -18,7 +18,7 @@ public class CardState : MonoBehaviour
     public static Dictionary<CardManager.Element[], CardManager.Element> dict = new Dictionary<CardManager.Element[], CardManager.Element>();
 
     bool gripping;
-    bool inDeck;
+    public bool inDeck{get;set;}
 
     private void Start()
     {
