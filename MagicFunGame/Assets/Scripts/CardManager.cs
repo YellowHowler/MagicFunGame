@@ -210,10 +210,6 @@ public class CardManager : MonoBehaviour
                 }
             }
         }
-        if(!isSelected)
-        {
-            holdFrontTime = 0;
-        }
     }
 
     private void OnTriggerEnter(Collider col)
