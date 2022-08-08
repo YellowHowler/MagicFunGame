@@ -233,10 +233,6 @@ public class CardManager : MonoBehaviour
         waterP.Stop();
     }
 
-    private void OnParticleTrigger()
-    {
-
-    }
     private void UseSpell(int manaCost)
     {
         if(ps.mana > manaCost)

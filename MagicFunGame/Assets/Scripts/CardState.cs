@@ -49,12 +49,7 @@ public class CardState : MonoBehaviour
     //add when player lets go of card
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Deck")
-        {
-            inDeck = true;
-        }
-
-        else if (other.tag == "SpellWeaver" && !gripping)
+        if (other.tag == "SpellWeaver" && !gripping)
         {
             transform.position = SpellWeaverCoords.position;
         }
@@ -96,6 +91,14 @@ public class CardState : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Deck")
+        {
+            inDeck = true;
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Deck")
@@ -107,6 +110,7 @@ public class CardState : MonoBehaviour
     public void Act()
     {
         gripping = true;
+        GetComponent<CardManager>().isSelected = true;
 
         if (inDeck) deck.cards.Remove(gameObject);
         deck.AdjustCards();
@@ -115,6 +119,7 @@ public class CardState : MonoBehaviour
     public void DeAct()
     {
         gripping = false;
+        GetComponent<CardManager>().isSelected = false;
 
         int index = 0;
 
@@ -125,6 +130,6 @@ public class CardState : MonoBehaviour
 
         if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
         else deck.cards.Add(gameObject);
-            deck.AdjustCards();
+        deck.AdjustCards();
     }
 }
