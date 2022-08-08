@@ -6563,6 +6563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wizard: 0
+  enemyHealth: 0
   stormSky: {fileID: 2100000, guid: 5ceec30e099544ed589af6c68217336b, type: 2}
   woodObj: {fileID: 7975779382020231221, guid: 24e71bfee2b4148f0a4fe244a59e9ba3, type: 3}
   fireCard: {fileID: 5799747265179014885, guid: e7bde90925adb4908b675ba644c20c99,
