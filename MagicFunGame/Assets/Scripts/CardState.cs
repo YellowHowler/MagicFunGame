@@ -18,6 +18,7 @@ public class CardState : MonoBehaviour
     public static Dictionary<CardManager.Element[], CardManager.Element> dict = new Dictionary<CardManager.Element[], CardManager.Element>();
 
     bool gripping;
+    bool inDeck;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class CardState : MonoBehaviour
         dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.earth }, CardManager.Element.wood); //wood
         dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.wind }, CardManager.Element.none);//ice
 
+        inDeck = true;
     }
     private void Update()
     {
@@ -43,11 +45,9 @@ public class CardState : MonoBehaviour
     //add when player lets go of card
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Deck" && !gripping)
+        if (other.tag == "Deck")
         {
-            rb.useGravity = false;
-            deck.cards.Add(gameObject);
-            deck.AdjustCards();
+            inDeck = true;
         }
         else if (other.tag == "SpellWeaver" && !gripping)
         {
@@ -98,7 +98,7 @@ public class CardState : MonoBehaviour
     {
         if (other.tag == "Deck")
         {
-            deck.cards.Remove(this.gameObject);
+            inDeck = false;
         }
     }
 
@@ -107,7 +107,7 @@ public class CardState : MonoBehaviour
         gripping = true;
         rb.useGravity = false;
 
-        deck.cards.Remove(gameObject);
+        if (deck.cards.Contains(gameObject)) deck.cards.Remove(gameObject);
         deck.AdjustCards();
     }
 
@@ -115,5 +115,20 @@ public class CardState : MonoBehaviour
     {
         gripping = false;
         rb.useGravity = true;
+
+        if(inDeck) 
+        {
+            rb.useGravity = false;
+            
+            int index = 0;
+
+            for(int i = 0; i < deck.cards.Count; i++)
+            {
+                if(transform.localPosition.x > deck.cards[i].transform.localPosition.x) index = i + 1;
+            }
+
+            deck.cards.Insert(index, this.gameObject);
+            deck.AdjustCards();
+        }
     }
 }
