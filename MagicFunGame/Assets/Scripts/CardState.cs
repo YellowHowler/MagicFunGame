@@ -93,10 +93,7 @@ public class CardState : MonoBehaviour
                         deck.AdjustCards();
                     }
                 }
-
             }
-
-
         }
     }
     private void OnTriggerExit(Collider other)
@@ -110,7 +107,6 @@ public class CardState : MonoBehaviour
     public void Act()
     {
         gripping = true;
-        rb.useGravity = false;
 
         if (inDeck) deck.cards.Remove(gameObject);
         deck.AdjustCards();
@@ -119,22 +115,16 @@ public class CardState : MonoBehaviour
     public void DeAct()
     {
         gripping = false;
-        rb.useGravity = true;
 
-        if(inDeck) 
+        int index = 0;
+
+        for(int i = 0; i < deck.cards.Count; i++)
         {
-            rb.useGravity = false;
-            
-            int index = 0;
-
-            for(int i = 0; i < deck.cards.Count; i++)
-            {
-                if(transform.localPosition.x > deck.cards[i].transform.localPosition.x) index = i + 1;
-            }
-
-            if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
-            else deck.cards.Add(gameObject);
-            deck.AdjustCards();
+            if(transform.localPosition.x > deck.cards[i].transform.localPosition.x) index = i + 1;
         }
+
+        if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
+        else deck.cards.add(gameObject);
+            deck.AdjustCards();
     }
 }
