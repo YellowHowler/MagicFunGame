@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardState : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Transform SpellWeaverCoords;
+
     [SerializeField] private AudioClip[] cardSounds; // select, throw, combine
 
     CardRotation deck;
@@ -49,10 +49,18 @@ public class CardState : MonoBehaviour
     //add when player lets go of card
     private void OnTriggerEnter(Collider other)
     {
+<<<<<<< Updated upstream
         if (other.tag == "SpellWeaver" && !gripping)
         {
             transform.position = SpellWeaverCoords.position;
         }
+=======
+        if (other.tag == "Deck")
+        {
+            inDeck = true;
+        }
+
+>>>>>>> Stashed changes
         //dictionary 
         //keys of arrays of spells
         //def of enum type 
