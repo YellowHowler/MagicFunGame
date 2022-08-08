@@ -59,7 +59,7 @@ public class EnemyAI : MonoBehaviour
             {
                 case 0:
                     Vector3 firePos = transform.position - (transform.position - player.transform.position).normalized * 2;
-                    firePos = new Vector3(firePos.x, player.transform.position.y - 0.35f, firePos.z);
+                    firePos = new Vector3(firePos.x, player.transform.position.y - 0.32f, firePos.z);
                     Rigidbody fireRb = Instantiate(fireCard, firePos, Quaternion.Euler(90, transform.rotation.y, 0)).GetComponent<Rigidbody>();
                     fireRb.velocity = (player.transform.position - transform.position).normalized * 6;
                     break;
