@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Material stormSky;
     [SerializeField] private GameObject woodObj;
     [SerializeField] private GameObject fireCard;
+    ParticleSystem fireP;
 
     enum SorcererType
     { 
@@ -31,7 +32,6 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         player = Camera.main.gameObject;
         speed = 5;
-
         au = GetComponent<AudioSource>();
         waterP = transform.GetChild(0).GetComponent<ParticleSystem>();
     }
@@ -49,10 +49,10 @@ public class EnemyAI : MonoBehaviour
             
            StartCoroutine(Movement());
         }
-        if (GetComponent<PlayerState>().health == 0)
-        {
-            Destroy(this.gameObject);
-        }
+        //if (GetComponent<PlayerState>().health == 0)
+        //{
+          //  Destroy(this.gameObject);
+        //}
     }
     void AIAttack()
     {
@@ -67,6 +67,7 @@ public class EnemyAI : MonoBehaviour
                     firePos = new Vector3(firePos.x, player.transform.position.y - 0.32f, firePos.z);
                     Rigidbody fireRb = Instantiate(fireCard, firePos, Quaternion.Euler(90, transform.rotation.y, 0)).GetComponent<Rigidbody>();
                     fireRb.velocity = (player.transform.position - transform.position).normalized * 6;
+
                     break;
                 case 1:
                     Vector3 woodPos = transform.position - (transform.position - player.transform.position).normalized * 5;
@@ -106,6 +107,7 @@ public class EnemyAI : MonoBehaviour
         }
 
     }
+    
     IEnumerator AttackCD()
     {
         CD = false;

@@ -62,7 +62,7 @@ public class CardManager : MonoBehaviour
         windP = GameObject.FindGameObjectWithTag("Wind").GetComponent<ParticleSystem>();
         stormCloudP = GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>();
         stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
-        fireP = transform.GetChild(0).GetComponent<ParticleSystem>();
+        fireP = transform.GetChild(1).GetComponent<ParticleSystem>();
 
         childRend = transform.GetChild(1).gameObject.GetComponent<Renderer>();
 
