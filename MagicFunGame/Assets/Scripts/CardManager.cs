@@ -92,16 +92,15 @@ public class CardManager : MonoBehaviour
         {
             if (type == Element.fire && rb.velocity.magnitude > 0.05f)
             {
-                UseSpell(-20);
+                UseSpell(20);
                 if (isUsed)
                 {
-                    childRend.material.color = Color.red;
                     ThrowFire();
                 }
             }
             else if (type == Element.lava && rb.velocity.magnitude > 0.05f)
             {
-                UseSpell(-20);
+                UseSpell(20);
                
                 if (isUsed) 
                 {
@@ -127,6 +126,7 @@ public class CardManager : MonoBehaviour
 
     private void ThrowFire()
     {
+        rb.angularVelocity = Vector3.zero;
         rb.velocity = rb.velocity.normalized * 6;
         fireP.Play();
     }
@@ -143,7 +143,7 @@ public class CardManager : MonoBehaviour
     {
         if (!isUsed && type == Element.wood && rb.velocity.magnitude > 0 && player.gameObject.GetComponent<PlayerState>().mana > 0)
         {
-            UseSpell(-30);
+            UseSpell(30);
 
             if(isUsed) 
             {
@@ -157,15 +157,13 @@ public class CardManager : MonoBehaviour
     {
         if (isSelected && !isUsed && col.gameObject.CompareTag("Check"))
         {
-            childRend.material.color = new Color(0, 0, 0, 1);
-
             holdFrontTime += Time.deltaTime;
 
-            if (holdFrontTime > 1.2f)
+            if (holdFrontTime > 0.7f)
             {
                 if (type == Element.water)
                 {
-                    UseSpell(-20);
+                    UseSpell(20);
                     if (isUsed)
                     {
                         StartCoroutine(ShootWater());
@@ -174,7 +172,7 @@ public class CardManager : MonoBehaviour
                 }
                 else if (type == Element.light)
                 {
-                    UseSpell(-40);
+                    UseSpell(40);
                     if (isUsed)
                     {
                         StartCoroutine(ShootWater());
@@ -182,7 +180,7 @@ public class CardManager : MonoBehaviour
                 }
                 else if (type == Element.wind)
                 {
-                    UseSpell(-10);
+                    UseSpell(10);
                     if (isUsed)
                     {
                         windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
@@ -191,7 +189,7 @@ public class CardManager : MonoBehaviour
                 }
                 else if (type == Element.storm)
                 {
-                    UseSpell(-20);
+                    UseSpell(20);
 
                     if (isUsed)
                     {
@@ -237,18 +235,13 @@ public class CardManager : MonoBehaviour
 
     private void UseSpell(int manaCost)
     {
-        if(ps.mana > manaCost)
-        {
-            isUsed = true;
-            au.PlayOneShot(elementSounds[(int)type], 1);
-            ps.ChangeMana(-1 * manaCost);
-            type = Element.none;
-            UpdateGlyph();
-        }
-    }
-
-    public void Test()
-    {
-        childRend.material.color = Color.red;
+        //if(ps.mana > manaCost)
+        //{
+        isUsed = true;
+        au.PlayOneShot(elementSounds[(int)type], 1);
+        ps.ChangeMana(-1 * manaCost);
+        type = Element.none;
+        UpdateGlyph();
+        //}
     }
 }

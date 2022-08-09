@@ -140,7 +140,7 @@ public class CardState : MonoBehaviour
 
             for(int i = 0; i < deck.cards.Count; i++)
             {
-                if(transform.localPosition.x > deck.cards[i].transform.localPosition.x) index = i + 1;
+                if(transform.position.x > deck.cards[i].transform.position.x) index = i + 1;
             }
 
             if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
@@ -148,6 +148,7 @@ public class CardState : MonoBehaviour
             deck.AdjustCards();
 
             rb.velocity = new Vector3(0, 0, 0);
+            rb.angularVelocity = new Vector3(0, 0, 0);
         }
     }
 }
