@@ -22,9 +22,11 @@ public class FireCard : MonoBehaviour
     {
         if(col.gameObject.CompareTag("MainCamera"))
         {
+
             col.gameObject.GetComponent<PlayerState>().ChangeHealth(-10);
             Debug.Log("hit");
             Destroy(this.gameObject);
+                   
         }
         
     }
