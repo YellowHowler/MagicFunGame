@@ -83,7 +83,7 @@ public class PlayerState : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Card")
+        if (collision.gameObject.tag == "EnemyCard")
         {
             CardManager.Element hitSpell = collision.gameObject.GetComponent<CardManager>().type;
             takeDmg(hitSpell);
