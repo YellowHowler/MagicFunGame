@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.87399536, g: 0.8965488, b: 0.78425467, a: 1}
+  m_IndirectSpecularColor: {r: 0.8745338, g: 0.89723253, b: 0.7845555, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22657,23 +22657,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &2041159184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3721837335615351421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51c843bd9ca0c2749bff27e832e870f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireCard: {fileID: 3721837334157878357}
-  waterCard: {fileID: 3721837333924452198}
-  earthCard: {fileID: 3721837335615351421}
-  windCard: {fileID: 3721837334443893923}
-  thisCard: 0
 --- !u!1 &2085925729
 GameObject:
   m_ObjectHideFlags: 0
@@ -42595,7 +42578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837333924452198}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.5, y: 2.42, z: -25.05}
+  m_LocalPosition: {x: -0.5, y: 1.821, z: -25.05}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42694,6 +42677,7 @@ GameObject:
   - component: {fileID: 3721837333924452199}
   - component: {fileID: 9118194821622260272}
   - component: {fileID: 1721426052}
+  - component: {fileID: 9118194821622260273}
   m_Layer: 0
   m_Name: Water
   m_TagString: Card
@@ -42870,7 +42854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837334157878357}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.5, y: 2.42, z: -24.75}
+  m_LocalPosition: {x: -0.5, y: 1.821, z: -24.75}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43011,6 +42995,7 @@ GameObject:
   - component: {fileID: 3721837334157878356}
   - component: {fileID: 9118194821923016963}
   - component: {fileID: 762042971}
+  - component: {fileID: 9118194821923016964}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Card
@@ -48020,6 +48005,7 @@ GameObject:
   - component: {fileID: 3721837334443893922}
   - component: {fileID: 9118194822175511029}
   - component: {fileID: 1884560582}
+  - component: {fileID: 9118194822175511030}
   m_Layer: 0
   m_Name: Wind
   m_TagString: Card
@@ -48080,7 +48066,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837334443893923}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.5, y: 2.42, z: -24.9}
+  m_LocalPosition: {x: -0.5, y: 1.821, z: -24.9}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57769,7 +57755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837335615351421}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.5, y: 2.42, z: -25.2}
+  m_LocalPosition: {x: -0.5, y: 1.821, z: -25.2}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57909,7 +57895,8 @@ GameObject:
   - component: {fileID: 3721837335615351423}
   - component: {fileID: 3721837335615351420}
   - component: {fileID: 9118194821006155563}
-  - component: {fileID: 2041159184}
+  - component: {fileID: 9118194821006155565}
+  - component: {fileID: 9118194821006155564}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Card
@@ -65615,6 +65602,39 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9118194821006155564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721837335615351421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c843bd9ca0c2749bff27e832e870f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireCard: {fileID: 3721837334157878357}
+  waterCard: {fileID: 3721837333924452198}
+  earthCard: {fileID: 3721837335615351421}
+  windCard: {fileID: 3721837334443893923}
+  thisCard: 0
+--- !u!114 &9118194821006155565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721837335615351421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4a1c8aaefcf264faaadd461783c531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardSounds:
+  - {fileID: 8300000, guid: 1da4b7352b4654c8497da4d4ae226485, type: 3}
+  - {fileID: 8300000, guid: 92cd2b579216543b0a9e5e08b27b3137, type: 3}
+  - {fileID: 8300000, guid: 6e54bcdbe1df949b89b206062f7a2105, type: 3}
 --- !u!82 &9118194821622260272
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65711,6 +65731,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9118194821622260273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721837333924452198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4a1c8aaefcf264faaadd461783c531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardSounds:
+  - {fileID: 8300000, guid: 1da4b7352b4654c8497da4d4ae226485, type: 3}
+  - {fileID: 8300000, guid: 92cd2b579216543b0a9e5e08b27b3137, type: 3}
+  - {fileID: 8300000, guid: 6e54bcdbe1df949b89b206062f7a2105, type: 3}
 --- !u!82 &9118194821923016963
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65807,6 +65843,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9118194821923016964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721837334157878357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4a1c8aaefcf264faaadd461783c531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardSounds:
+  - {fileID: 8300000, guid: 1da4b7352b4654c8497da4d4ae226485, type: 3}
+  - {fileID: 8300000, guid: 92cd2b579216543b0a9e5e08b27b3137, type: 3}
+  - {fileID: 8300000, guid: 6e54bcdbe1df949b89b206062f7a2105, type: 3}
 --- !u!82 &9118194822175511029
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65903,3 +65955,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9118194822175511030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721837334443893923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4a1c8aaefcf264faaadd461783c531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardSounds:
+  - {fileID: 8300000, guid: 1da4b7352b4654c8497da4d4ae226485, type: 3}
+  - {fileID: 8300000, guid: 92cd2b579216543b0a9e5e08b27b3137, type: 3}
+  - {fileID: 8300000, guid: 6e54bcdbe1df949b89b206062f7a2105, type: 3}

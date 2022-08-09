@@ -185,6 +185,7 @@ public class CardManager : MonoBehaviour
     private void ThrowFire()
     {
         rb.angularVelocity = Vector3.zero;
+        rb.useGravity = false;
         rb.velocity = rb.velocity.normalized * 6;
         //fireP.Play();
     }

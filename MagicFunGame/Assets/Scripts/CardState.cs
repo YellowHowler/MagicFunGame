@@ -57,23 +57,40 @@ public class CardState : MonoBehaviour
         //dictionary 
         //keys of arrays of spells
         //def of enum type 
-        else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type && other.transform.position.y < transform.position.y)
+        else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type )
         {
             foreach (KeyValuePair<CardManager.Element[], CardManager.Element> elements in dict)
             {
                 CardManager.Element[] temp = elements.Key;
                 CardManager.Element thisCard = GetComponent<CardManager>().type;
                 CardManager.Element otherCard = other.GetComponent<CardManager>().type;
-
-                if ((temp[0] == otherCard && temp[1] == thisCard) || (temp[0] == thisCard && temp[1] == otherCard))
+                if (other.transform.position.y < transform.position.y)
                 {
-                    au.PlayOneShot(cardSounds[2], 1);
-                    other.GetComponent<CardManager>().type = elements.Value;
-                    other.GetComponent<CardManager>().UpdateGlyph();
-                    other.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                    deck.cards.Remove(gameObject);
-                    Destroy(gameObject);
-                    deck.AdjustCards();
+                    if ((temp[0] == otherCard && temp[1] == thisCard) || (temp[0] == thisCard && temp[1] == otherCard))
+                    {
+                        au.PlayOneShot(cardSounds[2], 1);
+                        other.GetComponent<CardManager>().type = elements.Value;
+                        other.GetComponent<CardManager>().UpdateGlyph();
+                        other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                        deck.cards.Remove(gameObject);
+                        Destroy(gameObject);
+                        deck.AdjustCards();
+                    }
+                }
+                else 
+                {
+                    if ((temp[0] == otherCard && temp[1] == thisCard) || (temp[0] == thisCard && temp[1] == otherCard))
+                    {
+                        au.PlayOneShot(cardSounds[2], 1);
+                        GetComponent<CardManager>().type = elements.Value;
+                        GetComponent<CardManager>().UpdateGlyph();
+                        GetComponent<Rigidbody>().velocity = Vector3.zero;
+                        deck.cards.Remove(other.gameObject);
+                        Destroy(other.gameObject);
+                        deck.AdjustCards();
+                    }
+
+
                 }
             }
         }

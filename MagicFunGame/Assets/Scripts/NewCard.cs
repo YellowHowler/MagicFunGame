@@ -33,23 +33,35 @@ public class NewCard : MonoBehaviour
 
             if (thisCard == cardType.fire)
             {
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 newCard = Instantiate(fireCard, this.transform.position, Quaternion.identity);
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                GetComponent<CardManager>().enabled = true;
+                GetComponent<CardState>().enabled = true;
+                GetComponent<NewCard>().enabled = false;
             }
             else if (thisCard == cardType.earth)
             {
+                newCard = Instantiate(earthCard, this.transform.position, Quaternion.identity);
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                newCard = Instantiate(earthCard,this.transform.position,Quaternion.identity);
+                GetComponent<CardManager>().enabled = true;
+                GetComponent<CardState>().enabled = true;
+                GetComponent<NewCard>().enabled = false;
             }
             else if (thisCard == cardType.water)
             {
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 newCard = Instantiate(waterCard, this.transform.position, Quaternion.identity);
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                GetComponent<CardManager>().enabled = true;
+                GetComponent<CardState>().enabled = true;
+                GetComponent<NewCard>().enabled = false;
             }
             else if (thisCard == cardType.wind)
             {
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 newCard = Instantiate(windCard, this.transform.position, Quaternion.identity);
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                GetComponent<CardManager>().enabled = true;
+                GetComponent<CardState>().enabled = true;
+                GetComponent<NewCard>().enabled = false;
             }
             
             GetComponent<CardManager>().isSelected = false;
