@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+[RequireComponent(typeof(Image))]
+public class flashImage : MonoBehaviour
+{
+    Image _image = null;
+    Coroutine currentFlashRoutine = null;
+    // Start is called before the first frame update
+    void Start()
+    {
+        _image = GetComponent<Image>();
+    }
+    public void StartFlash(float secondsForOneFlash, float maxAlpha, Color newColor)
+    {
+        _image.color = newColor;
+        //insure maxAlpha isnt above 1
+        maxAlpha = Mathf.Clamp(maxAlpha, 0, 1);
+        if (currentFlashRoutine != null)
+        {
+            StopCoroutine(currentFlashRoutine);
+        }
+        currentFlashRoutine = StartCoroutine(flash(secondsForOneFlash, maxAlpha));
+
+    }
+    IEnumerator flash(float secondsForOneFlash, float maxAlpha)
+    {
+
+        //animate flash in
+        float flashInDuration = secondsForOneFlash / 2;
+        for (float i = 0; i <= flashInDuration; i+= Time.deltaTime)
+        {
+            Color colorThisFrame = _image.color;
+            colorThisFrame.a = Mathf.Lerp(0,maxAlpha, i/flashInDuration);
+            _image.color = colorThisFrame;
+            yield return null; 
+        }
+        //animate flash outs
+        for (float i = 0; i < flashInDuration; i+=Time.deltaTime)
+        {
+            Color colorThisFrame = _image.color;
+            colorThisFrame.a = Mathf.Lerp(maxAlpha, 0, i / flashInDuration);
+            _image.color = colorThisFrame;
+            yield return null;
+        }
+    
+    }
+}
