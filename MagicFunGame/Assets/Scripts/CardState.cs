@@ -110,6 +110,18 @@ public class CardState : MonoBehaviour
 
     public void Act()
     {
+        ActTest();
+    }
+
+    public void DeAct()
+    {
+        DeActTest();
+    }
+
+    private void ActTest()
+    {
+        au.PlayOneShot(cardSounds[0]);
+
         gripping = true;
         GetComponent<CardManager>().isSelected = true;
 
@@ -117,11 +129,10 @@ public class CardState : MonoBehaviour
         deck.AdjustCards();
     }
 
-    public void DeAct()
+    private void DeActTest()
     {
         gripping = false;
         GetComponent<CardManager>().isSelected = false;
-        GetComponent<CardManager>().Test();
 
         int index = 0;
 
@@ -133,5 +144,7 @@ public class CardState : MonoBehaviour
         if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
         else deck.cards.Add(gameObject);
         deck.AdjustCards();
+
+        rb.velocity = new Vector3(0, 0, 0);
     }
 }
