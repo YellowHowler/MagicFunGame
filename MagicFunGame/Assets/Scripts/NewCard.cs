@@ -34,22 +34,22 @@ public class NewCard : MonoBehaviour
             if (thisCard == cardType.fire)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                newCard = Instantiate(fireCard);
+                newCard = Instantiate(fireCard, this.transform.position, Quaternion.identity);
             }
             else if (thisCard == cardType.earth)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                newCard = Instantiate(earthCard);
+                newCard = Instantiate(earthCard,this.transform.position,Quaternion.identity);
             }
             else if (thisCard == cardType.water)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                newCard = Instantiate(waterCard);
+                newCard = Instantiate(waterCard, this.transform.position, Quaternion.identity);
             }
             else if (thisCard == cardType.wind)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                newCard = Instantiate(windCard);
+                newCard = Instantiate(windCard, this.transform.position, Quaternion.identity);
             }
 
             newCard.transform.parent = GameObject.FindGameObjectWithTag("Deck").transform;
