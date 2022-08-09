@@ -29,7 +29,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] public Element type;
     [SerializeField] private Material stormSky;
     [SerializeField] private GameObject woodObj;
-
+    
     [SerializeField] private Texture[] glyphs;
     [SerializeField] private Color[] glyphColors;
 
@@ -59,7 +59,7 @@ public class CardManager : MonoBehaviour
     public bool isSelected { get; set; }
 
     private float holdFrontTime = 0;
-
+    public bool thrown;
     public bool gameStarted { get; set; }
 
     void Start()
@@ -94,6 +94,7 @@ public class CardManager : MonoBehaviour
                 UseSpell(20);
                 if (isUsed)
                 {
+                    thrown = true;
                     ThrowFire();
                 }
             }
@@ -103,6 +104,7 @@ public class CardManager : MonoBehaviour
                
                 if (isUsed) 
                 {
+                    thrown = true;
                     ThrowFire();
                 }
             }
@@ -187,7 +189,7 @@ public class CardManager : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.useGravity = false;
         rb.velocity = rb.velocity.normalized * 6;
-        //fireP.Play();
+        fireP.Play();
     }
 
     private void OnCollisionEnter(Collision col)

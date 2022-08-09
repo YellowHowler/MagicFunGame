@@ -57,7 +57,7 @@ public class CardState : MonoBehaviour
         //dictionary 
         //keys of arrays of spells
         //def of enum type 
-        else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type )
+        else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type && !GetComponent<CardManager>().thrown)
         {
             foreach (KeyValuePair<CardManager.Element[], CardManager.Element> elements in dict)
             {
@@ -139,7 +139,7 @@ public class CardState : MonoBehaviour
         gripping = false;
         GetComponent<CardManager>().isSelected = false;
 
-        if(rb.velocity.magnitude < 0.2f)
+        if(!GetComponent<CardManager>().thrown)
         {
             if(inDeck)
             {
