@@ -82,8 +82,6 @@ public class CardManager : MonoBehaviour
 
         RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
 
-        
-
         UpdateGlyph();
     }
 
@@ -113,9 +111,8 @@ public class CardManager : MonoBehaviour
         if(isHolding)
         {
             holdFrontTime += Time.deltaTime;
-            childRend.material.color = new Color(childRend.material.color.r + 0.05f, 0, 0, 1);
 
-            if (holdFrontTime > 0.7f)
+            if (holdFrontTime > 1.2f)
             {
                 //hi
                 if (type == Element.water)
