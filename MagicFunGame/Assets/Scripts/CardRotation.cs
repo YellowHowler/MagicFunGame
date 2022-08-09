@@ -48,6 +48,7 @@ public class CardRotation : MonoBehaviour
             float angle = pi/2 + (i - (cardNum-1)/2f) * angGap;
             cards[i].transform.localPosition = new Vector3(Mathf.Cos(angle) * radius, midY, Mathf.Sin(angle) * radius);
             cards[i].transform.localRotation = Quaternion.Euler(40, -1 * Mathf.Rad2Deg * (angle - pi/2), 0);
+            cards[i].GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         }
     }
     void Update()

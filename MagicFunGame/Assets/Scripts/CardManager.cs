@@ -109,10 +109,6 @@ public class CardManager : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            holdFrontTime = 0;
-        }
     }
 
     public void UpdateGlyph()
@@ -131,6 +127,7 @@ public class CardManager : MonoBehaviour
 
     private void ThrowFire()
     {
+        rb.velocity = rb.velocity.normalized * 6;
         fireP.Play();
     }
 
@@ -210,6 +207,10 @@ public class CardManager : MonoBehaviour
                     // stormFogP.Play();
                 }
             }
+        }
+        else
+        {
+            holdFrontTime = 0;
         }
     }
 
