@@ -161,6 +161,7 @@ public class CardManager : MonoBehaviour
 
             if (holdFrontTime > 0.7f)
             {
+                //hi
                 if (type == Element.water)
                 {
                     UseSpell(20);
