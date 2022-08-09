@@ -35,7 +35,7 @@ public class SceneTransition : MonoBehaviour
 
     private void Ex()
     {
-        startBtn.gameObject.SetActive(true);
+        startBtn.gameObject.SetActive(false);
     }
 
     public void StartDuel()
