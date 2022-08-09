@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerState : MonoBehaviour
 {
@@ -15,7 +17,12 @@ public class PlayerState : MonoBehaviour
     bool regening;
     bool ticking;
 
+    bool showStatus = false;
+
     public static Dictionary<CardManager.Element, int> damage = new Dictionary<CardManager.Element, int>();
+
+    private Image status;
+    private TextMeshProUGUI statusTxt;
 
     void Start()
     {
@@ -28,6 +35,11 @@ public class PlayerState : MonoBehaviour
         damage.Add(CardManager.Element.water, 30);
         damage.Add(CardManager.Element.lava, 30);
         damage.Add(CardManager.Element.ice, 20);
+
+        status = GameObject.FindGameObjectWithTag("Status Box").GetComponent<Image>();
+        statusTxt = status.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        Status();
     }
 
     // Update is called once per frame
@@ -115,5 +127,24 @@ public class PlayerState : MonoBehaviour
         damage[CardManager.Element.water] += amp;
         yield return new WaitForSeconds(amp);
         damage[CardManager.Element.water] -= amp;
+    }
+
+    public void OnStatus()
+    {
+        showStatus = !showStatus;
+        Status();
+    }
+
+    private void Status()
+    {
+        if(showStatus)
+        {
+            status.gameObject.SetActive(true);
+            statusTxt.text = "Health: " + health + "/" + maxHealth + "\n" + "Mana: " + mana + "/" + maxMana;
+        }
+        else
+        {
+            status.gameObject.SetActive(false);
+        }
     }
 }

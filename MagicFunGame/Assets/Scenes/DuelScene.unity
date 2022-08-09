@@ -6463,7 +6463,7 @@ GameObject:
   - component: {fileID: 979820691}
   m_Layer: 0
   m_Name: LeftHand Controller
-  m_TagString: Untagged
+  m_TagString: LeftHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17547,7 +17547,7 @@ GameObject:
   - component: {fileID: 1930381790}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: Status Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17793,6 +17793,7 @@ GameObject:
   - component: {fileID: 2025983790}
   - component: {fileID: 2025983789}
   - component: {fileID: 2025983793}
+  - component: {fileID: 2025983795}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -18000,6 +18001,20 @@ MonoBehaviour:
   maxHealth: 100
   maxMana: 100
   tickDmg: 0
+--- !u!114 &2025983795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025983787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017c5e3933235514c9520e1dace2a4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ActionAssets:
+  - {fileID: -944628639613478452, guid: 636aae8d244bc4b9f9442e8585adfc89, type: 3}
 --- !u!1 &2037039421
 GameObject:
   m_ObjectHideFlags: 0
