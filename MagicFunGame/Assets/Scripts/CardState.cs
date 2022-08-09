@@ -81,11 +81,11 @@ public class CardState : MonoBehaviour
                     if (other.transform.position.y < transform.position.y)
                     {
                         au.PlayOneShot(cardSounds[2], 1);
-                        GetComponent<CardManager>().type = elements.Value;
-                        GetComponent<CardManager>().UpdateGlyph();
-                        print(GetComponent<CardManager>().type);
-                        deck.cards.Remove(other.gameObject);
-                        Destroy(other.gameObject);
+                        other.GetComponent<CardManager>().type = elements.Value;
+                        other.GetComponent<CardManager>().UpdateGlyph();
+                        other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                        deck.cards.Remove(gameObject);
+                        Destroy(gameObject);
                         deck.AdjustCards();
                     }
                 }
@@ -134,17 +134,20 @@ public class CardState : MonoBehaviour
         gripping = false;
         GetComponent<CardManager>().isSelected = false;
 
-        int index = 0;
-
-        for(int i = 0; i < deck.cards.Count; i++)
+        if(inDeck)
         {
-            if(transform.localPosition.x > deck.cards[i].transform.localPosition.x) index = i + 1;
+            int index = 0;
+
+            for(int i = 0; i < deck.cards.Count; i++)
+            {
+                if(transform.localPosition.x > deck.cards[i].transform.localPosition.x) index = i + 1;
+            }
+
+            if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
+            else deck.cards.Add(gameObject);
+            deck.AdjustCards();
+
+            rb.velocity = new Vector3(0, 0, 0);
         }
-
-        if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
-        else deck.cards.Add(gameObject);
-        deck.AdjustCards();
-
-        rb.velocity = new Vector3(0, 0, 0);
     }
 }

@@ -95,8 +95,8 @@ public class CardManager : MonoBehaviour
                 UseSpell(-20);
                 if (isUsed)
                 {
+                    childRend.material.color = Color.red;
                     ThrowFire();
-
                 }
             }
             else if (type == Element.lava && rb.velocity.magnitude > 0.05f)
@@ -107,7 +107,6 @@ public class CardManager : MonoBehaviour
                 {
                     ThrowFire();
                 }
-
             }
         }
         else

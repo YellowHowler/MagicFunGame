@@ -4992,7 +4992,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.85, z: 0.2}
+  m_Size: {x: 1, y: 1.85, z: 0.08}
   m_Center: {x: 0, y: 0.88, z: 0}
 --- !u!54 &3721837335412220540
 Rigidbody:
@@ -5162,7 +5162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4a1c8aaefcf264faaadd461783c531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpellWeaverCoords: {fileID: 0}
   cardSounds:
   - {fileID: 8300000, guid: 1da4b7352b4654c8497da4d4ae226485, type: 3}
   - {fileID: 8300000, guid: 92cd2b579216543b0a9e5e08b27b3137, type: 3}
