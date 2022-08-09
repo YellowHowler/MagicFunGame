@@ -66,7 +66,7 @@ public class PlayerState : MonoBehaviour
     IEnumerator tickDamage()
     {
         ticking = false;
-        ChangeHealth(-1 * (tickDmg / 10));
+        ChangeHealth(-1);
         flash.StartFlash(0.25f, .5f, Color.red);
         tickDmg -=1;
         yield return new WaitForSeconds(1);
