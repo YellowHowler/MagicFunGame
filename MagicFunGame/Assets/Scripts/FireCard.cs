@@ -24,6 +24,7 @@ public class FireCard : MonoBehaviour
         {
             col.gameObject.GetComponent<PlayerState>().ChangeHealth(-10);
             Debug.Log("hit");
+            Destroy(this.gameObject);
         }
     }
 }

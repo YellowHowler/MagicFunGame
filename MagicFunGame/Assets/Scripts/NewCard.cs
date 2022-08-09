@@ -27,7 +27,7 @@ public class NewCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<CardManager>().isSelected)
+        if (!GetComponent<CardManager>().isSelected)
         {
             if (thisCard == cardType.fire)
             {

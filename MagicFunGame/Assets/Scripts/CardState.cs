@@ -12,11 +12,11 @@ public class CardState : MonoBehaviour
     CardManager cm;
     Rigidbody rb;
     CardManager.Element currentCard;
-
+    
     private AudioSource au;
 
     public static Dictionary<CardManager.Element[], CardManager.Element> dict = new Dictionary<CardManager.Element[], CardManager.Element>();
-
+    
     bool gripping;
     public bool inDeck{get;set;}
 
@@ -26,7 +26,7 @@ public class CardState : MonoBehaviour
         cm = GetComponent<CardManager>();
         rb = GetComponent<Rigidbody>();
 
-        deck = transform.parent.gameObject.GetComponent<CardRotation>();
+        deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<CardRotation>();
         currentCard = this.GetComponent<CardManager>().type;
 
         dict.Add(new CardManager.Element[] { CardManager.Element.fire, CardManager.Element.earth }, CardManager.Element.lava);//lava
@@ -49,18 +49,11 @@ public class CardState : MonoBehaviour
     //add when player lets go of card
     private void OnTriggerEnter(Collider other)
     {
-<<<<<<< Updated upstream
-        if (other.tag == "SpellWeaver" && !gripping)
-        {
-            transform.position = SpellWeaverCoords.position;
-        }
-=======
         if (other.tag == "Deck")
         {
             inDeck = true;
         }
 
->>>>>>> Stashed changes
         //dictionary 
         //keys of arrays of spells
         //def of enum type 
