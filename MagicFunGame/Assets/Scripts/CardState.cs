@@ -74,8 +74,6 @@ public class CardState : MonoBehaviour
                     deck.cards.Remove(gameObject);
                     Destroy(gameObject);
                     deck.AdjustCards();
-
-                    break;
                 }
             }
         }
@@ -124,22 +122,25 @@ public class CardState : MonoBehaviour
         gripping = false;
         GetComponent<CardManager>().isSelected = false;
 
-        if(inDeck)
+        if(rb.velocity.magnitude < 0.2f)
         {
-            int index = 0;
-
-            for(int i = 0; i < deck.cards.Count; i++)
+            if(inDeck)
             {
-                if(transform.position.x > deck.cards[i].transform.position.x) index += 1;
+                int index = 0;
+
+                for(int i = 0; i < deck.cards.Count; i++)
+                {
+                    if(transform.position.x > deck.cards[i].transform.position.x) index += 1;
+                }
+
+                if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
+                else deck.cards.Add(gameObject);
+                deck.AdjustCards();
+
+                rb.velocity = new Vector3(0, 0, 0);
+                rb.angularVelocity = new Vector3(0, 0, 0);
             }
-
-            if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
-            else deck.cards.Add(gameObject);
-            deck.AdjustCards();
-
-            rb.velocity = new Vector3(0, 0, 0);
-            rb.angularVelocity = new Vector3(0, 0, 0);
+            else rb.useGravity = true;
         }
-        else rb.useGravity = true;
     }
 }
