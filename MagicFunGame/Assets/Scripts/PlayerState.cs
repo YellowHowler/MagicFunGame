@@ -67,6 +67,7 @@ public class PlayerState : MonoBehaviour
     {
         ticking = false;
         ChangeHealth(-1 * (tickDmg / 10));
+        tickDmg -=1;
         yield return new WaitForSeconds(1);
         ticking = true;
     }
@@ -83,10 +84,14 @@ public class PlayerState : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "EnemyCard")
+        if (collision.gameObject.tag == "EnemyFire")
         {
-            CardManager.Element hitSpell = collision.gameObject.GetComponent<CardManager>().type;
-            takeDmg(hitSpell);
+            takeDmg(CardManager.Element.fire);
+        }
+        else if (collision.gameObject.tag == "EnemyLava")
+        {
+            takeDmg(CardManager.Element.lava);
+        
         }
     }
     void takeDmg(CardManager.Element spell)
