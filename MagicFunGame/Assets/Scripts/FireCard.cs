@@ -9,7 +9,7 @@ public class FireCard : MonoBehaviour
     void Start()
     {
         GetComponent<AudioSource>().Play();
-
+        Destroy(gameObject, 7);
     }
 
     // Update is called once per frame
