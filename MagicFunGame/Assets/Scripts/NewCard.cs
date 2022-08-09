@@ -29,27 +29,31 @@ public class NewCard : MonoBehaviour
     {
         if (GetComponent<CardManager>().isSelected)
         {
+            GameObject newCard = null;
+
             if (thisCard == cardType.fire)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                Instantiate(fireCard);
+                newCard = Instantiate(fireCard);
             }
             else if (thisCard == cardType.earth)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                Instantiate(earthCard);
+                newCard = Instantiate(earthCard);
             }
             else if (thisCard == cardType.water)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                Instantiate(waterCard);
+                newCard = Instantiate(waterCard);
             }
             else if (thisCard == cardType.wind)
             {
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                Instantiate(windCard);
+                newCard = Instantiate(windCard);
             }
 
+            newCard.transform.parent = GameObject.FindGameObjectWithTag("Deck").transform;
+            GetComponent<CardManager>().isSelected = false;
         }
     }
 }

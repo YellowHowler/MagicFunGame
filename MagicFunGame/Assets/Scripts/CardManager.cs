@@ -206,7 +206,7 @@ public class CardManager : MonoBehaviour
 
             if(isUsed) 
             {
-                Instantiate(woodObj, transform.position, Quaternion.Euler(0, transform.rotation.y, 0));
+                Instantiate(woodObj, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.Euler(0, transform.rotation.y, 0));
                 Destroy(gameObject);
             }
         }

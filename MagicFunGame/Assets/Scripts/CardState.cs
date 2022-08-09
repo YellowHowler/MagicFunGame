@@ -57,38 +57,25 @@ public class CardState : MonoBehaviour
         //dictionary 
         //keys of arrays of spells
         //def of enum type 
-        else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type)
+        else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type && other.transform.position.y < transform.position.y)
         {
             foreach (KeyValuePair<CardManager.Element[], CardManager.Element> elements in dict)
             {
                 CardManager.Element[] temp = elements.Key;
-                int numMatching = 0;
-                
-                for (int i = 0; i < temp.Length; i++)
-                {
-                    if (temp[i] == other.GetComponent<CardManager>().type)
-                    {
-                        numMatching++;
+                CardManager.Element thisCard = GetComponent<CardManager>().type;
+                CardManager.Element otherCard = other.GetComponent<CardManager>().type;
 
-                    }
-                    if (temp[i] == GetComponent<CardManager>().type)
-                    {
-                        numMatching++;
-                    }
-
-                }
-                if (numMatching == 2)
+                if ((temp[0] == otherCard && temp[1] == thisCard) || (temp[0] == thisCard && temp[1] == otherCard))
                 {
-                    if (other.transform.position.y < transform.position.y)
-                    {
-                        au.PlayOneShot(cardSounds[2], 1);
-                        other.GetComponent<CardManager>().type = elements.Value;
-                        other.GetComponent<CardManager>().UpdateGlyph();
-                        other.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                        deck.cards.Remove(gameObject);
-                        Destroy(gameObject);
-                        deck.AdjustCards();
-                    }
+                    au.PlayOneShot(cardSounds[2], 1);
+                    other.GetComponent<CardManager>().type = elements.Value;
+                    other.GetComponent<CardManager>().UpdateGlyph();
+                    other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    deck.cards.Remove(gameObject);
+                    Destroy(gameObject);
+                    deck.AdjustCards();
+
+                    break;
                 }
             }
         }
@@ -143,7 +130,7 @@ public class CardState : MonoBehaviour
 
             for(int i = 0; i < deck.cards.Count; i++)
             {
-                if(transform.position.x > deck.cards[i].transform.position.x) index = i + 1;
+                if(transform.position.x > deck.cards[i].transform.position.x) index += 1;
             }
 
             if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
