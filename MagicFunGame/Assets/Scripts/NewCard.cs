@@ -51,8 +51,7 @@ public class NewCard : MonoBehaviour
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 newCard = Instantiate(windCard, this.transform.position, Quaternion.identity);
             }
-
-            newCard.transform.parent = GameObject.FindGameObjectWithTag("Deck").transform;
+            
             GetComponent<CardManager>().isSelected = false;
         }
     }
