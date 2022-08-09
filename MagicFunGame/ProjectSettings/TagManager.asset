@@ -18,6 +18,7 @@ TagManager:
   - RightHand
   - LeftHand
   - Status Box
+  - EnemyFire
   layers:
   - Default
   - TransparentFX
