@@ -114,6 +114,57 @@ public class CardManager : MonoBehaviour
         {
             holdFrontTime += Time.deltaTime;
             childRend.material.color = new Color(childRend.material.color.r + 0.05f, 0, 0, 1);
+
+            if (holdFrontTime > 0.7f)
+            {
+                //hi
+                if (type == Element.water)
+                {
+                    UseSpell(20);
+                    if (isUsed)
+                    {
+                        StartCoroutine(ShootWater());
+
+                    }
+                }
+                else if (type == Element.light)
+                {
+                    UseSpell(40);
+                    if (isUsed)
+                    {
+                        StartCoroutine(ShootWater());
+                    }
+                }
+                else if (type == Element.wind)
+                {
+                    UseSpell(10);
+                    if (isUsed)
+                    {
+                        windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
+                        windP.Play();
+                    }
+                }
+                else if (type == Element.storm)
+                {
+                    UseSpell(20);
+
+                    if (isUsed)
+                    {
+                        //PlayerState.damage[CardManager.Element.water] += 5;
+                        RenderSettings.skybox = stormSky;
+                        stormCloudP.Play();
+                    }
+                }
+                else if (type == Element.steam)
+                {
+                    //col.gameObject.GetComponent<PlayerState>().tickDmg = 5;
+                    //player.gameObject.GetComponent<PlayerState>().mana -= 20;
+                    // stormFogP.Play();
+                }
+
+                isHolding = false;
+                holdFrontTime = 0;
+            }
         }
         else 
         {
@@ -169,54 +220,6 @@ public class CardManager : MonoBehaviour
         if (isSelected && !isUsed && col.gameObject.CompareTag("Check"))
         {
             isHolding = true;
-
-            if (holdFrontTime > 0.7f)
-            {
-                //hi
-                if (type == Element.water)
-                {
-                    UseSpell(20);
-                    if (isUsed)
-                    {
-                        StartCoroutine(ShootWater());
-
-                    }
-                }
-                else if (type == Element.light)
-                {
-                    UseSpell(40);
-                    if (isUsed)
-                    {
-                        StartCoroutine(ShootWater());
-                    }
-                }
-                else if (type == Element.wind)
-                {
-                    UseSpell(10);
-                    if (isUsed)
-                    {
-                        windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
-                        windP.Play();
-                    }
-                }
-                else if (type == Element.storm)
-                {
-                    UseSpell(20);
-
-                    if (isUsed)
-                    {
-                        //PlayerState.damage[CardManager.Element.water] += 5;
-                        RenderSettings.skybox = stormSky;
-                        stormCloudP.Play();
-                    }
-                }
-                else if (type == Element.steam)
-                {
-                    //col.gameObject.GetComponent<PlayerState>().tickDmg = 5;
-                    //player.gameObject.GetComponent<PlayerState>().mana -= 20;
-                    // stormFogP.Play();
-                }
-            }
         }
     }
 
