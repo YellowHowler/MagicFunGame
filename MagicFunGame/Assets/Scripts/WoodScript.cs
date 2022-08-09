@@ -37,8 +37,8 @@ public class WoodScript : MonoBehaviour
         {
             for (int j = 0; j < 3; j++)
             {
-                newWood.transform.localScale = new Vector3(newWood.localScale.x, newWood.localScale.y + 0.1f, newWood.localScale.z);
-                //GetComponent<BoxCollider>().size = new Vector3(1, 1, 1);
+                newWood.transform.localScale = new Vector3(newWood.localScale.x, newWood.localScale.y + 0.3f, newWood.localScale.z);
+                GetComponent<BoxCollider>().size = new Vector3(1, 1, 1);
                 yield return sec2;
             }
 

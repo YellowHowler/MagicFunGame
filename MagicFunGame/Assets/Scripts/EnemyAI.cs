@@ -64,10 +64,13 @@ public class EnemyAI : MonoBehaviour
             switch (spell)
             {
                 case 0:
-                    Vector3 firePos = transform.position - (transform.position - player.transform.position).normalized * 2;
-                    firePos = new Vector3(firePos.x, player.transform.position.y - 0.32f, firePos.z);
-                    Rigidbody fireRb = Instantiate(fireCard, firePos, Quaternion.Euler(90, transform.rotation.y, 0)).GetComponent<Rigidbody>();
-                    fireRb.velocity = (player.transform.position - transform.position).normalized * 6;
+                    for(int i = 0; i < 3; i++)
+                    {
+                        Vector3 firePos = transform.position - (transform.position - player.transform.position).normalized * 2;
+                        firePos = new Vector3(firePos.x + Random.Range(-0.2f, 0.2f), player.transform.position.y - Random.Range(0.15f, 0.45f), firePos.z);
+                        Rigidbody fireRb = Instantiate(fireCard, firePos, Quaternion.Euler(90, transform.rotation.y, 0)).GetComponent<Rigidbody>();
+                        fireRb.velocity = (player.transform.position - transform.position).normalized * 6;
+                    }
 
                     break;
                 case 1:
@@ -111,7 +114,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator AttackCD()
     {
         CD = false;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(Random.Range(3f, 5f));
         WaitForSeconds sec = new WaitForSeconds(.05f);
         for (float i = 0; i < 1; i = i + .1f)
         {
@@ -125,7 +128,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Movement()
     {
         move = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         rb.velocity = new Vector3(Random.Range(-1, 2) * speed, 0, 0);
         move = true;
     }
