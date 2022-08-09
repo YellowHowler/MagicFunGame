@@ -26,5 +26,10 @@ public class FireCard : MonoBehaviour
             Debug.Log("hit");
             Destroy(this.gameObject);
         }
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(this.gameObject);
     }
 }
