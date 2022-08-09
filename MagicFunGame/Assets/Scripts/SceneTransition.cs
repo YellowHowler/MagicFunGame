@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Button startBtn;
     void Start()
     {
-        
+        Ex();
     }
 
     // Update is called once per frame
@@ -19,12 +20,22 @@ public class SceneTransition : MonoBehaviour
 
     public void HoverEnter()
     {
-
+        Ent();
     }
 
     public void HoverExit()
     {
+        Ex();
+    }
 
+    private void Ent()
+    {
+        startBtn.gameObject.SetActive(true);
+    }
+
+    private void Ex()
+    {
+        startBtn.gameObject.SetActive(true);
     }
 
     public void StartDuel()
