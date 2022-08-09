@@ -81,7 +81,7 @@ public class CardManager : MonoBehaviour
 
         RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
 
-        isSelected = true;
+        
 
         UpdateGlyph();
     }
