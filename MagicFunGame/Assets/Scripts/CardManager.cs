@@ -55,6 +55,7 @@ public class CardManager : MonoBehaviour
     private float fastSpell;
 
     private bool isUsed = false;
+    private bool isHolding = false;
     public bool isSelected { get; set; }
 
     private float holdFrontTime = 0;
@@ -108,6 +109,9 @@ public class CardManager : MonoBehaviour
                 }
             }
         }
+
+        if(isHolding) holdFrontTime += Time.deltaTime;
+        else holdFrontTime = 0;
     }
 
     public void UpdateGlyph()
@@ -128,7 +132,7 @@ public class CardManager : MonoBehaviour
     {
         rb.angularVelocity = Vector3.zero;
         rb.velocity = rb.velocity.normalized * 6;
-        fireP.Play();
+        //fireP.Play();
     }
 
     private void OnCollisionEnter(Collision col)
@@ -157,7 +161,7 @@ public class CardManager : MonoBehaviour
     {
         if (isSelected && !isUsed && col.gameObject.CompareTag("Check"))
         {
-            holdFrontTime += Time.deltaTime;
+            isHolding = true;
 
             if (holdFrontTime > 0.7f)
             {
@@ -209,7 +213,7 @@ public class CardManager : MonoBehaviour
         }
         else
         {
-            holdFrontTime = 0;
+            isHolding = false;
         }
     }
 
@@ -220,10 +224,7 @@ public class CardManager : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.CompareTag("Check"))
-        {
-            holdFrontTime = 0;
-        }
+       
     }
 
     private IEnumerator ShootWater()

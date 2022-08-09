@@ -50,6 +50,8 @@ public class CardRotation : MonoBehaviour
             cards[i].transform.localRotation = Quaternion.Euler(40, -1 * Mathf.Rad2Deg * (angle - pi/2), 0);
             cards[i].GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             cards[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+            cards[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
     }
     void Update()

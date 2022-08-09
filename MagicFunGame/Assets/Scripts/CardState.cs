@@ -120,6 +120,7 @@ public class CardState : MonoBehaviour
 
     private void ActTest()
     {
+        rb.constraints = RigidbodyConstraints.None;
         au.PlayOneShot(cardSounds[0]);
 
         gripping = true;
