@@ -155,8 +155,7 @@ public class CardManager : MonoBehaviour
                 else if (type == Element.steam)
                 {
                     //col.gameObject.GetComponent<PlayerState>().tickDmg = 5;
-                    //player.gameObject.GetComponent<PlayerState>().mana -= 20;
-                    // stormFogP.Play();
+                    stormFogP.Play();
                 }
 
                 isHolding = false;
