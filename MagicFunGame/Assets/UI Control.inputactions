@@ -1,1 +1,45 @@
-{}
+{
+    "name": "UI Control",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "df186fcf-e273-4adb-a6a0-dbbc98c8266c",
+            "actions": [
+                {
+                    "name": "Status",
+                    "type": "Button",
+                    "id": "63e387c3-273d-47d5-bb7e-5c24de9a7b87",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "78250e17-c860-41d3-bb2d-cb3e996783cf",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Status",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "169c29bd-4ed3-4aff-997d-cf8a5de4ea6c",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Status",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
