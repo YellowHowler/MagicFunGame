@@ -63,6 +63,7 @@ public class CardState : MonoBehaviour
             {
                 CardManager.Element[] temp = elements.Key;
                 int numMatching = 0;
+                
                 for (int i = 0; i < temp.Length; i++)
                 {
                     if (temp[i] == other.GetComponent<CardManager>().type)
@@ -120,6 +121,7 @@ public class CardState : MonoBehaviour
 
     private void ActTest()
     {
+        rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.None;
         au.PlayOneShot(cardSounds[0]);
 
@@ -151,5 +153,6 @@ public class CardState : MonoBehaviour
             rb.velocity = new Vector3(0, 0, 0);
             rb.angularVelocity = new Vector3(0, 0, 0);
         }
+        else rb.useGravity = true;
     }
 }

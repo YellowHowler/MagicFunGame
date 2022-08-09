@@ -110,8 +110,15 @@ public class CardManager : MonoBehaviour
             }
         }
 
-        if(isHolding) holdFrontTime += Time.deltaTime;
-        else holdFrontTime = 0;
+        if(isHolding)
+        {
+            holdFrontTime += Time.deltaTime;
+            childRend.material.color = new Color(childRend.material.color.r + 0.05f, 0, 0, 1);
+        }
+        else 
+        {
+            holdFrontTime = 0;
+        }
     }
 
     public void UpdateGlyph()
@@ -211,10 +218,6 @@ public class CardManager : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            isHolding = false;
-        }
     }
 
     private void OnTriggerEnter(Collider col)
@@ -224,7 +227,10 @@ public class CardManager : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-       
+       if(col.gameObject.CompareTag("Check"))
+        {
+            isHolding = false;
+        }
     }
 
     private IEnumerator ShootWater()
