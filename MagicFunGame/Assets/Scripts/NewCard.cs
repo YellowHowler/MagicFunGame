@@ -10,6 +10,9 @@ public class NewCard : MonoBehaviour
     [SerializeField] GameObject earthCard;
     [SerializeField] GameObject windCard;
     [SerializeField] cardType thisCard;
+
+    private Vector3 startPos;
+
     enum cardType
     {
         fire = 0,
@@ -31,6 +34,8 @@ public class NewCard : MonoBehaviour
         GetComponent<CardState>().enabled = false;
 
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -49,21 +54,21 @@ public class NewCard : MonoBehaviour
 
         if (thisCard == cardType.fire)
         {
-            Instantiate(fireCard, this.transform.position, Quaternion.identity);
+            Instantiate(fireCard, startPos, Quaternion.identity);
             
         }
         else if (thisCard == cardType.earth)
         {
-            Instantiate(earthCard, this.transform.position, Quaternion.identity);
+            Instantiate(earthCard, startPos, Quaternion.identity);
         }
         else if (thisCard == cardType.water)
         {
-            Instantiate(waterCard, this.transform.position, Quaternion.identity);
+            Instantiate(waterCard, startPos, Quaternion.identity);
 
         }
         else if (thisCard == cardType.wind)
         {
-            Instantiate(windCard, this.transform.position, Quaternion.identity);
+            Instantiate(windCard, startPos, Quaternion.identity);
         }
         
 

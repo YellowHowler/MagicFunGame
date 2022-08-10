@@ -89,6 +89,7 @@ public class EnemyAI : MonoBehaviour
                     GameObject newWood = Instantiate(woodObj, woodPos, Quaternion.Euler(0, transform.rotation.y, 0));
                     break;
                 case 2:
+                    GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>().Play();
                     print("steam");
                     break;
                 
@@ -106,7 +107,7 @@ public class EnemyAI : MonoBehaviour
                     StartCoroutine(ShootWater());
                     break;
                 case 1:
-                    //steam
+                    GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>().Play();
                     print("steam");
                     break;
                 case 2:
@@ -114,10 +115,7 @@ public class EnemyAI : MonoBehaviour
                     GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>().Play();
                     //storm
                     break;
-
             }
-
-
         }
     }
     
