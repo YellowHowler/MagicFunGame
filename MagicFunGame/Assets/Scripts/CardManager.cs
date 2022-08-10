@@ -18,12 +18,11 @@ public class CardManager : MonoBehaviour
         steam = 6,
         sand = 7,
         wood = 8,
-        ice = 9,
-        lightning = 10,
-        glass = 11,
-        smoke = 12,
-        rock = 13,
-        life = 14
+        lightning = 9,
+        glass = 10,
+        smoke = 11,
+        rock = 12,
+        life = 13
     }
 
     [SerializeField] public Element type;
@@ -183,7 +182,15 @@ public class CardManager : MonoBehaviour
                         Environment.Instance.StartSteam();
                     }
                 }
-
+                else if (type == Element.life)
+                {
+                    UseSpell(60);
+                    if (isUsed)
+                    {
+                        player.GetComponent<PlayerState>().ChangeHealth(100);
+                    
+                    }
+                }
 
                 isHolding = false;
                 holdFrontTime = 0;
