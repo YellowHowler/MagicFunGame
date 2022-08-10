@@ -52,7 +52,7 @@ public class NewCard : MonoBehaviour
 
     private IEnumerator RestoreCard()
     {
-        yield return new WaitForSecond(2);
+        yield return new WaitForSeconds(2);
 
         GameObject newCard = Instantiate(card, startPos, Quaternion.identity);
         newCard.GetComponent<NewCard>().isSpawn = true;
