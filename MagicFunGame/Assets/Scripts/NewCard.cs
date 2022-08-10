@@ -44,6 +44,16 @@ public class NewCard : MonoBehaviour
     {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 
+        StartCoroutine(RestoreCard());
+        
+        GetComponent<CardState>().canCombine = true;
+        isSpawn = false;
+    }
+
+    private IEnumerator RestoreCard()
+    {
+        yield return new WaitForSecond(2);
+
         GameObject newCard = Instantiate(card, startPos, Quaternion.identity);
         newCard.GetComponent<NewCard>().isSpawn = true;
 
@@ -54,7 +64,5 @@ public class NewCard : MonoBehaviour
 
         newCard.GetComponent<CardManager>().UpdateGlyph();
 
-        GetComponent<CardState>().canCombine = true;
-        isSpawn = false;
     }
 }
