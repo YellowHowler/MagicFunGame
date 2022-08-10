@@ -9806,6 +9806,10 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 4b0ab8a1d696e49d39a16f04758a2a45, type: 3}
   - {fileID: 2800000, guid: cd5ac9ac72a9a4d9d93a52d392e16dc2, type: 3}
   - {fileID: 2800000, guid: 15b9da66e2c9440e698fe2d67c9ffbbf, type: 3}
+  - {fileID: 2800000, guid: 25cbd931eeb8b44d7a61a2d3845280ed, type: 3}
+  - {fileID: 2800000, guid: a6afa033b83af4cbd8f54e02ef4c58c8, type: 3}
+  - {fileID: 2800000, guid: d4610d16dcdda4874a0630684ceed4fd, type: 3}
+  - {fileID: 2800000, guid: e740a65a4d25748a6bd66232f1634692, type: 3}
   glyphMetals:
   - {fileID: 2800000, guid: c68fed7d5859549c9a9816ead01cc21d, type: 3}
   - {fileID: 2800000, guid: e74f93e8fd6ed4f34b093a6d5d779bee, type: 3}
@@ -9816,6 +9820,10 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 48277257bd8404f668731843bc5741ae, type: 3}
   - {fileID: 2800000, guid: 99fba40d9e9c742128eee0665f5b6ef9, type: 3}
   - {fileID: 2800000, guid: dff6efb169c954ba282731f9c62de0f6, type: 3}
+  - {fileID: 2800000, guid: 1253679e139fa4742a8d2d7dd04719d0, type: 3}
+  - {fileID: 2800000, guid: 016651ad2cf1345589d4821cc9d7ba7f, type: 3}
+  - {fileID: 2800000, guid: 462f8b07dde42411db84a1a1e348c4ec, type: 3}
+  - {fileID: 2800000, guid: 410c6b70bb8dd4b26a6e6387f3532494, type: 3}
   glyphEmissions:
   - {fileID: 2800000, guid: 21053555e955940dda0afdde3782646c, type: 3}
   - {fileID: 2800000, guid: ed2ec9a1aef044d5d9e403eae04f2e9e, type: 3}
@@ -9826,6 +9834,10 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 13ccc266c66784c5d87a7013076151f3, type: 3}
   - {fileID: 2800000, guid: 3e7468971ad5346e4bd072f1610842f4, type: 3}
   - {fileID: 2800000, guid: fb72c45b2705f4e128da3fc2c9d7b514, type: 3}
+  - {fileID: 2800000, guid: 31580d5b036c9457e897318063dd0407, type: 3}
+  - {fileID: 2800000, guid: a3e8d2dfc2d13442b8fa4ee58ed3c6dd, type: 3}
+  - {fileID: 2800000, guid: 79082c1e9aae74b9fb62387bf5721ed7, type: 3}
+  - {fileID: 2800000, guid: ac2fa62d53ee54da99d9885553ba1319, type: 3}
   glyphColors:
   - {r: 1, g: 0.5251731, b: 0.02352941, a: 1}
   - {r: 0, g: 0.5593617, b: 1, a: 1}
@@ -9836,17 +9848,24 @@ MonoBehaviour:
   - {r: 0.9103774, g: 1, b: 0.97951484, a: 1}
   - {r: 1, g: 0.8516452, b: 0.6273585, a: 1}
   - {r: 0.8396226, g: 0.65258074, b: 0.3920879, a: 1}
+  - {r: 1, g: 0.8306208, b: 0.0990566, a: 1}
+  - {r: 1, g: 0.8247285, b: 0.5613208, a: 1}
+  - {r: 0.7570736, g: 0.43867922, b: 1, a: 1}
+  - {r: 0.88430566, g: 1, b: 0.25943398, a: 1}
   elementSounds:
   - {fileID: 8300000, guid: 4e8331daecc3f40338adf5d77e511f57, type: 3}
   - {fileID: 8300000, guid: 5f90a08ad8b384e719cec36b2d2b95eb, type: 3}
-  - {fileID: 8300000, guid: 4e8331daecc3f40338adf5d77e511f57, type: 3}
+  - {fileID: 8300000, guid: c8233e43503204dce92c54b75da9d705, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
-  - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
-  - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
-  - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
+  - {fileID: 8300000, guid: cff17c88f72b748469ef08da3f7cbeef, type: 3}
+  - {fileID: 8300000, guid: e0be52dd6edec4a07a1fd1e9886e8b0a, type: 3}
+  - {fileID: 8300000, guid: f1a5f50e317b34bb990e1dcd4ef0aea8, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
   - {fileID: 8300000, guid: bda9317f0697d486ebba9190666fa343, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   waterP: {fileID: 3721837334158821929}
   lightningP: {fileID: 3661738879491409188}
   lifeP: {fileID: 0}
