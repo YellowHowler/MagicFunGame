@@ -85,6 +85,12 @@ public class CardManager : MonoBehaviour
         fireP = transform.GetChild(3).gameObject.GetComponent<ParticleSystem>();
         fireP.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
+        float factor = Mathf.Pow(2,3);
+        for(int i = 0; i < glyphColors.Length; i++)
+        {
+            glyphColors[i] = new Color(glyphColors[i].r*factor,glyphColors[i].g*factor,glyphColors[i].b*factor);
+        }
+        
         UpdateGlyph();
     }
 
@@ -195,9 +201,31 @@ public class CardManager : MonoBehaviour
         }
         else
         {
+            childRend.material.SetTexture("_BaseMap", glyphs[(int)type]);
+
+            childRend.material.SetTexture("_MetallicGlossMap", glyphMetals[(int)type]);
+
             childRend.material.EnableKeyword("_EMISSION");
-            childRend.material.SetTexture("_EmissionMap", glyphEmisssions[(int)type]);
+            childRend.material.SetTexture("_EmissionMap", glyphEmissions[(int)type]);
             childRend.material.SetColor("_EmissionColor", glyphColors[(int)type]);
+        }
+    }
+
+    public void UpdateGlyph(int typeInt)
+    {
+        if (type == Element.none)
+        {
+            childRend.material.DisableKeyword("_EMISSION");
+        }
+        else
+        {
+            childRend.material.SetTexture("_BaseMap", glyphs[typeInt]);
+
+            childRend.material.SetTexture("_MetallicGlossMap", glyphMetals[typeInt]);
+
+            childRend.material.EnableKeyword("_EMISSION");
+            childRend.material.SetTexture("_EmissionMap", glyphEmissions[typeInt]);
+            childRend.material.SetColor("_EmissionColor", glyphColors[typeInt]);
         }
     }
 

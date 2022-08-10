@@ -12,10 +12,10 @@ public class NewCard : MonoBehaviour
     [SerializeField] cardType thisCard;
     enum cardType
     {
-        fire,
-        water,
-        earth,
-        wind
+        fire = 0,
+        water = 1,
+        earth = 2,
+        wind = 3,
 
     }
     // Start is called before the first frame update
@@ -23,6 +23,7 @@ public class NewCard : MonoBehaviour
     {
         GetComponent<CardManager>().enabled = true;
         GetComponent<CardManager>().Start();
+        GetComponent<CardManager>().UpdateGlyph((int)thisCard);
         
         GetComponent<CardManager>().UpdateGlyph();
         GetComponent<CardManager>().enabled = false;

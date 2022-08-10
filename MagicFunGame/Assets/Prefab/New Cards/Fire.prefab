@@ -9675,7 +9675,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6530951452896358472}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aca3b171eeee44d8d9024ad07fb7de7d, type: 3}
   m_Name: 
@@ -9685,15 +9685,35 @@ MonoBehaviour:
   woodObj: {fileID: 7975779382020231221, guid: 24e71bfee2b4148f0a4fe244a59e9ba3, type: 3}
   glassObj: {fileID: 0}
   glyphs:
-  - {fileID: 2800000, guid: 699de77d8e8d64ed195049188371235f, type: 3}
-  - {fileID: 2800000, guid: 08132b839c66a4da181f112cbe43b054, type: 3}
-  - {fileID: 2800000, guid: 2371a493063c54ee9b91ac0d52b8075b, type: 3}
-  - {fileID: 2800000, guid: b1a9de80dd5604d47abe037283200187, type: 3}
-  - {fileID: 2800000, guid: af0cae833c283447780b0fd98d5d9d7d, type: 3}
-  - {fileID: 2800000, guid: 1da40834ea48140e19e45dac8c72bc22, type: 3}
-  - {fileID: 2800000, guid: 3b71fc92196d84f2b8dbb71472e001bf, type: 3}
-  - {fileID: 2800000, guid: e3cbc599d036b409f82927b939407dee, type: 3}
-  - {fileID: 2800000, guid: b4d76a2d976934af5aa79aebfdc2314a, type: 3}
+  - {fileID: 2800000, guid: 0440ada656e854607a8266d04fecb246, type: 3}
+  - {fileID: 2800000, guid: 8dbc96513a96f449cabc7ec32aa75231, type: 3}
+  - {fileID: 2800000, guid: 121b43fca11e748738f40bd94e14f793, type: 3}
+  - {fileID: 2800000, guid: b9c0487e81b2640eaa36269418303004, type: 3}
+  - {fileID: 2800000, guid: 6cc9d720004384b2b917c7b69957139b, type: 3}
+  - {fileID: 2800000, guid: dcd64ce9304b24a9a8a038229e2acaa6, type: 3}
+  - {fileID: 2800000, guid: 4b0ab8a1d696e49d39a16f04758a2a45, type: 3}
+  - {fileID: 2800000, guid: cd5ac9ac72a9a4d9d93a52d392e16dc2, type: 3}
+  - {fileID: 2800000, guid: 15b9da66e2c9440e698fe2d67c9ffbbf, type: 3}
+  glyphMetals:
+  - {fileID: 2800000, guid: c68fed7d5859549c9a9816ead01cc21d, type: 3}
+  - {fileID: 2800000, guid: e74f93e8fd6ed4f34b093a6d5d779bee, type: 3}
+  - {fileID: 2800000, guid: c732a857f8d374aa39b8d0c3f755d44e, type: 3}
+  - {fileID: 2800000, guid: 0fb70e347250a4e57a698256d9d150e4, type: 3}
+  - {fileID: 2800000, guid: bbb141766e25c418db4b2db56a291897, type: 3}
+  - {fileID: 2800000, guid: d284c7ef5b93544239bacabc036e6e4e, type: 3}
+  - {fileID: 2800000, guid: 48277257bd8404f668731843bc5741ae, type: 3}
+  - {fileID: 2800000, guid: 99fba40d9e9c742128eee0665f5b6ef9, type: 3}
+  - {fileID: 2800000, guid: dff6efb169c954ba282731f9c62de0f6, type: 3}
+  glyphEmissions:
+  - {fileID: 2800000, guid: 21053555e955940dda0afdde3782646c, type: 3}
+  - {fileID: 2800000, guid: ed2ec9a1aef044d5d9e403eae04f2e9e, type: 3}
+  - {fileID: 2800000, guid: ae485add200c74fd8a6bf016b0d7cc0e, type: 3}
+  - {fileID: 2800000, guid: e8f7b7255248444d6b94e87e026492fd, type: 3}
+  - {fileID: 2800000, guid: 7b2924de9d2804e9283965bb7c18c6dd, type: 3}
+  - {fileID: 2800000, guid: bc33fc766bdcc43a48c582cc84eaaeab, type: 3}
+  - {fileID: 2800000, guid: 13ccc266c66784c5d87a7013076151f3, type: 3}
+  - {fileID: 2800000, guid: 3e7468971ad5346e4bd072f1610842f4, type: 3}
+  - {fileID: 2800000, guid: fb72c45b2705f4e128da3fc2c9d7b514, type: 3}
   glyphColors:
   - {r: 1, g: 0.5251731, b: 0.02352941, a: 1}
   - {r: 0, g: 0.5593617, b: 1, a: 1}
@@ -9714,8 +9734,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
-  waterP: {fileID: 0}
-  lightningP: {fileID: 0}
+  waterP: {fileID: 3721837334158821929, guid: 97476322afd68412a9cabfd52281df77, type: 3}
+  lightningP: {fileID: 3661738879491409188, guid: 97476322afd68412a9cabfd52281df77,
+    type: 3}
   lifeP: {fileID: 0}
   isHolding: 0
   thrown: 0
@@ -10055,7 +10076,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8617084070918461542}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10069,7 +10090,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8617084070918461542}
-  m_Mesh: {fileID: 4068373912626513877, guid: 18fffcd1ec07646ff87708295e7172a8, type: 3}
+  m_Mesh: {fileID: 4068373912626513877, guid: f449de20b68ca4e3b8a2a85a8e8332ff, type: 3}
 --- !u!23 &1132412924111304876
 MeshRenderer:
   m_ObjectHideFlags: 0
