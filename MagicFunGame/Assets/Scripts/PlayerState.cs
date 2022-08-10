@@ -24,6 +24,9 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private Image status;
     private TextMeshProUGUI statusTxt;
 
+    private AudioSource au;
+    [SerializeField] private AudioClip damageClip;
+
     void Start()
     {
         health = maxHealth;
@@ -37,6 +40,8 @@ public class PlayerState : MonoBehaviour
         damage.Add(CardManager.Element.ice, 20);
 
         statusTxt = status.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        au = GetComponent<AudioSource>();
 
         Status();
     }
@@ -82,6 +87,7 @@ public class PlayerState : MonoBehaviour
     {
         if (amount < -1)
         {
+            au.PlayOneShot(damageClip, 1);
             flash.StartFlash(0.25f, .5f, Color.red);
         }
         else if (amount >0)
