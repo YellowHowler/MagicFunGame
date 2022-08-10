@@ -9839,11 +9839,11 @@ MonoBehaviour:
   elementSounds:
   - {fileID: 8300000, guid: 4e8331daecc3f40338adf5d77e511f57, type: 3}
   - {fileID: 8300000, guid: 5f90a08ad8b384e719cec36b2d2b95eb, type: 3}
-  - {fileID: 8300000, guid: 4e8331daecc3f40338adf5d77e511f57, type: 3}
+  - {fileID: 8300000, guid: c8233e43503204dce92c54b75da9d705, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
-  - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
-  - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
-  - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
+  - {fileID: 8300000, guid: cff17c88f72b748469ef08da3f7cbeef, type: 3}
+  - {fileID: 8300000, guid: e0be52dd6edec4a07a1fd1e9886e8b0a, type: 3}
+  - {fileID: 8300000, guid: f1a5f50e317b34bb990e1dcd4ef0aea8, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
   - {fileID: 8300000, guid: bda9317f0697d486ebba9190666fa343, type: 3}
