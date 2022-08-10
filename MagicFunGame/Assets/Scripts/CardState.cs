@@ -35,7 +35,7 @@ public class CardState : MonoBehaviour
         dict.Add(new CardManager.Element[] { CardManager.Element.wind, CardManager.Element.earth }, CardManager.Element.sand);//sand
         dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.earth }, CardManager.Element.wood); //wood
         //dict.Add(new CardManager.Element[] { CardManager.Element.water, CardManager.Element.wind }, CardManager.Element.none);//ice
-       // dict.Add(new CardManager.Element[] { CardManager.Element.storm, CardManager.Element.fire }, CardManager.Element.light);
+        dict.Add(new CardManager.Element[] { CardManager.Element.storm, CardManager.Element.fire }, CardManager.Element.lightning);
        // dict.Add(new CardManager.Element[] { CardManager.Element.sand, CardManager.Element.fire }, CardManager.Element.glass);
        // dict.Add(new CardManager.Element[] { CardManager.Element.lava, CardManager.Element.water }, CardManager.Element.rock);
        // dict.Add(new CardManager.Element[] { CardManager.Element.earth, CardManager.Element.water }, CardManager.Element.life);

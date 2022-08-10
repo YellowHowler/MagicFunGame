@@ -19,7 +19,7 @@ public class CardManager : MonoBehaviour
         sand = 7,
         wood = 8,
         ice = 9,
-        light = 10,
+        lightning = 10,
         glass = 11,
         smoke = 12,
         rock = 13,
@@ -143,12 +143,12 @@ public class CardManager : MonoBehaviour
                         player.GetComponent<PlayerState>().ChangeHealth(10);
                     }
                 }
-                else if (type == Element.light)
+                else if (type == Element.lightning)
                 {
                     UseSpell(40);
                     if (isUsed)
                     {
-                        StartCoroutine(ShootWater());
+                        StartCoroutine(ShootLightning());
                     }
                 }
                 else if (type == Element.wind)
@@ -302,6 +302,15 @@ public class CardManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         waterP.Stop();
     }
+
+    private IEnumerator ShootLightning()
+    {
+        au.PlayOneShot(elementSounds[9], 1);
+        lightningP.Play();
+        yield return new WaitForSeconds(4);
+        lightningP.Stop();
+    }
+
     public IEnumerator Storm()
     {
         PlayerState.damage[CardManager.Element.water] += 10;

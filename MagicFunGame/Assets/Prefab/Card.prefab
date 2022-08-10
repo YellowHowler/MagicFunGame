@@ -5017,6 +5017,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
+  - {fileID: 8300000, guid: bda9317f0697d486ebba9190666fa343, type: 3}
   waterP: {fileID: 3721837334158821929}
   lightningP: {fileID: 3661738879491409188}
   lifeP: {fileID: 0}
