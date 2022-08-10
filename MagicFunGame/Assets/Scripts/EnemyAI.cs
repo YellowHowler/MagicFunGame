@@ -89,8 +89,7 @@ public class EnemyAI : MonoBehaviour
                     GameObject newWood = Instantiate(woodObj, woodPos, Quaternion.Euler(0, transform.rotation.y, 0));
                     break;
                 case 2:
-                    GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>().Play();
-                    print("steam");
+                    Environment.Instance.StartSteam();
                     break;
                 
             }
@@ -107,18 +106,16 @@ public class EnemyAI : MonoBehaviour
                     StartCoroutine(ShootWater());
                     break;
                 case 1:
-                    GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>().Play();
-                    print("steam");
+                    Environment.Instance.StartSteam();
                     break;
                 case 2:
-                    RenderSettings.skybox = stormSky;
-                    GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>().Play();
+                    Environment.Instance.StartStorm();
                     //storm
                     break;
             }
         }
     }
-    
+
     IEnumerator AttackCD()
     {
         CD = false;
@@ -174,9 +171,10 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Card")
+        if(collision.gameObject.tag == "Card" && collision.gameObject.GetComponent<CardManager>().type==CardManager.Element.fire)
         {
             ChangeHealth(-10);
+            tickDmg += 5;
         }
     }
 

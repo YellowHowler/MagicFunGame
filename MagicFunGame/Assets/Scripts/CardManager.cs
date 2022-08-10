@@ -27,7 +27,7 @@ public class CardManager : MonoBehaviour
     }
 
     [SerializeField] public Element type;
-    [SerializeField] private Material stormSky;
+
     [SerializeField] private GameObject woodObj;
     [SerializeField] private GameObject glassObj;
     [SerializeField] private Texture[] glyphs;
@@ -63,7 +63,6 @@ public class CardManager : MonoBehaviour
     private float holdFrontTime = 0;
     public bool thrown;
     public bool gameStarted { get; set; }
-
     public void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -75,6 +74,7 @@ public class CardManager : MonoBehaviour
         stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
         //lightningP = transform.GetChild(2).GetComponent<ParticleSystem>();
 
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
 
         childRend = transform.GetChild(1).gameObject.GetComponent<Renderer>();
 
@@ -168,7 +168,7 @@ public class CardManager : MonoBehaviour
                     if (isUsed)
                     {
                         Environment.Instance.isStorm = true;
-                        StartCoroutine(Storm());
+                        Environment.Instance.StartStorm();
                     }
                 }
                 else if (type == Element.steam)
@@ -178,7 +178,7 @@ public class CardManager : MonoBehaviour
                     if (isUsed)
                     {
                         Environment.Instance.isSteam = true;
-                        StartCoroutine(Steam());
+                        Environment.Instance.StartSteam();
                     }
                 }
 
@@ -311,27 +311,8 @@ public class CardManager : MonoBehaviour
         lightningP.Stop();
     }
 
-    public IEnumerator Storm()
-    {
-        PlayerState.damage[CardManager.Element.water] += 10;
-        RenderSettings.skybox = stormSky;
-        stormCloudP.Play();
-        yield return new WaitForSeconds(10);
-        stormCloudP.Stop();
-        PlayerState.damage[CardManager.Element.water] -= 10;
-    }
-    public IEnumerator Steam()
-    {
-        GetComponent<PlayerState>().tickDmg = 5;
-        stormFogP.Play();
-        PlayerState.damage[CardManager.Element.water] += 5;
-        PlayerState.damage[CardManager.Element.fire] += 5;
-        yield return new WaitForSeconds(10);
-        stormFogP.Stop();
-        PlayerState.damage[CardManager.Element.water] -= 5;
-        PlayerState.damage[CardManager.Element.fire] -= 5;
-
-    }
+    
+    
 
     private void UseSpell(int manaCost)
     {

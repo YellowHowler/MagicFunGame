@@ -24,7 +24,9 @@ public class flashImage : MonoBehaviour
             StopCoroutine(currentFlashRoutine);
         }
         currentFlashRoutine = StartCoroutine(flash(secondsForOneFlash, maxAlpha));
-
+        var tempColor = _image.color;
+        tempColor.a = 0f;
+        _image.color = tempColor;
     }
     IEnumerator flash(float secondsForOneFlash, float maxAlpha)
     {
@@ -46,6 +48,7 @@ public class flashImage : MonoBehaviour
             _image.color = colorThisFrame;
             yield return null;
         }
+        
     
     }
 }

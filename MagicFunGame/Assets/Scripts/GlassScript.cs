@@ -25,7 +25,7 @@ public class GlassScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Card")
         {
-            other.GetComponent<Rigidbody>().velocity = new Vector3(-other.GetComponent<Rigidbody>().velocity.x, -other.GetComponent<Rigidbody>().velocity.y, -other.GetComponent<Rigidbody>().velocity.z);
+            other.GetComponent<Rigidbody>().velocity = other.GetComponent<Rigidbody>().velocity * -1;
             hp--;
         }
     }
