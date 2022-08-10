@@ -43046,6 +43046,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
+  waterP: {fileID: 0}
+  fireP: {fileID: 0}
+  lightningP: {fileID: 0}
+  lifeP: {fileID: 0}
   thrown: 0
 --- !u!54 &3721837333924452196
 Rigidbody:
@@ -43261,6 +43265,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
+  waterP: {fileID: 0}
+  fireP: {fileID: 0}
+  lightningP: {fileID: 0}
+  lifeP: {fileID: 0}
   thrown: 0
 --- !u!4 &3721837334157878355
 Transform:
@@ -48475,6 +48483,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
+  waterP: {fileID: 0}
+  fireP: {fileID: 0}
+  lightningP: {fileID: 0}
+  lifeP: {fileID: 0}
   thrown: 0
 --- !u!4 &3721837334443893925
 Transform:
@@ -58115,7 +58127,7 @@ GameObject:
   - component: {fileID: 3721837335413689347}
   m_Layer: 0
   m_Name: Water Particle
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58166,6 +58178,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
+  waterP: {fileID: 0}
+  fireP: {fileID: 0}
+  lightningP: {fileID: 0}
+  lifeP: {fileID: 0}
   thrown: 0
 --- !u!4 &3721837335615351419
 Transform:
@@ -63161,7 +63177,7 @@ GameObject:
   - component: {fileID: 3721837335915036464}
   m_Layer: 0
   m_Name: Water Particle
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -19,6 +19,9 @@ TagManager:
   - LeftHand
   - Status Box
   - EnemyFire
+  - EnemyCard
+  - EnemyWater
+  - Water
   layers:
   - Default
   - TransparentFX
