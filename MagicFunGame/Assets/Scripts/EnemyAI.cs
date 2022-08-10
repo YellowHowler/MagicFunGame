@@ -92,8 +92,7 @@ public class EnemyAI : MonoBehaviour
         else if (wizard == SorcererType.water)
         {
             int spell = Random.Range(0, 3);
-            spell = 0;
-
+            
             switch (spell)
             {
                 case 0:
