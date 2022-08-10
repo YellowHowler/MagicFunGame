@@ -39,7 +39,7 @@ public class flashImage : MonoBehaviour
             yield return null; 
         }
         //animate flash outs
-        for (float i = 0; i < flashInDuration; i+=Time.deltaTime)
+        for (float i = 0; i <= flashInDuration; i+=Time.deltaTime)
         {
             Color colorThisFrame = _image.color;
             colorThisFrame.a = Mathf.Lerp(maxAlpha, 0, i / flashInDuration);
