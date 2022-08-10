@@ -28,6 +28,11 @@ public class SceneTransition : MonoBehaviour
         Ex();
     }
 
+    public void OnStart()
+    {
+        StartDuel();
+    }
+
     private void Ent()
     {
         startBtn.gameObject.SetActive(true);

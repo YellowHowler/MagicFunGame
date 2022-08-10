@@ -1,0 +1,45 @@
+{
+    "name": "UIStart",
+    "maps": [
+        {
+            "name": "start",
+            "id": "fb44a371-9bad-4ae9-84b6-3367c4ed47bb",
+            "actions": [
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "6538a8b4-81b6-40a1-9b6d-536cf65e679c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "140e82a9-058f-4c18-a010-3876f6e98681",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05b54fa3-47cf-4483-a3a4-1a2eedb21db5",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
