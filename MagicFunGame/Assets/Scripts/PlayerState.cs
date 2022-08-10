@@ -53,6 +53,8 @@ public class PlayerState : MonoBehaviour
             StartCoroutine(tickDamage());
         }
         Debug.Log(health);
+
+        if(statusTxt != null) statusTxt.text = "Health: " + health + "/" + maxHealth + "\n" + "Mana: " + mana + "/" + maxMana;
     }
 
     IEnumerator manaRegen()
@@ -91,7 +93,7 @@ public class PlayerState : MonoBehaviour
         health = Mathf.Clamp(health + amount, 0, maxHealth);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "EnemyFire")
         { 
@@ -100,9 +102,13 @@ public class PlayerState : MonoBehaviour
         else if (collision.gameObject.tag == "EnemyLava")
         {
             takeDmg(CardManager.Element.lava);
-        
+        }
+        else if (collision.gameObject.tag == "EnemyWater")
+        {
+            ChangeHealth(-3);
         }
     }
+
     void takeDmg(CardManager.Element spell)
     {
 
@@ -156,7 +162,6 @@ public class PlayerState : MonoBehaviour
         if(showStatus)
         {
             status.gameObject.SetActive(true);
-            statusTxt.text = "Health: " + health + "/" + maxHealth + "\n" + "Mana: " + mana + "/" + maxMana;
         }
         else
         {
