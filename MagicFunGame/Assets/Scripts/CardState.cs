@@ -17,7 +17,7 @@ public class CardState : MonoBehaviour
 
     public static Dictionary<CardManager.Element[], CardManager.Element> dict = new Dictionary<CardManager.Element[], CardManager.Element>();
     
-    bool gripping;
+    public bool gripping{get;set;}
     public bool inDeck{get;set;}
 
     public void Start()
@@ -57,7 +57,7 @@ public class CardState : MonoBehaviour
         //dictionary 
         //keys of arrays of spells
         //def of enum type 
-        else if (other.tag == "Card" && !gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type && !GetComponent<CardManager>().thrown)
+        else if (other.tag == "Card" && !gripping && !other.GetComponent<CardState>().gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type && !GetComponent<CardManager>().thrown)
         {
             foreach (KeyValuePair<CardManager.Element[], CardManager.Element> elements in dict)
             {
@@ -143,6 +143,7 @@ public class CardState : MonoBehaviour
         {
             if(inDeck)
             {
+                transform.parent = deck.gameObject.transform;
                 int index = 0;
 
                 for(int i = 0; i < deck.cards.Count; i++)
