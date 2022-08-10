@@ -424,7 +424,7 @@ PrefabInstance:
     - target: {fileID: 3721837335412220537, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: type
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220542, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
@@ -5657,7 +5657,7 @@ PrefabInstance:
     - target: {fileID: 3721837335412220537, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
       propertyPath: type
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3721837335412220542, guid: 97476322afd68412a9cabfd52281df77,
         type: 3}
@@ -42595,7 +42595,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837333924452198}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aca3b171eeee44d8d9024ad07fb7de7d, type: 3}
   m_Name: 
@@ -42603,6 +42603,7 @@ MonoBehaviour:
   type: 1
   stormSky: {fileID: 2100000, guid: 5ceec30e099544ed589af6c68217336b, type: 2}
   woodObj: {fileID: 7975779382020231221, guid: 24e71bfee2b4148f0a4fe244a59e9ba3, type: 3}
+  glassObj: {fileID: 0}
   glyphs:
   - {fileID: 2800000, guid: 699de77d8e8d64ed195049188371235f, type: 3}
   - {fileID: 2800000, guid: 08132b839c66a4da181f112cbe43b054, type: 3}
@@ -42633,6 +42634,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
+  thrown: 0
 --- !u!54 &3721837333924452196
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42808,7 +42810,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837334157878357}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aca3b171eeee44d8d9024ad07fb7de7d, type: 3}
   m_Name: 
@@ -42816,6 +42818,7 @@ MonoBehaviour:
   type: 0
   stormSky: {fileID: 2100000, guid: 5ceec30e099544ed589af6c68217336b, type: 2}
   woodObj: {fileID: 7975779382020231221, guid: 24e71bfee2b4148f0a4fe244a59e9ba3, type: 3}
+  glassObj: {fileID: 0}
   glyphs:
   - {fileID: 2800000, guid: 699de77d8e8d64ed195049188371235f, type: 3}
   - {fileID: 2800000, guid: 08132b839c66a4da181f112cbe43b054, type: 3}
@@ -42846,6 +42849,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
+  thrown: 0
 --- !u!4 &3721837334157878355
 Transform:
   m_ObjectHideFlags: 0
@@ -48020,7 +48024,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837334443893923}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aca3b171eeee44d8d9024ad07fb7de7d, type: 3}
   m_Name: 
@@ -48028,6 +48032,7 @@ MonoBehaviour:
   type: 3
   stormSky: {fileID: 2100000, guid: 5ceec30e099544ed589af6c68217336b, type: 2}
   woodObj: {fileID: 7975779382020231221, guid: 24e71bfee2b4148f0a4fe244a59e9ba3, type: 3}
+  glassObj: {fileID: 0}
   glyphs:
   - {fileID: 2800000, guid: 699de77d8e8d64ed195049188371235f, type: 3}
   - {fileID: 2800000, guid: 08132b839c66a4da181f112cbe43b054, type: 3}
@@ -48058,6 +48063,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
+  thrown: 0
 --- !u!4 &3721837334443893925
 Transform:
   m_ObjectHideFlags: 0
@@ -57709,7 +57715,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837335615351421}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aca3b171eeee44d8d9024ad07fb7de7d, type: 3}
   m_Name: 
@@ -57717,6 +57723,7 @@ MonoBehaviour:
   type: 2
   stormSky: {fileID: 2100000, guid: 5ceec30e099544ed589af6c68217336b, type: 2}
   woodObj: {fileID: 7975779382020231221, guid: 24e71bfee2b4148f0a4fe244a59e9ba3, type: 3}
+  glassObj: {fileID: 0}
   glyphs:
   - {fileID: 2800000, guid: 699de77d8e8d64ed195049188371235f, type: 3}
   - {fileID: 2800000, guid: 08132b839c66a4da181f112cbe43b054, type: 3}
@@ -57747,6 +57754,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: cc3f8e55f67554241957de435dea1955, type: 3}
   - {fileID: 8300000, guid: 4af83a5d50b824f659fb8b5dc9c8bf79, type: 3}
+  thrown: 0
 --- !u!4 &3721837335615351419
 Transform:
   m_ObjectHideFlags: 0
@@ -65626,7 +65634,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837335615351421}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d4a1c8aaefcf264faaadd461783c531, type: 3}
   m_Name: 
@@ -65738,7 +65746,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837333924452198}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d4a1c8aaefcf264faaadd461783c531, type: 3}
   m_Name: 
@@ -65850,7 +65858,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837334157878357}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d4a1c8aaefcf264faaadd461783c531, type: 3}
   m_Name: 
@@ -65962,7 +65970,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3721837334443893923}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d4a1c8aaefcf264faaadd461783c531, type: 3}
   m_Name: 

@@ -20,8 +20,8 @@ public class NewCard : MonoBehaviour
     }
     // Start is called before the first frame update
     void Start()
-    { 
-        
+    {
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 
     // Update is called once per frame
