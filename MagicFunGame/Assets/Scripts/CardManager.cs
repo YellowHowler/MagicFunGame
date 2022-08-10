@@ -20,9 +20,8 @@ public class CardManager : MonoBehaviour
         wood = 8,
         lightning = 9,
         glass = 10,
-        smoke = 11,
-        rock = 12,
-        life = 13
+        meteor = 11,
+        life = 12,
     }
 
     [SerializeField] public Element type;
@@ -42,6 +41,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] private ParticleSystem waterP;
     private ParticleSystem windP;
     private ParticleSystem stormCloudP;
+    private ParticleSystem meteorP;
     private ParticleSystem stormFogP;
     private ParticleSystem fireP;
     [SerializeField] private ParticleSystem lightningP;
@@ -73,6 +73,7 @@ public class CardManager : MonoBehaviour
         windP = GameObject.FindGameObjectWithTag("Wind").GetComponent<ParticleSystem>();
         stormCloudP = GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>();
         stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
+        meteorP = GameObject.FindGameObjectWithTag("Meteor").GetComponent<ParticleSystem>();
         //lightningP = transform.GetChild(2).GetComponent<ParticleSystem>();
 
 
@@ -110,7 +111,7 @@ public class CardManager : MonoBehaviour
             }
             else if (type == Element.lava && rb.velocity.magnitude > 1f)
             {
-                UseSpell(20);
+                UseSpell(40);
                
                 if (isUsed) 
                 {
@@ -138,7 +139,7 @@ public class CardManager : MonoBehaviour
                 }
                 else if (type == Element.earth)
                 {
-                    UseSpell(10);
+                    UseSpell(20);
                     if (isUsed)
                     {
                         player.GetComponent<PlayerState>().ChangeHealth(10);
@@ -180,6 +181,16 @@ public class CardManager : MonoBehaviour
                     {
                         Environment.Instance.isSteam = true;
                         Environment.Instance.StartSteam();
+                    }
+                }
+                else if (type == Element.meteor)
+                {
+                    UseSpell(40);
+
+                    if (isUsed)
+                    {
+                        Environment.Instance.isMeteor = true;
+                        Environment.Instance.StartMeteor();
                     }
                 }
                 else if (type == Element.life)
@@ -290,11 +301,11 @@ public class CardManager : MonoBehaviour
         else if (!isUsed && type == Element.glass && rb.velocity.magnitude > 0 && player.gameObject.GetComponent<PlayerState>().mana > 0)
         {
             UseSpell(40);
+            
             if (isUsed)
             {
                 Instantiate(glassObj, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.Euler(0, transform.rotation.y, 0));
                 Destroy(gameObject);
-
             }
         }
     }
@@ -322,7 +333,6 @@ public class CardManager : MonoBehaviour
 
     private IEnumerator ShootWater()
     {
-        au.PlayOneShot(elementSounds[1], 1);
         waterP.Play();
         yield return new WaitForSeconds(4);
         waterP.Stop();
@@ -330,7 +340,6 @@ public class CardManager : MonoBehaviour
 
     private IEnumerator ShootLightning()
     {
-        au.PlayOneShot(elementSounds[9], 1);
         lightningP.Play();
         yield return new WaitForSeconds(4);
         lightningP.Stop();

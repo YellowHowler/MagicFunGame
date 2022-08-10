@@ -46,7 +46,6 @@ public class NewCard : MonoBehaviour
 
         StartCoroutine(RestoreCard());
         
-        GetComponent<CardState>().canCombine = true;
         isSpawn = false;
     }
 

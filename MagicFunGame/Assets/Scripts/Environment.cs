@@ -7,8 +7,10 @@ public class Environment : Singleton<Environment>
     public Vector3 windDir;
     public bool isStorm;
     public bool isSteam;
+    public bool isMeteor;
     private ParticleSystem stormCloudP;
     private ParticleSystem stormFogP;
+    private ParticleSystem meteorP;
     [SerializeField] private Material stormSky;
     [SerializeField] private Material regSky;
    
@@ -29,10 +31,20 @@ public class Environment : Singleton<Environment>
             StartCoroutine(Steam());
         }
     }
+
+    public void StartMeteor()
+    {
+        if(!isMeteor)
+        {
+            StartCoroutine(Meteor()); 
+        }
+    }
     private void Start()
     {
         stormCloudP = GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>();
         stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
+        meteorP = GameObject.FindGameObjectWithTag("Meteor").GetComponent<ParticleSystem>();
+
         player = GameObject.FindGameObjectWithTag("MainCamera");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         
@@ -62,5 +74,17 @@ public class Environment : Singleton<Environment>
         PlayerState.damage[CardManager.Element.water] -= 5;
         PlayerState.damage[CardManager.Element.fire] -= 5;
         isSteam = false;
+    }
+
+    public IEnumerator Meteor()
+    {
+        isMeteor = true;
+
+        meteorP.gameObject.transform.position = new Vector3(enemy.transform.position.x, 25, enemy.transform.position.z);
+        meteorP.Play();
+        yield return new WaitForSeconds(2);
+        meteorP.Stop();
+
+        isMeteor = false;
     }
 }
