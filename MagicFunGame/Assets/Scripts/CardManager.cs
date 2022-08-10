@@ -50,6 +50,7 @@ public class CardManager : MonoBehaviour
     private ParticleSystem smokeP;
     private ParticleSystem rockP;
     [SerializeField] private ParticleSystem lifeP;
+    [SerializeField] private ParticleSystem lavaP;
     private Transform player;
     private Renderer childRend;
 
@@ -115,7 +116,7 @@ public class CardManager : MonoBehaviour
                 if (isUsed) 
                 {
                     thrown = true;
-                    ThrowFire();
+                    ThrowLava();
                 }
             }
         }
@@ -254,12 +255,16 @@ public class CardManager : MonoBehaviour
         rb.velocity = rb.velocity.normalized * 6;
     }
 
-    private void OnCollisionEnter(Collision col)
+    public void Explode()
     {
-        if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Player")
-        {
-            Destroy(gameObject);
-        }
+        StartCoroutine("ExplodeLava");
+    }
+
+    private IEnumerator ExplodeLava()
+    {
+        lavaP.Play();
+        yield return new WaitForSeconds(1f);
+        lavaP.Stop();
     }
 
     public void TouchGround()

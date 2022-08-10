@@ -175,13 +175,20 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag == "Card" && collision.gameObject.GetComponent<CardManager>().type==CardManager.Element.fire)
+        if(collision.gameObject.tag == "Card")
         {
             ChangeHealth(-10);
             tickDmg += 5;
         }
     }
-
+    private void OnCollisionEnter(Collider collision)
+    {
+        if(collision.gameObject.tag == "LavaBall")
+        {
+            ChangeHealth(-5);
+            tickDmg += 5;
+        }
+    }
 }
