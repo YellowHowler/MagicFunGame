@@ -10,9 +10,6 @@ public class NewCard : MonoBehaviour
     [SerializeField] GameObject earthCard;
     [SerializeField] GameObject windCard;
     [SerializeField] cardType thisCard;
-
-    private Vector3 startPos;
-
     enum cardType
     {
         fire,
@@ -24,8 +21,6 @@ public class NewCard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position;
-
         GetComponent<CardManager>().enabled = true;
         GetComponent<CardManager>().Start();
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
@@ -40,32 +35,23 @@ public class NewCard : MonoBehaviour
         {
 
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            
-            GetComponent<CardManager>().enabled = true;
-            GetComponent<CardManager>().Start();
-
-            GetComponent<CardState>().enabled = true;
-            GetComponent<CardState>().Start();
-
-            
-
             if (thisCard == cardType.fire)
             {
-                Instantiate(fireCard, startPos, Quaternion.identity);
+                Instantiate(fireCard, this.transform.position, Quaternion.identity);
                 
             }
             else if (thisCard == cardType.earth)
             {
-                Instantiate(earthCard, startPos, Quaternion.identity);
+                Instantiate(earthCard, this.transform.position, Quaternion.identity);
             }
             else if (thisCard == cardType.water)
             {
-                Instantiate(waterCard, startPos, Quaternion.identity);
+                Instantiate(waterCard, this.transform.position, Quaternion.identity);
 
             }
             else if (thisCard == cardType.wind)
             {
-                Instantiate(windCard, startPos, Quaternion.identity);
+                Instantiate(windCard, this.transform.position, Quaternion.identity);
             }
             
             GetComponent<CardManager>().isSelected = false;

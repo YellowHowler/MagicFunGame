@@ -21,12 +21,13 @@ public class WoodScript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Card" || collision.gameObject.tag == "EnemyCard")
+        if (collision.gameObject.tag == "Card" || collision.gameObject.tag == "EnemyCard"||collision.gameObject.tag == "Water" )
         {
             hp--;
             Destroy(collision.gameObject);
         }
     }
+
     private IEnumerator ShootWood()
     {
         newWood = GetComponent<Transform>();
