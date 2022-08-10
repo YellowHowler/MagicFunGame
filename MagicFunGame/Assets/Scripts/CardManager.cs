@@ -30,6 +30,7 @@ public class CardManager : MonoBehaviour
 
     [SerializeField] private GameObject woodObj;
     [SerializeField] private GameObject glassObj;
+    [SerializeField] private GameObject lavaBall;
     [SerializeField] private Texture[] glyphs;
     [SerializeField] private Texture[] glyphMetals;
     [SerializeField] private Texture[] glyphEmissions;
@@ -236,10 +237,21 @@ public class CardManager : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.useGravity = false;
         //rb.velocity = new Vector3(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -1, 1), rb.velocity.z);
-        rb.velocity = rb.velocity.normalized * 7;
+        rb.velocity = rb.velocity.normalized * 6;
 
         fireP.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         fireP.Play();
+    }
+
+    private void ThrowLava()
+    {
+        GetComponent<Projectile>().enabled = true;
+        lavaBall.SetActive(true);
+
+        rb.angularVelocity = Vector3.zero;
+        rb.useGravity = false;
+        //rb.velocity = new Vector3(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -1, 1), rb.velocity.z);
+        rb.velocity = rb.velocity.normalized * 6;
     }
 
     private void OnCollisionEnter(Collision col)
@@ -283,7 +295,7 @@ public class CardManager : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider col)
-    {
+    {   
 
     }
 
