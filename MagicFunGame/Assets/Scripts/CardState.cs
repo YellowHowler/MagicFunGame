@@ -133,6 +133,8 @@ public class CardState : MonoBehaviour
 
         deck.cards.Remove(gameObject);
         deck.AdjustCards();
+
+        GetComponent<NewCard>().Pick();
     }
 
     private void DeActTest()
