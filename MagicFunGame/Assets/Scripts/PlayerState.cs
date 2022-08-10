@@ -80,7 +80,7 @@ public class PlayerState : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
-        if (amount < 0)
+        if (amount < -1)
         {
             flash.StartFlash(0.25f, .5f, Color.red);
         }
