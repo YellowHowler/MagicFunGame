@@ -70,7 +70,7 @@ public class EnemyAI : MonoBehaviour
                     for(int i = 0; i < 3; i++)
                     {
                         Vector3 firePos = transform.position - (transform.position - player.transform.position).normalized * 2;
-                        firePos = new Vector3(firePos.x + Random.Range(-0.7f, 0.7f), player.transform.position.y - Random.Range(-0.1f, 0.7f), firePos.z);
+                        firePos = new Vector3(firePos.x + Random.Range(-0.5f, 0.5f) * 2.5f, player.transform.position.y - Random.Range(-0.3f, 0.3f) * 2 + 0.4f, firePos.z);
                         Rigidbody fireRb = Instantiate(fireCard, firePos, Quaternion.Euler(90, transform.rotation.y, 0)).GetComponent<Rigidbody>();
                         fireRb.velocity = (player.transform.position - transform.position).normalized * 6;
                     }
@@ -92,7 +92,7 @@ public class EnemyAI : MonoBehaviour
         else if (wizard == SorcererType.water)
         {
             int spell = Random.Range(0, 3);
-            
+
             switch (spell)
             {
                 case 0:
