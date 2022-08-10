@@ -10,33 +10,39 @@ public class flashImage : MonoBehaviour
     Image _image = null;
     Coroutine currentFlashRoutine = null;
     // Start is called before the first frame update
+
+    private bool isFlashing;
+
     void Start()
     {
         _image = GetComponent<Image>();
     }
     public void StartFlash(float secondsForOneFlash, float maxAlpha, Color newColor)
     {
-        _image.color = newColor;
-        //insure maxAlpha isnt above 1
-        maxAlpha = Mathf.Clamp(maxAlpha, 0, 1);
-        if (currentFlashRoutine != null)
+        if(!isFlashing)
         {
-            StopCoroutine(currentFlashRoutine);
+            _image.color = newColor;
+            //insure maxAlpha isnt above 1
+            maxAlpha = Mathf.Clamp(maxAlpha, 0, 1);
+            if (currentFlashRoutine != null)
+            {
+                StopCoroutine(currentFlashRoutine);
+            }
+            currentFlashRoutine = StartCoroutine(flash(secondsForOneFlash, maxAlpha));
+            var tempColor = _image.color;
+            tempColor.a = 0f;
+            _image.color = tempColor;
         }
-        currentFlashRoutine = StartCoroutine(flash(secondsForOneFlash, maxAlpha));
-        var tempColor = _image.color;
-        tempColor.a = 0f;
-        _image.color = tempColor;
     }
     IEnumerator flash(float secondsForOneFlash, float maxAlpha)
     {
-
+        isFlashing = true;
         //animate flash in
         float flashInDuration = secondsForOneFlash / 2;
         for (float i = 0; i <= flashInDuration; i+= Time.deltaTime)
         {
             Color colorThisFrame = _image.color;
-            colorThisFrame.a = Mathf.Lerp(0,maxAlpha, i/flashInDuration);
+            colorThisFrame.a = Mathf.Lerp(0, maxAlpha, i/flashInDuration);
             _image.color = colorThisFrame;
             yield return null; 
         }
@@ -49,6 +55,6 @@ public class flashImage : MonoBehaviour
             yield return null;
         }
         
-    
+        isFlashing = false;
     }
 }
