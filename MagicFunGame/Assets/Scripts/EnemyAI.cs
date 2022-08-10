@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     bool CD;
     Rigidbody rb;
     ParticleSystem waterP;
+    Animator ani;
     AudioSource au;
     //AudioClip[] elementSounds;
     bool move;
@@ -44,6 +45,8 @@ public class EnemyAI : MonoBehaviour
         speed = 5;
         au = GetComponent<AudioSource>();
         waterP = transform.GetChild(0).GetComponent<ParticleSystem>();
+
+        ani = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -67,6 +70,8 @@ public class EnemyAI : MonoBehaviour
     }
     void AIAttack()
     {
+        ani.SetTrigger("Attack");
+
         if (wizard == SorcererType.fire)
         {
             int spell = Random.Range(0, 3);
@@ -159,6 +164,7 @@ public class EnemyAI : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
+        if(amount < 0) ani.SetTrigger("Attack");
         enemyHealth = Mathf.Clamp(enemyHealth + amount, 0, maxHealth);
 
         healthBar.value = (float)enemyHealth / maxHealth;

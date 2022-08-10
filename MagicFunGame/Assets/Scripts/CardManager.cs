@@ -85,7 +85,7 @@ public class CardManager : MonoBehaviour
         fireP = transform.GetChild(3).gameObject.GetComponent<ParticleSystem>();
         fireP.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
-        float factor = Mathf.Pow(2,3);
+        float factor = Mathf.Pow(2,2);
         for(int i = 0; i < glyphColors.Length; i++)
         {
             glyphColors[i] = new Color(glyphColors[i].r*factor,glyphColors[i].g*factor,glyphColors[i].b*factor);
