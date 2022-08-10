@@ -21,7 +21,7 @@ public class PlayerState : MonoBehaviour
 
     public static Dictionary<CardManager.Element, int> damage = new Dictionary<CardManager.Element, int>();
 
-    private Image status;
+    [SerializeField] private Image status;
     private TextMeshProUGUI statusTxt;
 
     void Start()
@@ -36,7 +36,6 @@ public class PlayerState : MonoBehaviour
         damage.Add(CardManager.Element.lava, 30);
         damage.Add(CardManager.Element.ice, 20);
 
-        status = GameObject.FindGameObjectWithTag("Status Box").GetComponent<Image>();
         statusTxt = status.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
         Status();
