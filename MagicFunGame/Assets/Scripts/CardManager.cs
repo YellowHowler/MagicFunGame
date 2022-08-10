@@ -29,7 +29,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] public Element type;
     [SerializeField] private Material stormSky;
     [SerializeField] private GameObject woodObj;
-    
+    [SerializeField] private GameObject glassObj;
     [SerializeField] private Texture[] glyphs;
     [SerializeField] private Color[] glyphColors;
 
@@ -132,8 +132,6 @@ public class CardManager : MonoBehaviour
                     if (isUsed)
                     {
                         GetComponent<PlayerState>().ChangeHealth(10);
-                    
-                    
                     }
                 
                 
@@ -173,6 +171,7 @@ public class CardManager : MonoBehaviour
                         StartCoroutine(Steam());
                     }
                 }
+
 
                 isHolding = false;
                 holdFrontTime = 0;
@@ -220,13 +219,22 @@ public class CardManager : MonoBehaviour
         {
             UseSpell(30);
 
-            if(isUsed) 
+            if (isUsed)
             {
                 Instantiate(woodObj, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.Euler(0, transform.rotation.y, 0));
                 Destroy(gameObject);
             }
         }
+        else if (!isUsed && type == Element.glass && rb.velocity.magnitude > 0 && player.gameObject.GetComponent<PlayerState>().mana > 0)
+        {
+            UseSpell(60);
+            if (isUsed)
+            {
+                Instantiate(glassObj, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.Euler(0, transform.rotation.y, 0));
+                Destroy(gameObject);
 
+            }
+        }
     }
 
     private void OnTriggerStay(Collider col)

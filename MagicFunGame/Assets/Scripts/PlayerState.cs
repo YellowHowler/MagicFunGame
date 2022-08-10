@@ -67,7 +67,7 @@ public class PlayerState : MonoBehaviour
     {
         ticking = false;
         ChangeHealth(-1);
-        flash.StartFlash(0.25f, .5f, Color.red);
+        //flash.StartFlash(0.25f, .5f, Color.red); Unessessary???
         tickDmg -=1;
         yield return new WaitForSeconds(1);
         ticking = true;

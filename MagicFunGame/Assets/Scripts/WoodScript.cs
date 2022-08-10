@@ -24,6 +24,7 @@ public class WoodScript : MonoBehaviour
         if (collision.gameObject.tag == "Card")
         {
             hp--;
+            Destroy(collision.gameObject);
         }
     }
     private IEnumerator ShootWood()
