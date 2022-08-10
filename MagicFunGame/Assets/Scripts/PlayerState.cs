@@ -95,17 +95,27 @@ public class PlayerState : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "EnemyFire")
-        { 
-            takeDmg(CardManager.Element.fire);
-        }
-        else if (collision.gameObject.tag == "EnemyLava")
+        if(collision.gameObject.tag == "Ground")
         {
-            takeDmg(CardManager.Element.lava);
+            
         }
         else if (collision.gameObject.tag == "EnemyWater")
         {
             ChangeHealth(-3);
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "EnemyFire")
+        { 
+            takeDmg(CardManager.Element.fire);
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.tag == "EnemyLava")
+        {
+            takeDmg(CardManager.Element.lava);
+            Destroy(collision.gameObject);
         }
     }
 
