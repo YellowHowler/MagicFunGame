@@ -101,7 +101,8 @@ public class PlayerState : MonoBehaviour
         }
         else if (collision.gameObject.tag == "EnemyWater")
         {
-            ChangeHealth(-3);
+            if(!Environment.Instance.isStorm) ChangeHealth(-3);
+            else ChangeHealth(-5);
         }
     }
 

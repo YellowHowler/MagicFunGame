@@ -88,9 +88,9 @@ public class CardManager : MonoBehaviour
 
     void Update()
     {
-        if (!isSelected && !isUsed && !GetComponent<CardState>().inDeck)
+        if (!isSelected && !isUsed)
         {
-            if (type == Element.fire && rb.velocity.magnitude > 0.05f)
+            if (type == Element.fire && rb.velocity.magnitude > 1f)
             {
                 UseSpell(20);
                 if (isUsed)
@@ -99,7 +99,7 @@ public class CardManager : MonoBehaviour
                     ThrowFire();
                 }
             }
-            else if (type == Element.lava && rb.velocity.magnitude > 0.05f)
+            else if (type == Element.lava && rb.velocity.magnitude > 1f)
             {
                 UseSpell(20);
                
@@ -159,6 +159,7 @@ public class CardManager : MonoBehaviour
 
                     if (isUsed)
                     {
+                        Environment.Instance.isStorm = true;
                         StartCoroutine(Storm());
                     }
                 }
@@ -168,6 +169,7 @@ public class CardManager : MonoBehaviour
 
                     if (isUsed)
                     {
+                        Environment.Instance.isSteam = true;
                         StartCoroutine(Steam());
                     }
                 }

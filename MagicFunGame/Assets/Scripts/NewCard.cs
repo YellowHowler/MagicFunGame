@@ -23,9 +23,13 @@ public class NewCard : MonoBehaviour
     {
         GetComponent<CardManager>().enabled = true;
         GetComponent<CardManager>().Start();
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        
         GetComponent<CardManager>().UpdateGlyph();
         GetComponent<CardManager>().enabled = false;
+
+        GetComponent<CardState>().enabled = false;
+
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 
     // Update is called once per frame
@@ -54,6 +58,13 @@ public class NewCard : MonoBehaviour
                 Instantiate(windCard, this.transform.position, Quaternion.identity);
             }
             
+
+            GetComponent<CardState>().enabled = true;
+            GetComponent<CardState>().Start();
+
+            GetComponent<CardManager>().enabled = true;
+            GetComponent<CardManager>().Start();
+
             GetComponent<CardManager>().isSelected = false;
             GetComponent<NewCard>().enabled = false;
         }
