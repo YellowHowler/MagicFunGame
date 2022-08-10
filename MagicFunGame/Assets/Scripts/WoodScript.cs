@@ -40,6 +40,7 @@ public class WoodScript : MonoBehaviour
             {
                 newWood.transform.localScale = new Vector3(newWood.localScale.x, newWood.localScale.y + 0.3f, newWood.localScale.z);
                 GetComponent<BoxCollider>().size = new Vector3(1, 1, 1);
+                GetComponent<BoxCollider>().center = new Vector3(0, 0, 0);
                 yield return sec2;
             }
 

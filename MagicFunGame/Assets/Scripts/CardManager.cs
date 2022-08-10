@@ -262,7 +262,7 @@ public class CardManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         waterP.Stop();
     }
-    private IEnumerator Storm()
+    public IEnumerator Storm()
     {
         PlayerState.damage[CardManager.Element.water] += 10;
         RenderSettings.skybox = stormSky;
@@ -271,7 +271,7 @@ public class CardManager : MonoBehaviour
         stormCloudP.Stop();
         PlayerState.damage[CardManager.Element.water] -= 10;
     }
-    private IEnumerator Steam()
+    public IEnumerator Steam()
     {
         GetComponent<PlayerState>().tickDmg = 5;
         stormFogP.Play();
