@@ -126,6 +126,18 @@ public class CardManager : MonoBehaviour
 
                     }
                 }
+                else if (type == Element.earth)
+                {
+                    UseSpell(10);
+                    if (isUsed)
+                    {
+                        GetComponent<PlayerState>().ChangeHealth(10);
+                    
+                    
+                    }
+                
+                
+                }
                 else if (type == Element.light)
                 {
                     UseSpell(40);
@@ -149,15 +161,17 @@ public class CardManager : MonoBehaviour
 
                     if (isUsed)
                     {
-                        //PlayerState.damage[CardManager.Element.water] += 5;
-                        RenderSettings.skybox = stormSky;
-                        stormCloudP.Play();
+                        StartCoroutine(Storm());
                     }
                 }
                 else if (type == Element.steam)
                 {
-                    //col.gameObject.GetComponent<PlayerState>().tickDmg = 5;
-                    stormFogP.Play();
+                    UseSpell(20);
+
+                    if (isUsed)
+                    {
+                        StartCoroutine(Steam());
+                    }
                 }
 
                 isHolding = false;
@@ -212,6 +226,7 @@ public class CardManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
     }
 
     private void OnTriggerStay(Collider col)
@@ -241,6 +256,27 @@ public class CardManager : MonoBehaviour
         waterP.Play();
         yield return new WaitForSeconds(4);
         waterP.Stop();
+    }
+    private IEnumerator Storm()
+    {
+        PlayerState.damage[CardManager.Element.water] += 10;
+        RenderSettings.skybox = stormSky;
+        stormCloudP.Play();
+        yield return new WaitForSeconds(10);
+        stormCloudP.Stop();
+        PlayerState.damage[CardManager.Element.water] -= 10;
+    }
+    private IEnumerator Steam()
+    {
+        GetComponent<PlayerState>().tickDmg = 5;
+        stormFogP.Play();
+        PlayerState.damage[CardManager.Element.water] += 5;
+        PlayerState.damage[CardManager.Element.fire] += 5;
+        yield return new WaitForSeconds(10);
+        stormFogP.Stop();
+        PlayerState.damage[CardManager.Element.water] -= 5;
+        PlayerState.damage[CardManager.Element.fire] -= 5;
+
     }
 
     private void UseSpell(int manaCost)

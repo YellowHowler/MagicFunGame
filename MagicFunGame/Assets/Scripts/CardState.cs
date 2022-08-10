@@ -150,8 +150,14 @@ public class CardState : MonoBehaviour
                     if(transform.position.x > deck.cards[i].transform.position.x) index += 1;
                 }
 
-                if(index < deck.cards.Count) deck.cards.Insert(index, gameObject);
-                else deck.cards.Add(gameObject);
+                if (index < deck.cards.Count)
+                {
+                    deck.cards.Insert(index, gameObject);
+                }
+                else
+                {
+                    deck.cards.Add(gameObject);
+                }
                 deck.AdjustCards();
 
                 rb.velocity = new Vector3(0, 0, 0);
