@@ -21,7 +21,10 @@ public class NewCard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<CardManager>().enabled = true;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        GetComponent<CardManager>().UpdateGlyph();
+        GetComponent<CardManager>().enabled = false;
     }
 
     // Update is called once per frame
