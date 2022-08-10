@@ -43,7 +43,7 @@ public class NewCard : MonoBehaviour
             GetComponent<CardState>().enabled = true;
             GetComponent<CardState>().Start();
 
-            GetComponent<NewCard>().enabled = false;
+            
 
             if (thisCard == cardType.fire)
             {
@@ -65,6 +65,7 @@ public class NewCard : MonoBehaviour
             }
             
             GetComponent<CardManager>().isSelected = false;
+            GetComponent<NewCard>().enabled = false;
         }
     }
 }
