@@ -20,6 +20,8 @@ public class CardState : MonoBehaviour
     public bool gripping{get;set;}
     public bool inDeck{get;set;}
 
+    public bool canCombine{get;set;}
+
     public void Start()
     {
         au = GetComponent<AudioSource>();
@@ -56,7 +58,7 @@ public class CardState : MonoBehaviour
         //dictionary 
         //keys of arrays of spells
         //def of enum type 
-        else if (other.tag == "Card" && !gripping && !other.GetComponent<CardState>().gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type && !GetComponent<CardManager>().thrown)
+        else if (canCombine && other.tag == "Card" && !gripping && !other.GetComponent<CardState>().gripping && other.GetComponent<CardManager>().type != GetComponent<CardManager>().type && !GetComponent<CardManager>().thrown)
         {
             foreach (KeyValuePair<CardManager.Element[], CardManager.Element> elements in dict)
             {

@@ -5,13 +5,12 @@ using UnityEngine;
 public class NewCard : MonoBehaviour
 {
     //make sure the card locks position when you drag it in as a prefab
-    [SerializeField] GameObject fireCard;
-    [SerializeField] GameObject waterCard;
-    [SerializeField] GameObject earthCard;
-    [SerializeField] GameObject windCard;
+    [SerializeField] GameObject card;
     [SerializeField] cardType thisCard;
 
     private Vector3 startPos;
+
+    public bool isSpawn;
 
     enum cardType
     {
@@ -24,18 +23,11 @@ public class NewCard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<CardManager>().enabled = true;
-        GetComponent<CardManager>().Start();
-        GetComponent<CardManager>().UpdateGlyph((int)thisCard);
-        
-        GetComponent<CardManager>().UpdateGlyph();
-        GetComponent<CardManager>().enabled = false;
-
-        GetComponent<CardState>().enabled = false;
-
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
         startPos = transform.position;
+
+        GetComponent<CardState>().canCombine = false;
     }
 
     // Update is called once per frame
@@ -45,39 +37,24 @@ public class NewCard : MonoBehaviour
 
     public void Pick()
     {
-        PickUp();
+        if(isSpawn) PickUp();
     }
 
     public void PickUp()
     {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 
-        if (thisCard == cardType.fire)
-        {
-            Instantiate(fireCard, startPos, Quaternion.identity);
-            
-        }
-        else if (thisCard == cardType.earth)
-        {
-            Instantiate(earthCard, startPos, Quaternion.identity);
-        }
-        else if (thisCard == cardType.water)
-        {
-            Instantiate(waterCard, startPos, Quaternion.identity);
+        GameObject newCard = Instantiate(card, startPos, Quaternion.identity);
+        newCard.GetComponent<NewCard>().isSpawn = true;
 
-        }
-        else if (thisCard == cardType.wind)
-        {
-            Instantiate(windCard, startPos, Quaternion.identity);
-        }
-        
+        if(thisCard == cardType.fire) newCard.GetComponent<CardManager>().type = CardManager.Element.fire;
+        else if(thisCard == cardType.water) newCard.GetComponent<CardManager>().type = CardManager.Element.water;
+        else if(thisCard == cardType.earth) newCard.GetComponent<CardManager>().type = CardManager.Element.earth;
+        else if(thisCard == cardType.wind) newCard.GetComponent<CardManager>().type = CardManager.Element.wind;
 
-        GetComponent<CardState>().enabled = true;
-        GetComponent<CardState>().Start();
+        newCard.GetComponent<CardManager>().UpdateGlyph();
 
-        GetComponent<CardManager>().enabled = true;
-        GetComponent<CardManager>().Start();
-
-        GetComponent<NewCard>().enabled = false;
+        GetComponent<CardState>().canCombine = true;
+        isSpawn = false;
     }
 }

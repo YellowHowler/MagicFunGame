@@ -33,10 +33,7 @@ public class flashImage : MonoBehaviour
             tempColor.a = 0f;
             _image.color = tempColor;
         }
-<<<<<<< Updated upstream
-=======
         currentFlashRoutine = StartCoroutine(flash(secondsForOneFlash, maxAlpha));
->>>>>>> Stashed changes
     }
     IEnumerator flash(float secondsForOneFlash, float maxAlpha)
     {
@@ -58,15 +55,11 @@ public class flashImage : MonoBehaviour
             _image.color = colorThisFrame;
             yield return null;
         }
-<<<<<<< Updated upstream
         
         isFlashing = false;
-=======
 
         Color temp = _image.color;
         temp.a = 0f;
         _image.color = temp;
-
->>>>>>> Stashed changes
     }
 }
