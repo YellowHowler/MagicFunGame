@@ -44,7 +44,6 @@ public class CardState : MonoBehaviour
     }
     private void Update()
     {
-
     }
     //add when player lets go of card
     private void OnTriggerEnter(Collider other)
