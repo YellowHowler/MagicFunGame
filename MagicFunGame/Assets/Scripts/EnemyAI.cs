@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     Rigidbody rb;
     ParticleSystem waterP;
     AudioSource au;
-    AudioClip[] elementSounds;
+    //AudioClip[] elementSounds;
     bool move;
     GameObject player;
     public static int speed;
@@ -139,8 +139,9 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator ShootWater()
     {
-        au.PlayOneShot(elementSounds[1], 1);
+        //au.PlayOneShot(elementSounds[1], 1);
         waterP.Play();
+        print("water");
         yield return new WaitForSeconds(4);
         waterP.Stop();
     }
