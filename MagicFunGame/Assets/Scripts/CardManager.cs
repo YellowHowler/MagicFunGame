@@ -140,7 +140,7 @@ public class CardManager : MonoBehaviour
                     UseSpell(10);
                     if (isUsed)
                     {
-                        GetComponent<PlayerState>().ChangeHealth(10);
+                        player.GetComponent<PlayerState>().ChangeHealth(10);
                     }
                 }
                 else if (type == Element.light)
