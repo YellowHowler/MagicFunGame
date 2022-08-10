@@ -187,7 +187,6 @@ public class EnemyAI : MonoBehaviour
     {
         if(collision.gameObject.tag == "LavaBall")
         {
-            ChangeHealth(-5);
             tickDmg += 5;
         }
     }

@@ -265,13 +265,14 @@ public class CardManager : MonoBehaviour
         lavaP.Play();
         yield return new WaitForSeconds(1f);
         lavaP.Stop();
+        Destroy(gameObject);
     }
 
     public void TouchGround()
     {
         if (!isUsed && type == Element.wood && rb.velocity.magnitude > 0 && player.gameObject.GetComponent<PlayerState>().mana > 0)
         {
-            UseSpell(30);
+            UseSpell(20);
 
             if (isUsed)
             {
@@ -281,7 +282,7 @@ public class CardManager : MonoBehaviour
         }
         else if (!isUsed && type == Element.glass && rb.velocity.magnitude > 0 && player.gameObject.GetComponent<PlayerState>().mana > 0)
         {
-            UseSpell(60);
+            UseSpell(40);
             if (isUsed)
             {
                 Instantiate(glassObj, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.Euler(0, transform.rotation.y, 0));
