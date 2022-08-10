@@ -34,7 +34,6 @@ public class PlayerState : MonoBehaviour
         damage.Add(CardManager.Element.fire, 10);
         damage.Add(CardManager.Element.water, 30);
         damage.Add(CardManager.Element.lava, 30);
-        damage.Add(CardManager.Element.ice, 20);
 
         statusTxt = status.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
