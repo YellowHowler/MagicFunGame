@@ -84,7 +84,7 @@ public class PlayerState : MonoBehaviour
         {
             flash.StartFlash(0.25f, .5f, Color.red);
         }
-        else
+        else if (amount >0)
         {
             flash.StartFlash(0.25f, .5f, Color.green);
 

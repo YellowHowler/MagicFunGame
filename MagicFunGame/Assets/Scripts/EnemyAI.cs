@@ -45,6 +45,7 @@ public class EnemyAI : MonoBehaviour
         speed = 5;
         au = GetComponent<AudioSource>();
         waterP = transform.GetChild(0).GetComponent<ParticleSystem>();
+        
 
         ani = GetComponent<Animator>();
     }
@@ -52,7 +53,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tickDmg > 0 && ticking)
+        if (tickDmg > 0 && !ticking)
         {
             StartCoroutine(tickDamage());
         }
@@ -145,12 +146,12 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator tickDamage()
     {
-        ticking = false;
+        ticking = true;
         ChangeHealth(-1);
         //flash.StartFlash(0.25f, .5f, Color.red); Unessessary???
         tickDmg -=1;
         yield return new WaitForSeconds(1);
-        ticking = true;
+        ticking = false;
     }
 
     private IEnumerator ShootWater()
