@@ -37,16 +37,16 @@ public class CardManager : MonoBehaviour
 
     private Rigidbody rb;
     private AudioSource au;
-    private ParticleSystem waterP;
+    [SerializeField] private ParticleSystem waterP;
     private ParticleSystem windP;
     private ParticleSystem stormCloudP;
     private ParticleSystem stormFogP;
-    private ParticleSystem fireP;
-    private ParticleSystem lightningP;
+    [SerializeField] private ParticleSystem fireP;
+    [SerializeField] private ParticleSystem lightningP;
     private ParticleSystem magicGlassP;
     private ParticleSystem smokeP;
     private ParticleSystem rockP;
-    private ParticleSystem lifeP;
+    [SerializeField] private ParticleSystem lifeP;
     private Transform player;
     private Renderer childRend;
 
@@ -68,11 +68,9 @@ public class CardManager : MonoBehaviour
         au = GetComponent<AudioSource>();
 
         player = Camera.main.gameObject.GetComponent<Transform>();
-        waterP = transform.GetChild(0).GetComponent<ParticleSystem>();
         windP = GameObject.FindGameObjectWithTag("Wind").GetComponent<ParticleSystem>();
         stormCloudP = GameObject.FindGameObjectWithTag("StormCloud").GetComponent<ParticleSystem>();
         stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
-        fireP = transform.GetChild(1).GetComponent<ParticleSystem>();
         //lightningP = transform.GetChild(2).GetComponent<ParticleSystem>();
 
 
@@ -199,7 +197,8 @@ public class CardManager : MonoBehaviour
     {
         rb.angularVelocity = Vector3.zero;
         rb.useGravity = false;
-        rb.velocity = rb.velocity.normalized * 6;
+        rb.velocity = new Vector3(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -2, 2), rb.velocity.z);
+        rb.velocity = rb.velocity.normalized * 7;
         fireP.Play();
     }
 
