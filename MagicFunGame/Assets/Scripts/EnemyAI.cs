@@ -184,7 +184,7 @@ public class EnemyAI : MonoBehaviour
             tickDmg += 5;
         }
     }
-    private void OnCollisionEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "LavaBall")
         {
