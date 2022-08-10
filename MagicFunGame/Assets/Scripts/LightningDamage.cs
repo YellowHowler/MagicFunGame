@@ -10,8 +10,8 @@ public class LightningDamage : MonoBehaviour
         {
             EnemyAI ea = col.GetComponent<EnemyAI>();
             
-            ea.ChangeHealth(-5);
-            //paralyze enemy
+            if(!Environment.Instance.isStorm) ea.ChangeHealth(-2);
+            else ea.ChangeHealth(-4);
         }
     }
 }

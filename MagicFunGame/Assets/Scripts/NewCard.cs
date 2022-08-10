@@ -35,38 +35,43 @@ public class NewCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<CardManager>().isSelected)
+    }
+
+    public void Pick()
+    {
+        PickUp();
+    }
+
+    public void PickUp()
+    {
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+
+        if (thisCard == cardType.fire)
         {
-
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            if (thisCard == cardType.fire)
-            {
-                Instantiate(fireCard, this.transform.position, Quaternion.identity);
-                
-            }
-            else if (thisCard == cardType.earth)
-            {
-                Instantiate(earthCard, this.transform.position, Quaternion.identity);
-            }
-            else if (thisCard == cardType.water)
-            {
-                Instantiate(waterCard, this.transform.position, Quaternion.identity);
-
-            }
-            else if (thisCard == cardType.wind)
-            {
-                Instantiate(windCard, this.transform.position, Quaternion.identity);
-            }
+            Instantiate(fireCard, this.transform.position, Quaternion.identity);
             
-
-            GetComponent<CardState>().enabled = true;
-            GetComponent<CardState>().Start();
-
-            GetComponent<CardManager>().enabled = true;
-            GetComponent<CardManager>().Start();
-
-            GetComponent<CardManager>().isSelected = false;
-            GetComponent<NewCard>().enabled = false;
         }
+        else if (thisCard == cardType.earth)
+        {
+            Instantiate(earthCard, this.transform.position, Quaternion.identity);
+        }
+        else if (thisCard == cardType.water)
+        {
+            Instantiate(waterCard, this.transform.position, Quaternion.identity);
+
+        }
+        else if (thisCard == cardType.wind)
+        {
+            Instantiate(windCard, this.transform.position, Quaternion.identity);
+        }
+        
+
+        GetComponent<CardState>().enabled = true;
+        GetComponent<CardState>().Start();
+
+        GetComponent<CardManager>().enabled = true;
+        GetComponent<CardManager>().Start();
+
+        GetComponent<NewCard>().enabled = false;
     }
 }

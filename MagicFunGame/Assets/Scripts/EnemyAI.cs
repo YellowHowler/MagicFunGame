@@ -179,9 +179,7 @@ public class EnemyAI : MonoBehaviour
         if(collision.gameObject.tag == "Card")
         {
             ChangeHealth(-10);
-
         }
-        else ChangeHealth(-3);
     }
 
 }

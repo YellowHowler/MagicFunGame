@@ -144,7 +144,6 @@ public class CardState : MonoBehaviour
             if(inDeck)
             {
                 transform.parent = deck.gameObject.transform;
-                int index = 0;
 
                 rb.velocity = new Vector3(0, 0, 0);
                 rb.angularVelocity = new Vector3(0, 0, 0);
@@ -156,6 +155,7 @@ public class CardState : MonoBehaviour
 
     private IEnumerator SnapToDeck()
     {
+        int index = 0;
         yield return new WaitForSeconds(0.2f);
 
         for(int i = 0; i < deck.cards.Count; i++)

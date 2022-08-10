@@ -99,11 +99,6 @@ public class PlayerState : MonoBehaviour
         {
             
         }
-        else 
-        {
-            if(!Environment.Instance.isStorm) ChangeHealth(-3);
-            else ChangeHealth(-5);
-        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -171,6 +166,7 @@ public class PlayerState : MonoBehaviour
     private void Status()
     {
         if(statusTxt != null) statusTxt.text = "Health: " + health + "/" + maxHealth + "\n" + "Mana: " + mana + "/" + maxMana;
+
         if(showStatus)
         {
             status.gameObject.SetActive(true);

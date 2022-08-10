@@ -31,6 +31,8 @@ public class CardManager : MonoBehaviour
     [SerializeField] private GameObject woodObj;
     [SerializeField] private GameObject glassObj;
     [SerializeField] private Texture[] glyphs;
+    [SerializeField] private Texture[] glyphMetals;
+    [SerializeField] private Texture[] glyphEmissions;
     [SerializeField] private Color[] glyphColors;
 
     [SerializeField] private AudioClip[] elementSounds;
@@ -194,7 +196,7 @@ public class CardManager : MonoBehaviour
         else
         {
             childRend.material.EnableKeyword("_EMISSION");
-            childRend.material.SetTexture("_EmissionMap", glyphs[(int)type]);
+            childRend.material.SetTexture("_EmissionMap", glyphEmisssions[(int)type]);
             childRend.material.SetColor("_EmissionColor", glyphColors[(int)type]);
         }
     }
