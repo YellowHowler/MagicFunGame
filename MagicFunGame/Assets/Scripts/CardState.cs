@@ -20,7 +20,7 @@ public class CardState : MonoBehaviour
     bool gripping;
     public bool inDeck{get;set;}
 
-    private void Start()
+    public void Start()
     {
         au = GetComponent<AudioSource>();
         cm = GetComponent<CardManager>();

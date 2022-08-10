@@ -22,6 +22,7 @@ public class NewCard : MonoBehaviour
     void Start()
     {
         GetComponent<CardManager>().enabled = true;
+        GetComponent<CardManager>().Start();
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         GetComponent<CardManager>().UpdateGlyph();
         GetComponent<CardManager>().enabled = false;
@@ -34,37 +35,33 @@ public class NewCard : MonoBehaviour
         {
             GameObject newCard = null;
 
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            
+            GetComponent<CardManager>().enabled = true;
+            GetComponent<CardManager>().Start();
+
+            GetComponent<CardState>().enabled = true;
+            GetComponent<CardState>().Start();
+
+            GetComponent<NewCard>().enabled = false;
+
             if (thisCard == cardType.fire)
             {
                 newCard = Instantiate(fireCard, this.transform.position, Quaternion.identity);
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                GetComponent<CardManager>().enabled = true;
-                GetComponent<CardState>().enabled = true;
-                GetComponent<NewCard>().enabled = false;
+                
             }
             else if (thisCard == cardType.earth)
             {
                 newCard = Instantiate(earthCard, this.transform.position, Quaternion.identity);
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                GetComponent<CardManager>().enabled = true;
-                GetComponent<CardState>().enabled = true;
-                GetComponent<NewCard>().enabled = false;
             }
             else if (thisCard == cardType.water)
             {
                 newCard = Instantiate(waterCard, this.transform.position, Quaternion.identity);
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                GetComponent<CardManager>().enabled = true;
-                GetComponent<CardState>().enabled = true;
-                GetComponent<NewCard>().enabled = false;
+
             }
             else if (thisCard == cardType.wind)
             {
                 newCard = Instantiate(windCard, this.transform.position, Quaternion.identity);
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                GetComponent<CardManager>().enabled = true;
-                GetComponent<CardState>().enabled = true;
-                GetComponent<NewCard>().enabled = false;
             }
             
             GetComponent<CardManager>().isSelected = false;

@@ -62,7 +62,7 @@ public class CardManager : MonoBehaviour
     public bool thrown;
     public bool gameStarted { get; set; }
 
-    void Start()
+    public void Start()
     {
         rb = GetComponent<Rigidbody>();
         au = GetComponent<AudioSource>();
