@@ -23,6 +23,8 @@ TagManager:
   - EnemyWater
   - Water
   - Wood
+  - Meteor
+  - Environment
   layers:
   - Default
   - TransparentFX
