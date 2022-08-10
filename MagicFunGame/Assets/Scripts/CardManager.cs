@@ -133,8 +133,6 @@ public class CardManager : MonoBehaviour
                     {
                         GetComponent<PlayerState>().ChangeHealth(10);
                     }
-                
-                
                 }
                 else if (type == Element.light)
                 {

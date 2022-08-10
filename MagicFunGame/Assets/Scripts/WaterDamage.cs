@@ -12,5 +12,12 @@ public class WaterDamage : MonoBehaviour
             
             ea.ChangeHealth(-3);
         }
+
+        else if(col.tag == "MainCamera")
+        {
+            PlayerState ps = col.GetComponent<PlayerState>();
+            
+            ps.ChangeHealth(-3);
+        }
     }
 }
