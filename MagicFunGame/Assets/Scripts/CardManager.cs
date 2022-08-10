@@ -55,7 +55,7 @@ public class CardManager : MonoBehaviour
     private float fastSpell;
 
     private bool isUsed = false;
-    private bool isHolding = false;
+    public bool isHolding = false;
     public bool isSelected { get; set; }
 
     private float holdFrontTime = 0;

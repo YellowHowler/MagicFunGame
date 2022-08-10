@@ -33,7 +33,6 @@ public class NewCard : MonoBehaviour
     {
         if (GetComponent<CardManager>().isSelected)
         {
-            GameObject newCard = null;
 
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             
@@ -47,21 +46,21 @@ public class NewCard : MonoBehaviour
 
             if (thisCard == cardType.fire)
             {
-                newCard = Instantiate(fireCard, this.transform.position, Quaternion.identity);
+                Instantiate(fireCard, this.transform.position, Quaternion.identity);
                 
             }
             else if (thisCard == cardType.earth)
             {
-                newCard = Instantiate(earthCard, this.transform.position, Quaternion.identity);
+                Instantiate(earthCard, this.transform.position, Quaternion.identity);
             }
             else if (thisCard == cardType.water)
             {
-                newCard = Instantiate(waterCard, this.transform.position, Quaternion.identity);
+                Instantiate(waterCard, this.transform.position, Quaternion.identity);
 
             }
             else if (thisCard == cardType.wind)
             {
-                newCard = Instantiate(windCard, this.transform.position, Quaternion.identity);
+                Instantiate(windCard, this.transform.position, Quaternion.identity);
             }
             
             GetComponent<CardManager>().isSelected = false;
