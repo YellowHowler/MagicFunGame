@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.87399536, g: 0.8965488, b: 0.78425467, a: 1}
+  m_IndirectSpecularColor: {r: 0.8745338, g: 0.89723253, b: 0.7845555, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6985,7 +6985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c189d572154571f4ca8f8319f6cd1e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wizard: 1
+  wizard: 0
   stormSky: {fileID: 2100000, guid: 5ceec30e099544ed589af6c68217336b, type: 2}
   woodObj: {fileID: 7975779382020231221, guid: 24e71bfee2b4148f0a4fe244a59e9ba3, type: 3}
   fireCard: {fileID: 5799747265179014885, guid: e7bde90925adb4908b675ba644c20c99,
@@ -43050,6 +43050,7 @@ MonoBehaviour:
   fireP: {fileID: 0}
   lightningP: {fileID: 0}
   lifeP: {fileID: 0}
+  isHolding: 0
   thrown: 0
 --- !u!54 &3721837333924452196
 Rigidbody:
@@ -43269,6 +43270,7 @@ MonoBehaviour:
   fireP: {fileID: 0}
   lightningP: {fileID: 0}
   lifeP: {fileID: 0}
+  isHolding: 0
   thrown: 0
 --- !u!4 &3721837334157878355
 Transform:
@@ -48487,6 +48489,7 @@ MonoBehaviour:
   fireP: {fileID: 0}
   lightningP: {fileID: 0}
   lifeP: {fileID: 0}
+  isHolding: 0
   thrown: 0
 --- !u!4 &3721837334443893925
 Transform:
@@ -58182,6 +58185,7 @@ MonoBehaviour:
   fireP: {fileID: 0}
   lightningP: {fileID: 0}
   lifeP: {fileID: 0}
+  isHolding: 0
   thrown: 0
 --- !u!4 &3721837335615351419
 Transform:
