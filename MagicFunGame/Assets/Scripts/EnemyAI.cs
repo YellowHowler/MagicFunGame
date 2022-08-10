@@ -97,7 +97,6 @@ public class EnemyAI : MonoBehaviour
             switch (spell)
             {
                 case 0:
-                    waterP.gameObject.transform.LookAt(player.transform);
                     StartCoroutine(ShootWater());
                     break;
                 case 1:
