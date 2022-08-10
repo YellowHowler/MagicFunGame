@@ -146,24 +146,31 @@ public class CardState : MonoBehaviour
                 transform.parent = deck.gameObject.transform;
                 int index = 0;
 
-                for(int i = 0; i < deck.cards.Count; i++)
-                {
-                    if(transform.position.x > deck.cards[i].transform.position.x) index += 1;
-                }
-
-                if (index < deck.cards.Count)
-                {
-                    deck.cards.Insert(index, gameObject);
-                }
-                else
-                {
-                    deck.cards.Add(gameObject);
-                }
-                deck.AdjustCards();
-
                 rb.velocity = new Vector3(0, 0, 0);
                 rb.angularVelocity = new Vector3(0, 0, 0);
+
+                StartCoroutine(SnapToDeck());
             }
         }
+    }
+
+    private IEnumerator SnapToDeck()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        for(int i = 0; i < deck.cards.Count; i++)
+        {
+            if(transform.position.x > deck.cards[i].transform.position.x) index += 1;
+        }
+
+        if (index < deck.cards.Count)
+        {
+            deck.cards.Insert(index, gameObject);
+        }
+        else
+        {
+            deck.cards.Add(gameObject);
+        }
+        deck.AdjustCards();
     }
 }

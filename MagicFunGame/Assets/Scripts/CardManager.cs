@@ -205,7 +205,7 @@ public class CardManager : MonoBehaviour
 
         rb.angularVelocity = Vector3.zero;
         rb.useGravity = false;
-        rb.velocity = new Vector3(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -2, 2), rb.velocity.z);
+        //rb.velocity = new Vector3(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -1, 1), rb.velocity.z);
         rb.velocity = rb.velocity.normalized * 7;
 
         fireP.gameObject.transform.GetChild(0).gameObject.SetActive(false);

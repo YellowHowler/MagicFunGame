@@ -16,6 +16,10 @@ public class EnemyAI : MonoBehaviour
     public static int speed;
     private int enemyHealth;
     private int maxHealth = 100;
+
+    public int tickDmg;
+    bool ticking;
+
     [SerializeField] private Material stormSky;
     [SerializeField] private GameObject woodObj;
     [SerializeField] private GameObject fireCard;
@@ -45,7 +49,10 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (tickDmg > 0 && ticking)
+        {
+            StartCoroutine(tickDamage());
+        }
 
         if (CD)
         {
@@ -70,7 +77,7 @@ public class EnemyAI : MonoBehaviour
                     for(int i = 0; i < 3; i++)
                     {
                         Vector3 firePos = transform.position - (transform.position - player.transform.position).normalized * 2;
-                        firePos = new Vector3(firePos.x + Random.Range(-0.5f, 0.5f) * 2.5f, player.transform.position.y - Random.Range(-0.3f, 0.3f) * 2 + 0.4f, firePos.z);
+                        firePos = new Vector3(firePos.x + Random.Range(-0.4f, 0.4f) * 2, player.transform.position.y - Random.Range(-0.6f, 0.6f) * 1.3f + 0.4f, firePos.z);
                         Rigidbody fireRb = Instantiate(fireCard, firePos, Quaternion.Euler(90, transform.rotation.y, 0)).GetComponent<Rigidbody>();
                         fireRb.velocity = (player.transform.position - transform.position).normalized * 6;
                     }
@@ -136,6 +143,16 @@ public class EnemyAI : MonoBehaviour
         move = true;
     }
 
+    IEnumerator tickDamage()
+    {
+        ticking = false;
+        ChangeHealth(-1);
+        //flash.StartFlash(0.25f, .5f, Color.red); Unessessary???
+        tickDmg -=1;
+        yield return new WaitForSeconds(1);
+        ticking = true;
+    }
+
     private IEnumerator ShootWater()
     {
         //au.PlayOneShot(elementSounds[1], 1);
@@ -159,10 +176,12 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Water")
+        if(collision.gameObject.tag == "Card")
         {
-            ChangeHealth(-3);
+            ChangeHealth(-10);
+
         }
+        else ChangeHealth(-3);
     }
 
 }

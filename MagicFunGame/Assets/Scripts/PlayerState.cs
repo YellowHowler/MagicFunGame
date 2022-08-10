@@ -53,8 +53,6 @@ public class PlayerState : MonoBehaviour
             StartCoroutine(tickDamage());
         }
         Debug.Log(health);
-
-        if(statusTxt != null) statusTxt.text = "Health: " + health + "/" + maxHealth + "\n" + "Mana: " + mana + "/" + maxMana;
     }
 
     IEnumerator manaRegen()
@@ -77,6 +75,7 @@ public class PlayerState : MonoBehaviour
     public void ChangeMana(int amount)
     {
         mana = Mathf.Clamp(mana + amount, 0, maxMana);
+        if(statusTxt != null) statusTxt.text = "Health: " + health + "/" + maxHealth + "\n" + "Mana: " + mana + "/" + maxMana;
     }
 
     public void ChangeHealth(int amount)
@@ -91,6 +90,7 @@ public class PlayerState : MonoBehaviour
 
         }
         health = Mathf.Clamp(health + amount, 0, maxHealth);
+        if(statusTxt != null) statusTxt.text = "Health: " + health + "/" + maxHealth + "\n" + "Mana: " + mana + "/" + maxMana;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -99,7 +99,7 @@ public class PlayerState : MonoBehaviour
         {
             
         }
-        else if (collision.gameObject.tag == "EnemyWater")
+        else 
         {
             if(!Environment.Instance.isStorm) ChangeHealth(-3);
             else ChangeHealth(-5);
@@ -170,6 +170,7 @@ public class PlayerState : MonoBehaviour
 
     private void Status()
     {
+        if(statusTxt != null) statusTxt.text = "Health: " + health + "/" + maxHealth + "\n" + "Mana: " + mana + "/" + maxMana;
         if(showStatus)
         {
             status.gameObject.SetActive(true);
