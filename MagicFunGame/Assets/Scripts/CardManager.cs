@@ -41,7 +41,7 @@ public class CardManager : MonoBehaviour
     private ParticleSystem windP;
     private ParticleSystem stormCloudP;
     private ParticleSystem stormFogP;
-    [SerializeField] private ParticleSystem fireP;
+    private ParticleSystem fireP;
     [SerializeField] private ParticleSystem lightningP;
     private ParticleSystem magicGlassP;
     private ParticleSystem smokeP;
@@ -80,6 +80,7 @@ public class CardManager : MonoBehaviour
 
         RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
 
+        fireP = transform.GetChild(3).gameObject.GetComponent<ParticleSystem>();
         fireP.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
         UpdateGlyph();
