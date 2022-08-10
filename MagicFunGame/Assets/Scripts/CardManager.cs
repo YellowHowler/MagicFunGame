@@ -74,7 +74,7 @@ public class CardManager : MonoBehaviour
         stormFogP = GameObject.FindGameObjectWithTag("StormFog").GetComponent<ParticleSystem>();
         //lightningP = transform.GetChild(2).GetComponent<ParticleSystem>();
 
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
+
 
         childRend = transform.GetChild(1).gameObject.GetComponent<Renderer>();
 
