@@ -10,7 +10,7 @@ public class WaterDamage : MonoBehaviour
         {
             EnemyAI ea = col.GetComponent<EnemyAI>();
             
-            ea.enemyHealth -= 3;
+            ea.ChangeHealth(-3);
         }
     }
 }

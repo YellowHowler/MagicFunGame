@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -13,10 +14,13 @@ public class EnemyAI : MonoBehaviour
     bool move;
     GameObject player;
     public static int speed;
-    public int enemyHealth;
+    private int enemyHealth;
+    private int maxHealth = 100;
     [SerializeField] private Material stormSky;
     [SerializeField] private GameObject woodObj;
     [SerializeField] private GameObject fireCard;
+
+    [SerializeField] private Slider healthBar;
     ParticleSystem fireP;
 
     enum SorcererType
@@ -29,7 +33,8 @@ public class EnemyAI : MonoBehaviour
     {
         CD = true;
         move = true;
-        enemyHealth = 100;
+        enemyHealth = maxHealth;
+        ChangeHealth(0);
         rb = GetComponent<Rigidbody>();
         player = Camera.main.gameObject;
         speed = 5;
@@ -40,6 +45,8 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         if (CD)
         {
 
@@ -49,10 +56,6 @@ public class EnemyAI : MonoBehaviour
         {
             
            StartCoroutine(Movement());
-        }
-        if (enemyHealth <= 0)
-        {
-            Destroy(this.gameObject);
         }
     }
     void AIAttack()
@@ -89,10 +92,12 @@ public class EnemyAI : MonoBehaviour
         else if (wizard == SorcererType.water)
         {
             int spell = Random.Range(0, 3);
+            spell = 0;
 
             switch (spell)
             {
                 case 0:
+                    waterP.gameObject.transform.LookAt(player.transform);
                     StartCoroutine(ShootWater());
                     break;
                 case 1:
@@ -139,5 +144,17 @@ public class EnemyAI : MonoBehaviour
         waterP.Play();
         yield return new WaitForSeconds(4);
         waterP.Stop();
+    }
+
+    public void ChangeHealth(int amount)
+    {
+        enemyHealth = Mathf.Clamp(enemyHealth + amount, 0, maxHealth);
+
+        healthBar.value = (float)enemyHealth / maxHealth;
+
+        if (enemyHealth == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

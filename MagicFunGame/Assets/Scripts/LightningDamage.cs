@@ -10,7 +10,7 @@ public class LightningDamage : MonoBehaviour
         {
             EnemyAI ea = col.GetComponent<EnemyAI>();
             
-            ea.enemyHealth -= 4;
+            ea.ChangeHealth(-5);
             //paralyze enemy
         }
     }
