@@ -50,7 +50,7 @@ public class EnemyAI : MonoBehaviour
             
            StartCoroutine(Movement());
         }
-        if (enemyHealth == 0)
+        if (enemyHealth <= 0)
         {
             Destroy(this.gameObject);
         }

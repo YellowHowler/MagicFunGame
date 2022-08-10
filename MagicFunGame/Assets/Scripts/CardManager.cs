@@ -289,13 +289,13 @@ public class CardManager : MonoBehaviour
 
     private void UseSpell(int manaCost)
     {
-        //if(ps.mana > manaCost)
-        //{
-        isUsed = true;
-        au.PlayOneShot(elementSounds[(int)type], 1);
-        ps.ChangeMana(-1 * manaCost);
-        type = Element.none;
-        UpdateGlyph();
-        //}
+        if(ps.mana > manaCost)
+        {
+            isUsed = true;
+            au.PlayOneShot(elementSounds[(int)type], 1);
+            ps.ChangeMana(-1 * manaCost);
+            type = Element.none;
+            UpdateGlyph();
+        }
     }
 }
