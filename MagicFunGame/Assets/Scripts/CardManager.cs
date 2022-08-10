@@ -80,6 +80,8 @@ public class CardManager : MonoBehaviour
 
         RenderSettings.ambientLight = new Color(0.3f, 0.3f, 0.3f, 1);
 
+        fireP.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+
         UpdateGlyph();
     }
 
@@ -146,6 +148,7 @@ public class CardManager : MonoBehaviour
                     if (isUsed)
                     {
                         windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
+                        Environment.Instance.windDir = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
                         windP.Play();
                     }
                 }
@@ -195,10 +198,14 @@ public class CardManager : MonoBehaviour
 
     private void ThrowFire()
     {
+        GetComponent<Projectile>().enabled = true;
+
         rb.angularVelocity = Vector3.zero;
         rb.useGravity = false;
         rb.velocity = new Vector3(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -2, 2), rb.velocity.z);
         rb.velocity = rb.velocity.normalized * 7;
+
+        fireP.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         fireP.Play();
     }
 

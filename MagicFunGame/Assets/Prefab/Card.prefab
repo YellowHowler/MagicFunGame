@@ -4924,6 +4924,7 @@ GameObject:
   - component: {fileID: 3721837335412220543}
   - component: {fileID: 6497283289972027791}
   - component: {fileID: 9118194821206071080}
+  - component: {fileID: 5845686243242427727}
   m_Layer: 0
   m_Name: Card
   m_TagString: Card
@@ -5282,6 +5283,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5845686243242427727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721837335412220542}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58cd21faf043422fba87edd43a2f7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7828534071307721336
 GameObject:
   m_ObjectHideFlags: 0

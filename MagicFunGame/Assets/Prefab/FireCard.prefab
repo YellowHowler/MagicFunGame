@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2112221071129879475}
   - component: {fileID: -8411132894106196345}
   - component: {fileID: 5428263655299262552}
+  - component: {fileID: 2851194827518498200}
   m_Layer: 0
   m_Name: FireCard
   m_TagString: EnemyCard
@@ -189,6 +190,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorDefault: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   colorSelected: {r: 0.25, g: 0.65, b: 0.8, a: 1}
+--- !u!114 &2851194827518498200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799747265179014885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58cd21faf043422fba87edd43a2f7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9027543072216006347
 GameObject:
   m_ObjectHideFlags: 0
