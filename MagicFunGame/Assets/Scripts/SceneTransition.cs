@@ -35,12 +35,12 @@ public class SceneTransition : MonoBehaviour
 
     private void Ent()
     {
-        startBtn.gameObject.SetActive(true);
+        //startBtn.gameObject.SetActive(true);
     }
 
     private void Ex()
     {
-        startBtn.gameObject.SetActive(false);
+        //startBtn.gameObject.SetActive(false);
     }
 
     public void StartDuel()
