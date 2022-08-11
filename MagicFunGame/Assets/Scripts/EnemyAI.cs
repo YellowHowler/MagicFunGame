@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] SorcererType wizard;
     bool CD;
     Rigidbody rb;
-    ParticleSystem waterP;
+    [SerializeField] ParticleSystem waterP;
     Animator ani;
     AudioSource au;
     //AudioClip[] elementSounds;
@@ -44,7 +44,6 @@ public class EnemyAI : MonoBehaviour
         player = Camera.main.gameObject;
         speed = 5;
         au = GetComponent<AudioSource>();
-        waterP = transform.GetChild(0).GetComponent<ParticleSystem>();
         
 
         ani = GetComponent<Animator>();
@@ -129,7 +128,9 @@ public class EnemyAI : MonoBehaviour
         WaitForSeconds sec = new WaitForSeconds(.05f);
         for (float i = 0; i < 1; i = i + .1f)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(player.transform.position - transform.position), i);
+            Quaternion dest = Quaternion.LookRotation(player.transform.position - transform.position);
+            dest = Quaternion.Euler(0, dest.y + 180, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, dest, i);
             yield return sec;
         }
         yield return new WaitForSeconds(0.2f);
@@ -172,7 +173,8 @@ public class EnemyAI : MonoBehaviour
 
         if (enemyHealth == 0)
         {
-            Destroy(this.gameObject);
+            ani.SetBool("isDead", true);
+            Destroy(this.gameObject, 0.8f);
         }
     }
 

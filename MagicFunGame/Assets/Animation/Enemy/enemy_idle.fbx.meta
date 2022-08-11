@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3e07cdee90b1645f7bc3a5c6a127cb0e
+guid: 68a086cf7ec784ebd8fbeaaa0099e3b3
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
@@ -39,8 +39,8 @@ ModelImporter:
       name: Take 001
       takeName: Take 001
       internalID: 0
-      firstFrame: 1
-      lastFrame: 200
+      firstFrame: 2
+      lastFrame: 34
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -67,7 +67,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 140
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -120,7 +120,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 1.4
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
