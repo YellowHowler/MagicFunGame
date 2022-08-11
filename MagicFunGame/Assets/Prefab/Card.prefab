@@ -15104,6 +15104,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: fire
       objectReference: {fileID: 0}
+    - target: {fileID: 781080294484166581, guid: 9c82fc67d7dc94db9a5c7270eb15b23c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1662236464094462986, guid: 9c82fc67d7dc94db9a5c7270eb15b23c,
         type: 3}
       propertyPath: m_RootOrder
@@ -15172,12 +15177,12 @@ PrefabInstance:
     - target: {fileID: 3659296136145788539, guid: 9c82fc67d7dc94db9a5c7270eb15b23c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 3e-45
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 3659296136145788539, guid: 9c82fc67d7dc94db9a5c7270eb15b23c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 4.3e-44
+      value: 11.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c82fc67d7dc94db9a5c7270eb15b23c, type: 3}
