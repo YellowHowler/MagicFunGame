@@ -159,7 +159,7 @@ public class CardManager : MonoBehaviour
                     if (isUsed)
                     {
                         windP.gameObject.transform.rotation = Quaternion.Euler(0, player.rotation.y, 0);
-                        Environment.Instance.windDir = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
+                        Environment.Instance.windDir = new Vector3(player.transform.forward.x, 0, player.transform.forward.z).normalized;
                         windP.Play();
                     }
                 }
@@ -169,7 +169,6 @@ public class CardManager : MonoBehaviour
 
                     if (isUsed)
                     {
-                        Environment.Instance.isStorm = true;
                         Environment.Instance.StartStorm();
                     }
                 }
@@ -179,7 +178,6 @@ public class CardManager : MonoBehaviour
 
                     if (isUsed)
                     {
-                        Environment.Instance.isSteam = true;
                         Environment.Instance.StartSteam();
                     }
                 }
@@ -189,7 +187,6 @@ public class CardManager : MonoBehaviour
 
                     if (isUsed)
                     {
-                        Environment.Instance.isMeteor = true;
                         Environment.Instance.StartMeteor();
                     }
                 }
@@ -301,7 +298,7 @@ public class CardManager : MonoBehaviour
         else if (!isUsed && type == Element.glass && rb.velocity.magnitude > 0 && player.gameObject.GetComponent<PlayerState>().mana > 0)
         {
             UseSpell(40);
-            
+
             if (isUsed)
             {
                 Instantiate(glassObj, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.Euler(0, transform.rotation.y, 0));

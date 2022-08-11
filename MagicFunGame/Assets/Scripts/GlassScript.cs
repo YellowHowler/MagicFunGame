@@ -5,12 +5,10 @@ using UnityEngine;
 public class GlassScript : MonoBehaviour
 {
     private Transform newWood { get; set; }
-    private int hp = 1;
-    Rigidbody rb;
+    private int hp = 3;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         StartCoroutine(ShootWood());
     }
 
@@ -21,14 +19,15 @@ public class GlassScript : MonoBehaviour
             Destroy(gameObject, 4);
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Card")
+        if (collision.gameObject.tag == "Card" || collision.gameObject.tag == "EnemyCard"||collision.gameObject.tag == "Water" )
         {
-            other.GetComponent<Rigidbody>().velocity = other.GetComponent<Rigidbody>().velocity * -1;
             hp--;
+            Destroy(collision.gameObject);
         }
     }
+
     private IEnumerator ShootWood()
     {
         newWood = GetComponent<Transform>();
@@ -42,12 +41,13 @@ public class GlassScript : MonoBehaviour
             {
                 newWood.transform.localScale = new Vector3(newWood.localScale.x, newWood.localScale.y + 0.3f, newWood.localScale.z);
                 GetComponent<BoxCollider>().size = new Vector3(1, 1, 1);
+                GetComponent<BoxCollider>().center = new Vector3(0, 0, 0);
                 yield return sec2;
             }
 
             yield return sec1;
         }
 
-        Destroy(gameObject, 4);
+        Destroy(gameObject, 6);
     }
 }

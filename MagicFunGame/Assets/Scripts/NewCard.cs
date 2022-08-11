@@ -9,6 +9,7 @@ public class NewCard : MonoBehaviour
     [SerializeField] cardType thisCard;
 
     private Vector3 startPos;
+    private Quaternion startRot;
 
     public bool isSpawn;
 
@@ -26,6 +27,7 @@ public class NewCard : MonoBehaviour
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
         startPos = transform.position;
+        startRot = transform.rotation;
 
         GetComponent<CardState>().canCombine = false;
     }
@@ -53,7 +55,7 @@ public class NewCard : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        GameObject newCard = Instantiate(card, startPos, Quaternion.identity);
+        GameObject newCard = Instantiate(card, startPos, startRot);
         newCard.GetComponent<NewCard>().isSpawn = true;
 
         if(thisCard == cardType.fire) newCard.GetComponent<CardManager>().type = CardManager.Element.fire;
@@ -62,6 +64,5 @@ public class NewCard : MonoBehaviour
         else if(thisCard == cardType.wind) newCard.GetComponent<CardManager>().type = CardManager.Element.wind;
 
         newCard.GetComponent<CardManager>().UpdateGlyph();
-
     }
 }

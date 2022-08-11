@@ -159,7 +159,7 @@ public class CardState : MonoBehaviour
     private IEnumerator SnapToDeck()
     {
         int index = 0;
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.1f);
 
         for(int i = 0; i < deck.cards.Count; i++)
         {
