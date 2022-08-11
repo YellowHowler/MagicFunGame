@@ -135,6 +135,8 @@ public class CardState : MonoBehaviour
         deck.AdjustCards();
 
         GetComponent<NewCard>().Pick();
+
+        transform.rotation = Quaternion.Euler(-1 * transform.rotation.x, 180, transform.rotation.z);
     }
 
     private void DeActTest()
